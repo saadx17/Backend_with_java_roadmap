@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Java/4. Data Types & Variables.md",
+                "file": "EntryLog.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "4. Data Types & Variables"
+              "title": "EntryLog"
             }
           }
         ]
@@ -185,6 +185,7 @@
   },
   "active": "a28aa2673cd482ed",
   "lastOpenFiles": [
+    "Java/4. Data Types & Variables.md",
     "Java/3. Hello World.md",
     "Java/2. How JAVA works.md",
     "Java/1. JAVA, JVM, JDK, JRE.md",
@@ -197,7 +198,6 @@
     "Java/7. String.md",
     "Java/6. Constants.md",
     "Java/5. Type Casting & Variable Naming.md",
-    "Java/4. Data Types & Variables.md",
     "BeforeYouStart/JAVA Environment Setup.md",
     "Before_you_start/JAVA Environment Setup.md",
     "Before_you_start",
