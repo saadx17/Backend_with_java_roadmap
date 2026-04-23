@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Java/9. Control Flow.md",
+                "file": "EntryLog.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "9. Control Flow"
+              "title": "EntryLog"
             }
           }
         ],
@@ -200,10 +200,10 @@
   },
   "active": "ccfe4584280b3c65",
   "lastOpenFiles": [
+    "Java/9. Control Flow.md",
     "Java/8. Operators.md",
     "README.md",
     "EntryLog.md",
-    "Java/9. Control Flow.md",
     "Untitled.canvas",
     "2026-04-23.md",
     "Java/7. String.md",
