@@ -10,3 +10,7 @@ Let's do it.
 Today I didn't get time to study, still thought about keeping up the consistency. So, here I am.
 Today's topic was String.
 I'm out.
+
+##### 24th April, 2026 | 02:14 AM
+It's night, I couldn't sleep. So I studied another topic, "Operators".
+I'm Out.

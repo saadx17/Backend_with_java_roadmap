@@ -4,35 +4,35 @@
     "type": "split",
     "children": [
       {
-        "id": "28f0982ee3dc243d",
+        "id": "87d4f83a109fda8d",
         "type": "tabs",
         "children": [
           {
-            "id": "f3933a4a7b79dcdc",
+            "id": "7b41ebf9d9c81e3a",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Java/6. Constants.md",
+                "file": "Java/8. Operators.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "6. Constants"
+              "title": "8. Operators"
             }
           },
           {
-            "id": "26156ef70ecc7a15",
+            "id": "ccfe4584280b3c65",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "Java/9. Control Flow.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "9. Control Flow"
             }
           }
         ],
@@ -198,9 +198,14 @@
       "bases:Create new base": false
     }
   },
-  "active": "26156ef70ecc7a15",
+  "active": "ccfe4584280b3c65",
   "lastOpenFiles": [
+    "Java/8. Operators.md",
+    "README.md",
     "EntryLog.md",
+    "Java/9. Control Flow.md",
+    "Untitled.canvas",
+    "2026-04-23.md",
     "Java/7. String.md",
     "Java/6. Constants.md",
     "Java/5. Type Casting & Variable Naming.md",
@@ -209,7 +214,6 @@
     "Java/2. How JAVA works.md",
     "Java/1. JAVA, JVM, JDK, JRE.md",
     "BeforeYouStart/JAVA Environment Setup.md",
-    "README.md",
     "Before_you_start/JAVA Environment Setup.md",
     "Before_you_start",
     "Java/4. Variables & Data Types.md",
