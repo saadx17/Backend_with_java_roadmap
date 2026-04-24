@@ -15,3 +15,6 @@ I'm out.
 
 ###### 09:07 PM
 Studied Control Flow 1 (if-else). This week, I've a lot of work. I will try my best to be consistent. I have to study  Database for my quiz this week. So, Let's see what happens.
+
+##### 25th April, 2026 | 11:46 AM
+Studied Control Flow 2 (Switch & Ternary).

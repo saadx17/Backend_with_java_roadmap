@@ -17,7 +17,8 @@ First of all, download Obsidian for better studying. Link for Obsidian: https://
 6. Constants
 7. String
 8. Operators
-9. Control  Flow (Update Coming)
+9. Control Flow - if-else
+10. Control Flow - Switch & Ternary
 
 *(More content will be added as the roadmap progresses)*
 
