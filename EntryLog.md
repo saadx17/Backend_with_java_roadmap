@@ -12,3 +12,6 @@ I'm out.
 ##### 24th April, 2026 | 02:14 AM
 It's night, I couldn't sleep. So I studied another topic, "Operators".
 I'm out.
+
+###### 09:07 PM
+Studied Control Flow 1 (if-else). This week, I've a lot of work. I will try my best to be consistent. I have to study  Database for my quiz this week. So, Let's see what happens.
