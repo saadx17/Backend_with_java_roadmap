@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "EntryLog.md",
+                "file": "Java/10. Control Flow - Switch & Ternary.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "EntryLog"
+              "title": "10. Control Flow - Switch & Ternary"
             }
           }
         ],
@@ -200,8 +200,8 @@
   },
   "active": "12e1578d5d88cb2a",
   "lastOpenFiles": [
-    "README.md",
     "EntryLog.md",
+    "README.md",
     "Java/10. Control Flow - Switch & Ternary.md",
     "Java/9. Control Flow - if-else.md",
     "Untitled.base",
