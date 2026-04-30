@@ -24,3 +24,6 @@ Upgraded my machine to Macbook Air M4. So, Missed 2 days of work. Today's topic 
 
 ##### 29th April, 2026 | 07:36 PM
 Got bored of JAVA, so as an addition to the roadmap, we're studying MySQL database.
+
+##### 30th April, 2026 | 04:00 PM
+Completed Introduction part for MySQL.
