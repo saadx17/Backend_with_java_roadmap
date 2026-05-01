@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "EntryLog.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "EntryLog"
             }
           }
         ],
@@ -198,11 +198,11 @@
       "bases:Create new base": false
     }
   },
-  "active": "10f94ae185d79f95",
+  "active": "c68eb49e49422976",
   "lastOpenFiles": [
+    "README.md",
     "EntryLog.md",
     "Database-MySQL/6. ACID.md",
-    "README.md",
     "Database-MySQL/5. Normalization & Denormalization.md",
     "Database-MySQL/4. Relationships.md",
     "Database-MySQL/3. Keys.md",
