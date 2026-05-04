@@ -41,3 +41,6 @@ The database roadmap was quite messy and I am trying to fix it. My finals are ju
 
 ##### 3rd May, 2026 | 12:56 AM
 Updated Database - MySQL. Reworked entire MySQL roadmap, some works are remaining. Working on it.
+
+##### 4th May, 2026 | 07:16 PM
+Completely reworked Database - MySQL. Added MySQL Data Types and Updated some SQL Commands.

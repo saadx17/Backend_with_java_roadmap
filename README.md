@@ -26,12 +26,12 @@ First of all, download Obsidian for better studying. Link for Obsidian: https://
 
 ### Database (MySQL)
 1. Introduction
-2. MySQL Data Types
-3. Data Models
-4. Keys
-5. Relationships
-6. ACID
-7. Normalization & Denormalization
+2. Data Models
+3. Keys
+4. Relationships
+5. ACID
+6. Normalization & Denormalization
+7. MySQL Data Types
 8. SQL Commands
 
 *(More content will be added as the roadmap progresses)*
