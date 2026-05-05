@@ -44,3 +44,6 @@ Updated Database - MySQL. Reworked entire MySQL roadmap, some works are remainin
 
 ##### 4th May, 2026 | 07:16 PM
 Completely reworked Database - MySQL. Added MySQL Data Types and Updated some SQL Commands.
+
+##### 5th May, 2026 | 03:46 PM
+Updated SQL Commands, Constraints and Engines.

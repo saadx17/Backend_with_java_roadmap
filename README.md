@@ -31,8 +31,10 @@ First of all, download Obsidian for better studying. Link for Obsidian: https://
 4. Relationships
 5. ACID
 6. Normalization & Denormalization
-7. MySQL Data Types
-8. SQL Commands
+7. Engines
+8. MySQL Data Types
+9. SQL Commands
+10. CONSTRAINTS
 
 *(More content will be added as the roadmap progresses)*
 
