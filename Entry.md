@@ -47,3 +47,6 @@ Completely reworked Database - MySQL. Added MySQL Data Types and Updated some SQ
 
 ##### 5th May, 2026 | 03:46 PM
 Updated SQL Commands, Constraints and Engines.
+
+##### 7th May, 2026 | 09:23 PM
+Completed DDL, DML, DQL, DCL. Only TCL is remaining.
