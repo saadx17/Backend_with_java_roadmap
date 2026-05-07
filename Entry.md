@@ -50,3 +50,6 @@ Updated SQL Commands, Constraints and Engines.
 
 ##### 7th May, 2026 | 09:23 PM
 Completed DDL, DML, DQL, DCL. Only TCL is remaining.
+
+##### 8th May, 2026 | 02:29 AM
+Completed SQL Commands. Now for the revisit part.
