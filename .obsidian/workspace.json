@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "30f0486932084709",
+        "id": "9b1a07bc865dad1a",
         "type": "tabs",
         "children": [
           {
-            "id": "71c8092b351ad19b",
+            "id": "d834529767a007ea",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -183,24 +183,26 @@
       "bases:Create new base": false
     }
   },
-  "active": "71c8092b351ad19b",
+  "active": "d834529767a007ea",
   "lastOpenFiles": [
     "README.md",
+    "Database-MySQL/11. Querying Data.md",
     "Database-MySQL/9. SQL Commands.md",
-    "Database-MySQL/10. CONSTRAINTS.md",
-    "Database-MySQL/8. MySQL Data Types.md",
+    "Database-MySQL/1. Introduction.md",
+    "Database-MySQL/2. Data Models.md",
+    "Database-MySQL/3. Keys.md",
+    "Database-MySQL/4. Relationships.md",
+    "Database-MySQL/5. ACID.md",
+    "Database-MySQL/6. Normalization & Denormalization.md",
     "Database-MySQL/7. Engines.md",
+    "Database-MySQL/8. MySQL Data Types.md",
+    "Entry.md",
+    "Database-MySQL/10. CONSTRAINTS.md",
     "Java/11. Loops.md",
     "Java/9. Control Flow - if-else.md",
     "Java/10. Control Flow - Switch & Ternary.md",
-    "Database-MySQL/6. Normalization & Denormalization.md",
-    "Database-MySQL/1. Introduction.md",
-    "Database-MySQL/5. ACID.md",
     "EntryLog.md",
-    "Database-MySQL/3. Keys.md",
-    "Database-MySQL/4. Relationships.md",
     "RoadmapX.md",
-    "Database-MySQL/2. Data Models.md",
     "Assets/hierarchical_model.jpg",
     "Assets/relational-model.png",
     "Assets/SQL_Commands.png",
@@ -212,8 +214,6 @@
     "Java/8. Operators.md",
     "Java/7. String.md",
     "Java/6. Constants.md",
-    "Java/5. Type Casting & Variable Naming.md",
-    "Java/4. Data Types, Variables & Memory.md",
     "Assets/hierarchical-model.svg",
     "hierarchical-model.svg",
     "Assets/ER_Diagram.png",

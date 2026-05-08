@@ -35,6 +35,7 @@ First of all, download Obsidian for better studying. Link for Obsidian: https://
 8. MySQL Data Types
 9. SQL Commands
 10. CONSTRAINTS
+11. Querying Data
 
 *(More content will be added as the roadmap progresses)*
 

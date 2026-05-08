@@ -53,3 +53,6 @@ Completed DDL, DML, DQL, DCL. Only TCL is remaining.
 
 ##### 8th May, 2026 | 02:29 AM
 Completed SQL Commands. Now for the revisit part.
+
+##### 8th May, 2026 | 12:37 PM
+Simplified SQL Commands, added Querying Data.
