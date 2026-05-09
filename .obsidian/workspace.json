@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Entry.md",
+                "file": "Database-MySQL/11. Querying Data.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Entry"
+              "title": "11. Querying Data"
             }
           }
         ]
@@ -78,7 +78,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "1ffd33d0d96e30ba",
@@ -185,6 +186,7 @@
   },
   "active": "d834529767a007ea",
   "lastOpenFiles": [
+    "Entry.md",
     "README.md",
     "Database-MySQL/11. Querying Data.md",
     "Database-MySQL/9. SQL Commands.md",
@@ -196,7 +198,6 @@
     "Database-MySQL/6. Normalization & Denormalization.md",
     "Database-MySQL/7. Engines.md",
     "Database-MySQL/8. MySQL Data Types.md",
-    "Entry.md",
     "Database-MySQL/10. CONSTRAINTS.md",
     "Java/11. Loops.md",
     "Java/9. Control Flow - if-else.md",
