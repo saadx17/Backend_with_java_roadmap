@@ -56,3 +56,6 @@ Completed SQL Commands. Now for the revisit part.
 
 ##### 8th May, 2026 | 12:37 PM
 Simplified SQL Commands, added Querying Data.
+
+##### 9th May, 2026 | 05:58 PM
+Updatrd Querying data.
