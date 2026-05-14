@@ -11,7 +11,7 @@ Imagine you have a single, messy spreadsheet tracking employee project assignmen
 This is a disaster for a database. If Jane leaves Proj_A, you have to write complex code to splice a string of text. If Bob Smith retires, you have to search the whole table to update the manager name.
 
 #### 1. First Normal Form (==1NF==)
-**The Rule:** *Every cell must hold a single, atomic value.* You cannot have arrays, lists, or multiple values crammed into one column. To fix our table, we must give every project its own row.
+**The Rule:** ==Every cell must hold a single, atomic value.== You cannot have arrays, lists, or multiple values crammed into one column. To fix our table, we must give every project its own row.
 
 **The 1NF Table:**
 
@@ -24,7 +24,12 @@ This is a disaster for a database. If Jane leaves Proj_A, you have to write comp
 _The problem now:_ We have duplicated Jane Doe's name, department, and manager. Furthermore, `Emp_ID` is no longer a valid Primary Key on its own, because `1` appears twice. The Primary Key is now a composite of (`Emp_ID` + `Project`).
 
 #### 2. Second Normal Form (==2NF==)
-**The Rule:** *Must be in 1NF, and all non-key columns must depend on the entire Primary Key.* Look at Jane's rows. Does her `Name` depend on the `Project` she is working on? No. Does her `Department` depend on the `Project`? No. They only depend on her `Emp_ID`.
+**The Rule:** ==Must be in 1NF, and all non-key columns must depend on the entire Primary Key.== Look at Jane's rows.
+Does her `Name` depend on the `Project` she is working on?
+No.
+Does her `Department` depend on the `Project`?
+No.
+They only depend on her `Emp_ID`.
 Because these columns only depend on _part_ of our composite key, we must split them into two tables to reach 2NF.
 
 **Employees (Primary Key: Emp_ID):**

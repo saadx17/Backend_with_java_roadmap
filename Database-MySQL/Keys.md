@@ -1,10 +1,16 @@
 In MySQL, **keys** are attributes or sets of attributes used to identify records uniquely and establish relationships between tables. They serve as constraints to maintain data integrity and as indexes to improve search performance.
-MySQL features several key types to ensure data integrity and define relationships, with the most common being ==**Primary Key**, **Foreign Key**, **Unique Key**, **Candidate Key**, **Composite Key**, **Alternate Key**, and **Super Key**==. These keys uniquely identify rows, prevent data redundancy, and link tables.
+MySQL features several key types to ensure data integrity and define relationships, with the most common being,
 
-# The "Big Two" (The Connectors)
-The "Big Two" (Connectors) that form the foundation for linking data across tables are the **Primary Key (==PK==)** and the **Foreign Key (==FK==)**. They establish relationships, ensuring data integrity (referential integrity) and enabling efficient relational queries.
+1. Primary Key
+2. Foreign Key
+3. Unique Key
+4. Candidate Key
+5. Composite Key
+6. Alternate Key
+7. Super Key
 
-### 1. **Primary Key (PK)**
+# The Keys
+### 1. Primary Key (PK)
 This is the ultimate identifier. It guarantees that every single row in your table is 100% unique.
 
 - **The Rules:** It cannot contain `NULL` (empty) values, and the value must never change. Every table should have one, and only one, Primary Key.
@@ -14,7 +20,7 @@ This is the ultimate identifier. It guarantees that every single row in your tab
 **Syntax:**
 ```
 CREATE TABLE Members (
-    member_id INT AUTO_INCREMENT PRIMARY KEY,
+    member_id INT AUTO_INCREMENT PRIMARY KEY, -- This is the primary key
     first_name VARCHAR(50),
     last_name VARCHAR(50)
 );
@@ -24,6 +30,11 @@ CREATE TABLE Members (
 ```
 ALTER TABLE Members 
 ADD PRIMARY KEY (member_id);
+```
+
+**Syntax for droping a primary key:**
+```
+ALTER TABLE table_name DROP PRIMARY KEY;
 ```
 
 ### 2. Foreign Key (FK)
@@ -38,7 +49,7 @@ This is the glue that builds the "Relational" part of the database. It is a colu
 CREATE TABLE Class_Schedule (
     schedule_id INT AUTO_INCREMENT PRIMARY KEY,
     class_name VARCHAR(50),
-    instructor_id INT,
+    instructor_id INT,               -- This is just normal table
     
     -- The Foreign Key syntax
     CONSTRAINT fk_instructor 
@@ -51,16 +62,20 @@ CREATE TABLE Class_Schedule (
 ```
 ALTER TABLE Class_Schedule 
 ADD CONSTRAINT fk_instructor 
-FOREIGN KEY (instructor_id) REFERENCES Instructors(instructor_id);
+FOREIGN KEY (instructor_id)
+REFERENCES Instructors(instructor_id);
 ```
 
-# The Rule Makers (The Constraints)
-MySQL constraints act as "rule makers" to ensure data integrity and reliability within database tables. Key constraints include ==`PRIMARY KEY`== for unique row identification, ==`FOREIGN KEY`== for referential integrity, ==`UNIQUE`== for distinct values, `NOT NULL` to prohibit nulls, and `CHECK` to validate specific conditions.
+**Syntax for dropping a foreign key:**
+```
+ALTER TABLE table_name 
+DROP FOREIGN KEY constraint_name;
+```
 
 ### 3. Unique Key
 This key ensures that all values in a specific column are different from one another. It is very similar to a Primary Key, but with a few distinct differences.
 
-- **The Rules:** Unlike a Primary Key, a table can have _multiple_ Unique Keys, and Unique Keys _can_ accept a `NULL` value (though usually only one, depending on the specific SQL engine).
+- **The Rules:** Unlike a Primary Key, a table can have _multiple_ Unique Keys, and Unique Keys _can_ accept a `NULL` value (though usually only one, depending on the specific SQL [[Engines]]).
 
 - **Example:** An `Email_Address` column. You want to make sure no two users sign up with the exact same email, but the email address isn't the Primary Key (the `User_ID` is).
 
@@ -97,9 +112,6 @@ CREATE TABLE Member_Signups (
     PRIMARY KEY (member_id, class_schedule_id) 
 );
 ```
-
-# The "Whiteboard" Keys (Design Theory)
-You won't usually type these exact terms into your SQL code, but you will hear them frequently in database design, documentation, and technical interviews.
 
 ### 5. Candidate Key
 When you first design a table, you might have several columns that _could_ uniquely identify a row. All of these eligible columns are Candidate Keys.

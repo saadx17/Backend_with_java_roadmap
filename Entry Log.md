@@ -62,3 +62,6 @@ Updated Querying data.
 
 ##### 13th May, 2026 | 07:42 AM
 Fully Completed Querying Data.
+
+##### 14th May, 2026 | 11:04 PM
+reworked the entire Database-Mysql part. There's still work left to do, but I will finish the rework as soon as possible.

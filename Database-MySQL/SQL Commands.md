@@ -50,10 +50,11 @@ DROP INDEX -> deletes an index
 # 1. DDL - Data Definition Language
 DDL commands are used to **define, modify, and delete database structures** (schemas, tables, indexes, etc.). These commands ==auto-commit==, once executed, changes are permanent and cannot be rolled back.
 
-### 1. `CREATE`
+### The `CREATE`
 **Definition:** Used to build entirely new objects in the database. You use this to create the database itself, or the tables within it.
 
 ##### 1. ==`CREATE DATABASE`==
+**Definition:** To create a database in MySQL, use the **`CREATE DATABASE`** statement followed by the name you wish to give your database.
 
 ###### Syntax
 ```
@@ -192,7 +193,7 @@ DESC employees;              -- Short form (DESC)
 SHOW COLUMNS FROM employees;
 ```
 
-**Note:** `NOT NULL`, `UNIQUE`, `PRIMARY KEY`, `FOREIGN KEY`, `CHECK`, `DEFAULT`, `AUTO_INCREMENT`, `INDEX` will be talked in [[10. CONSTRAINTS]].
+**Note:** `NOT NULL`, `UNIQUE`, `PRIMARY KEY`, `FOREIGN KEY`, `CHECK`, `DEFAULT`, `AUTO_INCREMENT`, `INDEX` will be talked in [[CONSTRAINTS]].
 
 ###### Advanced
 ```
@@ -222,7 +223,7 @@ CREATE TABLE order_items (
 SHOW CREATE TABLE employees; -- Shows full CREATE statement
 ```
 
-### 2. `ALTER`
+### The `ALTER`
 **Definition:** In MySQL, the **`ALTER`** command is a **Data Definition Language (DDL)** statement used to modify the structure of an existing database object without deleting or recreating it. While most commonly used with tables, it can also be used to change the characteristics of databases, users, views, and stored routines.
 
 ##### 1. ==`ALTER TABLE`== - Add Column
@@ -348,8 +349,8 @@ ALTER TABLE employees
   CONVERT TO CHARACTER SET utf8mb4
   COLLATE utf8mb4_unicode_ci;
 ```
-**Note:** `ENGINE` was discussed in [[7. Engines]].
-### 3. `DROP`
+**Note:** `ENGINE` was discussed in [[Engines]].
+### The `DROP`
 **Definition:** In MySQL, **`DROP`** is a Data Definition Language (DDL) statement used to permanently delete existing database objects, including their data and structure. Unlike the `DELETE` command, which only removes specific rows, or `TRUNCATE`, which clears all rows but keeps the table "shell," `DROP` completely removes the object from the system.
 
 **Note:** **Permanently** deletes database objects (structure + data). ==CANNOT== be rolled back in MySQL.
@@ -390,7 +391,7 @@ DROP VIEW IF EXISTS emp_summary;
 DROP PROCEDURE IF EXISTS get_employee;
 ```
 
-### 4. `TRUNCATE`
+### The `TRUNCATE`
 **Definition:** In MySQL, the term **truncate** refers to two distinct operations: a statement for emptying tables and a function for shortening numbers.
 Removes **all rows** from table but **keeps structure**, Faster than DELETE for clearing all data.
 
@@ -423,7 +424,7 @@ DELETE FROM employees;    -- next emp_id continues from last value
 └──────────────┴──────────────────┴──────────────────┘
 ```
 
-### 5. `RENAME`
+### The `RENAME`
 **Definition:** In MySQL, **Rename** refers to the operation of changing the identifier (name) of a database object, such as a table, column, view, or user account, without modifying the underlying data or structure.
 
 ```
@@ -456,7 +457,7 @@ CREATE DATABASE new_company_db;
 # 2. DML - Data Manipulation Language
 DML manipulates **data** inside tables, Changes CAN be rolled back (within a transaction).
 
-### 1. `INSERT`
+### The `INSERT`
 **Definition:** In MySQL, "insert" typically refers to the **`INSERT` statement**, which is a Data Manipulation Language (DML) command used to add new rows of data into a database table.
 
 **Basic:**
@@ -548,7 +549,7 @@ SELECT LAST_INSERT_ID();        -- ID of last inserted row SELECT
 ROW_COUNT();                    -- Rows affected by last query
 ```
 
-### 2. `UPDATE`
+### The `UPDATE`
 **Definition:** In MySQL, **`UPDATE`** is a Data Manipulation Language (DML) statement used to modify existing records in a table. Unlike the `ALTER` command, which changes the structure of a table (like adding a column), `UPDATE` only changes the data values within those columns.
 
 **Syntax:**
@@ -645,7 +646,7 @@ UPDATE employees SET salary = 50000;         -- Update ALL rows
 SET SQL_SAFE_UPDATES = 1;                    -- Re-enable safe mode
 ```
 
-### 3. `DELETE`
+### The `DELETE`
 **Definition:** In MySQL, **`DELETE`** is a Data Manipulation Language (DML) statement used to remove existing records (rows) from a table. It allows you to target specific rows using a condition or remove all rows while keeping the table's structure, constraints, and indexes intact.
 
 **Syntax:**
@@ -751,7 +752,7 @@ SELECT * FROM employees WHERE is_deleted = FALSE;
 Data Query Language (DQL) is a component of SQL (Structured Query Language) focused solely on retrieving or fetching data from a database. It consists of only one core command, `SELECT`, which allows users to query specific data from tables without modifying the underlying database structure.
 **Note:** DQL is all about **retrieving** data. `SELECT` is the most powerful and used SQL command.
 
-### 1. `SELECT` Basic
+### The `SELECT` Basic
 ```
 SELECT   [DISTINCT] column(s)         -- What to show
 FROM     table_name                    -- Where data is
@@ -763,7 +764,7 @@ ORDER BY column(s) [ASC|DESC]         -- Sort results
 LIMIT    n OFFSET m;                  -- Limit results
 ```
 
-### 2. `SELECT` Syntax
+### The `SELECT` Syntax
 ```
 -- Select all columns
 SELECT * FROM employees;
@@ -785,14 +786,14 @@ SELECT
 FROM employees;
 ```
 
-### 3. `SELECT DISTINCT`
+### The `SELECT DISTINCT`
 ```
 SELECT DISTINCT dept_id    FROM employees;       -- Unique dept_ids
 SELECT DISTINCT status     FROM employees;       -- Unique statuses
 SELECT DISTINCT dept_id, status FROM employees;  -- Unique combinations
 ```
 
-### 4. `WHERE` clause - Filtering
+### The `WHERE` clause - Filtering
 ```
 -- Comparison operators
 SELECT * FROM employees WHERE salary  > 70000;
@@ -839,7 +840,7 @@ SELECT * FROM employees WHERE dept_id IS NOT NULL;
 SELECT * FROM employees WHERE phone   IS NULL;
 ```
 
-### 5. `ORDER BY` - Sorting
+### The `ORDER BY` - Sorting
 ```
 SELECT * FROM employees
 ORDER BY salary ASC;               -- ascending (default)
@@ -857,7 +858,7 @@ SELECT * FROM employees
 ORDER BY 3;                        -- by column position
 ```
 
-### 6. `LIMIT` & `OFFSET`
+### The `LIMIT` & `OFFSET`
 ```
 SELECT * FROM employees LIMIT 5;              -- First 5 rows
 SELECT * FROM employees LIMIT 5 OFFSET 5;    -- Skip 5, get next 5
@@ -879,7 +880,7 @@ ORDER BY salary DESC
 LIMIT 5;                                     -- Top 5 highest paid
 ```
 
-### 7. Aggregate Function
+### The Aggregate Function
 ```
 SELECT COUNT(*) AS total_employees FROM employees;
 
@@ -909,7 +910,7 @@ FROM employees
 WHERE status = 'active';
 ```
 
-### 8. `GROUP BY` - Grouping Rows
+### The `GROUP BY` - Grouping Rows
 
 ```
 -- Count employees per department
@@ -950,7 +951,7 @@ GROUP BY d.dept_id, d.dept_name
 ORDER BY emp_count DESC;
 ```
 
-### 9. `HAVING` - Filter Groups
+### The `HAVING` - Filter Groups
 
 ###### Departments with more than 2 employees
 ```
@@ -996,7 +997,7 @@ ORDER BY avg_salary DESC;
 └──────────┴────────────────────────┴─────────────────────────┘
 ```
 
-### 10. `SELECT` with Functions
+### The `SELECT` with Functions
 
 ###### String Functions
 ```
@@ -1068,7 +1069,7 @@ FROM employees;
 **DCL** stands for **Data Control Language**. It is a subset of SQL commands used to control access to data stored in a database.
 DCL manages **permissions** and **access control**.
 
-### 1. `GRANT`
+### The `GRANT`
 
 ###### User Management (needed before GRANT)
 ```
@@ -1168,7 +1169,7 @@ SHOW GRANTS FOR 'john'@'localhost';
 SHOW GRANTS FOR CURRENT_USER();
 ```
 
-### 2. `REVOKE`
+### The `REVOKE`
 
 ###### Syntax
 ```
@@ -1217,7 +1218,7 @@ SHOW GRANTS FOR 'jane'@'%';
 In MySQL, **TCL** stands for **Transaction Control Language**. It is a subset of SQL used to manage and control transactions, a sequence of operations performed as a single logical unit of work to ensure data integrity and consistency.
 TCL manages **transactions** to ensure data consistency (ACID)
 
-### 1. `COMMIT`
+### The `COMMIT`
 
 ###### `AUTO COMMIT` (MySQL Default = ON)
 ```
@@ -1282,7 +1283,7 @@ COMMIT;   -- Both operations succeed together
 SELECT * FROM bank_accounts;
 ```
 
-### 2. `ROLLBACK`
+### The `ROLLBACK`
 
 ###### Basic Syntax
 ```
@@ -1311,7 +1312,7 @@ ROLLBACK;  -- Revert because account_id=99 doesn't exist
 -- Real-world: This logic goes in application code or stored procedure
 ```
 
-### 3. `SAVEPOINT`
+### The `SAVEPOINT`
 
 ###### Basic Syntax
 ```
@@ -1370,7 +1371,7 @@ COMMIT;   -- Commit: Batch1 + Batch2 only
 RELEASE SAVEPOINT after_dept_insert;
 ```
 
-### 4. SET TRANSACTION
+### The SET TRANSACTION
 
 ###### Isolation Levels
 ```

@@ -1,5 +1,5 @@
 # What is a Database?
-A **[Database](https://www.oracle.com/apac/database/what-is-database/)** is an organized collection of structured data stored electronically, designed for efficient storage, retrieval, and manipulation.
+A **[Database](https://www.oracle.com/apac/database/what-is-database/)** is an organized collection of structured data stored electronically, designed for efficient *storage, retrieval, and manipulation.*
 
 **Think of it like:**
 - A filing cabinet with labeled folders
@@ -47,7 +47,9 @@ Types & Examples:
 │ Key-Value       │ Redis            │ Caching, Sessions  │
 │ Column-Family   │ Cassandra        │ Big Data           │
 │ Graph           │ Neo4j            │ Social Networks    │ └─────────────────┴──────────────────┴────────────────────┘
+```
 
+```
 MongoDB Document Example:
 {
   "_id": "001",
@@ -60,12 +62,12 @@ MongoDB Document Example:
 ```
 
 ###### 3. ==In-Memory== Database
-An in-memory database (IMDB) is a database management system that stores data entirely in main memory (==RAM==) rather than on disk, providing ultra-fast, low-latency data retrieval. By eliminating disk I/O, they power real-time analytics, gaming, IoT, and high-speed transactions. Key options include Redis, SAP HANA, and [Oracle Database In-Memory](https://www.oracle.com/database/in-memory/).
+An in-memory database (IMDB) is a database management system that stores data entirely in main memory (==RAM==) rather than on disk, providing ultra-fast, low-latency data retrieval. By eliminating disk I/O, they power real-time ==analytics, gaming, IoT, and high-speed transactions==. Key options include Redis, SAP HANA, and [Oracle Database In-Memory](https://www.oracle.com/database/in-memory/).
 ```
 Data stored in RAM (not disk)
 ┌─────────────────────────────────────┐
 │ Disk DB: Read → 100ms               │
-│ In-Memory: Read → 0.1ms ⚡           │
+│ In-Memory: Read → 0.1ms             │
 └─────────────────────────────────────┘
 Examples: Redis, Memcached, VoltDB
 Use Case: Real-time analytics, Gaming leaderboards
@@ -132,14 +134,6 @@ In MySQL, the difference between **data** and **information** is defined by ==pr
 | **Dependency**      | Independent            | Depends on Data            |
 | **Decision Making** | Cannot be used         | Can be used                |
 
-**Example:**
-```
-┌─────────────────────────────────────────────┐
-│ DATA → PROCESS → INFORMATION                │
-│ "23, Male, → Organize → "John is a          │
-│ John" → Analyze → 23yr old male".           │ └─────────────────────────────────────────────┘
-```
-
 ##### Basics
 These are the main basics:
 - DATABASE      = A container that holds all your tables.
@@ -149,14 +143,14 @@ These are the main basics:
 - PRIMARY KEY = A unique identifier for each row.
 - SQL                  = The language you use to talk to MySQL.
 
-###### Visuals
+##### Visuals
 ```
 DATABASE: company_db
 │
 ├── SCHEMA: hr_schema
 │ └── TABLE: employees
 │ ┌──────────┬──────────┬────────────┬──────────┐
-│ │ emp_id   │ name     │ department │ salary.  │ ← COLUMNS
+│ │ emp_id   │ name     │ department │ salary   │ ← COLUMNS
 │ │ (INT)    │(VARCHAR) │ (VARCHAR)  │(DECIMAL) │ ← DATA TYPES
 │ ├──────────┼──────────┼────────────┼──────────┤
 │ │ 1        │ Alice    │ IT         │ 75000    │ ← ROW/RECORD
