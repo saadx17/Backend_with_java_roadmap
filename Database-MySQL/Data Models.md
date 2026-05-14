@@ -7,16 +7,20 @@ An ER Model is essentially a flowchart that maps out how your data connects befo
 
 1. ==Entities== (The Nouns)
 - **What they are:** The real-world objects or concepts you want to store data about. If you were building a school database, your entities would be things like `Student`, `Course`, or `Professor`.
+
 - **How to draw them:** Represented by **rectangles**.
 
 2. ==Attributes== (The Adjectives)
 - **What they are:** The specific details or properties that describe an entity. For a `Student` entity, the attributes would be `StudentID`, `FirstName`, `LastName`, and `DateOfBirth`.
+
 - **How to draw them:** Represented by **ovals** connected to the entity rectangle. (The primary unique identifier, like `StudentID`, gets its name underlined).
 
 3. ==Relationships== (The Verbs)
 - **What they are:** How different entities interact with one another. For example, a Student _Enrolls_ in a Course.
+
 - **How to draw them:** Represented by **diamonds** sitting on a line that connects two entities.
-- **Cardinality:** You also define the rules of the relationship. Is it one-to-one (One student has one ID card)? One-to-many (One professor teaches many courses)? Or many-to-many (Many students enroll in many courses)?
+
+- **Cardinality:** You also define the rules of the [[Relationships]]. Is it one-to-one (One student has one ID card)? One-to-many (One professor teaches many courses)? Or many-to-many (Many students enroll in many courses)?
 
 ##### Let's Study an ER Diagram
 ER diagrams use very specific visual shorthand to explain how a database should be built. Let's decode this diagram step-by-step, starting with the shapes and then moving into those specific underlines and colors.
@@ -34,7 +38,7 @@ ER diagrams use very specific visual shorthand to explain how a database should 
 3.  **Ovals = ==Attributes== :** These are the specific details stored about an entity. An `Account` has a `Password`, an `Item` has an `ItemType`, etc.
 
 ###### 2. Decoding the Lines and Underlines
-1. **Full Underline** (e.g., `AcctName`, `RegionName`, `ItemName`): This denotes a ==Primary Key==. A primary key is a 100% unique identifier. This means the database will mathematically reject any attempt to create two accounts with the exact same `AcctName`.
+1. **Full Underline** (e.g., `AcctName`, `RegionName`, `ItemName`): This denotes a [[Keys#1. Primary Key (PK)|Primary Key]]. A primary key is a 100% unique identifier. This means the database will mathematically reject any attempt to create two accounts with the exact same `AcctName`.
 
    - **The Red Circles:** In standard database notation, the solid underline is all that is needed to denote a Primary Key. The red glowing circles here are just a stylistic choice by whoever drew the diagram to make those critical primary keys pop out visually.
 
@@ -57,7 +61,7 @@ ER diagrams use very specific visual shorthand to explain how a database should 
 - `Item Instantiation` (The Physical Object): This is the specific Iron Sword _your_ character is currently holding. It links back to the blueprint, but it has its own unique `IDNum` and maybe a special `Modifier` (like "+1 Fire Damage" that only your specific sword has).
 
 ###### 4. Cardinality (The 1s, ns, and ms)
-The little letters and numbers on the lines tell you how many of one thing can connect to another, you will learn about these in [[Relationships]] :
+The little letters and numbers on the lines tell you how many of one thing can connect to another,
 
 - **1 to n (One-to-Many):** Look at Account to Character. `1` Account `Has` `n` (many) Characters.
 

@@ -64,4 +64,7 @@ Updated Querying data.
 Fully Completed Querying Data.
 
 ##### 14th May, 2026 | 11:04 PM
-reworked the entire Database-Mysql part. There's still work left to do, but I will finish the rework as soon as possible.
+reworked the entire Database-MySQL part. There's still work left to do, but I will finish the rework as soon as possible.
+
+##### 15th May, 2026 | 03:02 AM
+Continued reworking, added links between chapters for easy understanding. More work is left.

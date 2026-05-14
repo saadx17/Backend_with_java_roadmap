@@ -1,6 +1,22 @@
-In MySQL, data types are broadly categorized into ==**Numeric**, **String**, **Date and Time**, **Spatial**, and **JSON**==. Selecting the correct type is essential for optimizing storage and improving query performance.
+In MySQL, data types are broadly categorized into,
+1. [[#Numeric Types]]
+2. [[#String Types]]
+3. [[#Date & Time Types]]
+4. [[#Boolean Types]]
+5. [[#Binary Types]]
 
-### 1. Numeric Types
+Selecting the correct type is essential for optimizing storage and improving query performance.
+### Numeric Types
+| Category    | Data Type         | Description / Usage / Example                                                                                                        |
+| ----------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| **NUMERIC** | `TINYINT`         | Very small number (-128 to 127)                                                                                                      |
+|             | `SMALLINT`        | Small number (-32768 to 32767)                                                                                                       |
+|             | `MEDIUMINT`       | Medium number (-8 million to 8 million)                                                                                              |
+|             | `INT` / `INTEGER` | Standard number (-2 billion to 2 billion)                                                                                            |
+|             | `BIGINT`          | Very large number (huge range)                                                                                                       |
+|             | `FLOAT`           | Decimal number (less precise) e.g., 3.14                                                                                             |
+|             | `DOUBLE`          | Decimal number (more precise) e.g., 3.14159                                                                                          |
+|             | `DECIMAL(p,s)`    | Exact decimal number e.g., `DECIMAL(10,2)`<br>_p = total digits, s = digits after decimal_<br>Example: `DECIMAL(10,2)` → 12345678.99 |
 
 ###### 1. ==`TINYINT`== (1 Byte of storage):
 - **Range:** -128 to 127.
@@ -32,7 +48,16 @@ In MySQL, data types are broadly categorized into ==**Numeric**, **String**, **D
 - You define its exact shape. `DECIMAL(10, 2)` means: "I want a number that is exactly 10 digits long in total (`p` for precision), and exactly 2 of those digits must come after the decimal point (`s` for scale)."
 - **Best for:** Money. You should **never** use `FLOAT` or `DOUBLE` for financial transactions, pricing, or strict score tracking, because a rounding error of 0.00001 can ruin an accounting balance. Always use `DECIMAL` when accuracy is non-negotiable.
 
-### 2. String Types
+### String Types
+| Category   | Data Type    | Description / Usage / Example                                              |
+| ---------- | ------------ | -------------------------------------------------------------------------- |
+| **STRING** | `CHAR(n)`    | Fixed length string. `CHAR(10)` always uses 10 chars.                      |
+|            | `VARCHAR(n)` | Variable length string. `VARCHAR(100)` up to 100 chars.                    |
+|            | `TEXT`       | Long text (up to 65,535 characters)                                        |
+|            | `MEDIUMTEXT` | Longer text (up to 16 million characters)                                  |
+|            | `LONGTEXT`   | Very long text (up to 4 billion characters)                                |
+|            | `ENUM`       | One value from a predefined list.<br>e.g., `ENUM('male','female','other')` |
+|            | `SET`        | Multiple values from a predefined list.                                    |
 
 ###### 1. ==`CHAR(n)`== -  The Rigid Box
 - **How it works:** You define a fixed length (`n`). If you say `CHAR(10)` and only type the word "Cat" (3 letters), the database still uses 10 spaces. It simply pads the remaining 7 spaces with invisible blanks.
@@ -61,7 +86,14 @@ In MySQL, data types are broadly categorized into ==**Numeric**, **String**, **D
 - **How it works:** Similar to `ENUM`, but it allows you to pick **multiple** values from the list at the same time. If you have `SET('Read', 'Write', 'Execute')`, a user could be granted just 'Read', or a combination of 'Read' and 'Write'.
 - **Best for:** User permissions, tags, or selecting multiple interests (e.g., Sports, Music, Tech).
 
-### 3. Date & Time Types
+### Date & Time Types
+| Category        | Data Type   | Description / Usage / Example              |
+| --------------- | ----------- | ------------------------------------------ |
+| **DATE & TIME** | `DATE`      | Date only '2024-01-15' (YYYY-MM-DD)        |
+|                 | `TIME`      | Time only '14:30:00' (HH:MM:SS)            |
+|                 | `YEAR`      | Year only 2024                             |
+|                 | `DATETIME`  | Date + Time '2024-01-15 14:30:00'          |
+|                 | `TIMESTAMP` | Date + Time (auto-updates, timezone aware) |
 
 ###### 1. ==`DATE`== - The Calendar Day
 - **Format:** `YYYY-MM-DD` (e.g., `2024-10-31`)
@@ -88,14 +120,22 @@ In MySQL, data types are broadly categorized into ==**Numeric**, **String**, **D
 - **How it works:** This is **timezone aware**. When you save a time, MySQL silently converts it to UTC (Universal Coordinated Time) behind the scenes. When you ask to see the time later, MySQL converts it _back_ to whatever your current local timezone is. It also has a magical power: it can auto-update itself every time a row is modified.
 - **Best for:** System logs. When did a user click "Buy"? When was this password last updated? You want to know the exact universal moment it happened, so a user in London and an admin in Dhaka both see the correct relative time on their screens.
 
-### 4. Boolean Types
+### Boolean Types
+| Category    | Data Type          | Description / Usage / Example             |
+| ----------- | ------------------ | ----------------------------------------- |
+| **BOOLEAN** | `BOOLEAN` / `BOOL` | TRUE or FALSE (stored as TINYINT: 1 or 0) |
 
 ###### 1. ==`BOOLEAN`== / ==`BOOL`== - The Disguised Integer
 - **Format:** `1` (for TRUE) or `0` (for FALSE)
 - **How it works:** MySQL doesn't actually have a true, dedicated Boolean data type. When you tell the database to create a `BOOLEAN` column, it silently converts it into a `TINYINT(1)` behind the scenes. It uses simple mathematics to represent your logic: the number `1` means True (Yes), and the number `0` means False (No). Because it is technically just a number column under the hood, MySQL doesn't strictly enforce a "True/False only" rule—it relies on your application code (like your website's backend) to be responsible and only send 1s and 0s.
 - **Best for:** Simple "Yes or No" status flags. Is this user an administrator? (`is_admin: 1`). Has this invoice been paid? (`is_paid: 0`). Is the email address verified? (`is_verified: 1`).
 
-### 5. Binary Types
+### Binary Types
+| Category   | Data Type    | Description / Usage / Example       |
+| ---------- | ------------ | ----------------------------------- |
+| **BINARY** | `BLOB`       | Binary Large Object (images, files) |
+|            | `MEDIUMBLOB` | Medium binary data                  |
+|            | `LONGBLOB`   | Large binary data                   |
 
 ###### 1. ==`BLOB`== (Up to ~65 Kilobytes)
 - **How it works:** This is a very small storage space for binary data.
@@ -120,34 +160,6 @@ In modern web development, it is generally considered a bad practice to put larg
 
 3. The developer saves that **URL string** into a standard `VARCHAR` column in the database.
 
-### Visual Box:
-
-| Category        | Data Type          | Description / Usage / Example                                                                                                        |
-| --------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
-| **NUMERIC**     | `TINYINT`          | Very small number (-128 to 127)                                                                                                      |
-| **NUMERIC**     | `SMALLINT`         | Small number (-32768 to 32767)                                                                                                       |
-| **NUMERIC**     | `MEDIUMINT`        | Medium number (-8 million to 8 million)                                                                                              |
-| **NUMERIC**     | `INT` / `INTEGER`  | Standard number (-2 billion to 2 billion)                                                                                            |
-| **NUMERIC**     | `BIGINT`           | Very large number (huge range)                                                                                                       |
-| **NUMERIC**     | `FLOAT`            | Decimal number (less precise) e.g., 3.14                                                                                             |
-| **NUMERIC**     | `DOUBLE`           | Decimal number (more precise) e.g., 3.14159                                                                                          |
-| **NUMERIC**     | `DECIMAL(p,s)`     | Exact decimal number e.g., `DECIMAL(10,2)`<br>_p = total digits, s = digits after decimal_<br>Example: `DECIMAL(10,2)` → 12345678.99 |
-| **STRING**      | `CHAR(n)`          | Fixed length string. `CHAR(10)` always uses 10 chars.                                                                                |
-| **STRING**      | `VARCHAR(n)`       | Variable length string. `VARCHAR(100)` up to 100 chars.                                                                              |
-| **STRING**      | `TEXT`             | Long text (up to 65,535 characters)                                                                                                  |
-| **STRING**      | `MEDIUMTEXT`       | Longer text (up to 16 million characters)                                                                                            |
-| **STRING**      | `LONGTEXT`         | Very long text (up to 4 billion characters)                                                                                          |
-| **STRING**      | `ENUM`             | One value from a predefined list.<br>e.g., `ENUM('male','female','other')`                                                           |
-| **STRING**      | `SET`              | Multiple values from a predefined list.                                                                                              |
-| **DATE & TIME** | `DATE`             | Date only '2024-01-15' (YYYY-MM-DD)                                                                                                  |
-| **DATE & TIME** | `TIME`             | Time only '14:30:00' (HH:MM:SS)                                                                                                      |
-| **DATE & TIME** | `DATETIME`         | Date + Time '2024-01-15 14:30:00'                                                                                                    |
-| **DATE & TIME** | `TIMESTAMP`        | Date + Time (auto-updates, timezone aware)                                                                                           |
-| **DATE & TIME** | `YEAR`             | Year only 2024                                                                                                                       |
-| **BOOLEAN**     | `BOOLEAN` / `BOOL` | TRUE or FALSE (stored as TINYINT: 1 or 0)                                                                                            |
-| **BINARY**      | `BLOB`             | Binary Large Object (images, files)                                                                                                  |
-| **BINARY**      | `MEDIUMBLOB`       | Medium binary data                                                                                                                   |
-| **BINARY**      | `LONGBLOB`         | Large binary data                                                                                                                    |
 
 ### Practical Example
 ```

@@ -8,49 +8,58 @@ Imagine you have a single, messy spreadsheet tracking employee project assignmen
 | 1          | Jane Doe | IT             | Bob Smith        | Proj_A, Proj_B |
 | 2          | John Lee | Sales          | Alice Jones      | Proj_A         |
 
-This is a disaster for a database. If Jane leaves Proj_A, you have to write complex code to splice a string of text. If Bob Smith retires, you have to search the whole table to update the manager name.
+This is a disaster for a database. If Jane leaves Proj_A, the database completely forget it ever existed. If Bob Smith retires, you have to search the whole table to update the manager name.
 
 #### 1. First Normal Form (==1NF==)
 **The Rule:** ==Every cell must hold a single, atomic value.== You cannot have arrays, lists, or multiple values crammed into one column. To fix our table, we must give every project its own row.
 
 **The 1NF Table:**
 
-|**Emp_ID**|**Name**|**Department**|**Dept_Manager**|**Project**|
-|---|---|---|---|---|
-|1|Jane Doe|IT|Bob Smith|Proj_A|
-|1|Jane Doe|IT|Bob Smith|Proj_B|
-|2|John Lee|Sales|Alice Jones|Proj_A|
+| **Emp_ID** | **Name** | **Department** | **Dept_Manager** | **Project** |
+| ---------- | -------- | -------------- | ---------------- | ----------- |
+| 1          | Jane Doe | IT             | Bob Smith        | Proj_A      |
+| 1          | Jane Doe | IT             | Bob Smith        | Proj_B      |
+| 2          | John Lee | Sales          | Alice Jones      | Proj_A      |
 
 _The problem now:_ We have duplicated Jane Doe's name, department, and manager. Furthermore, `Emp_ID` is no longer a valid Primary Key on its own, because `1` appears twice. The Primary Key is now a composite of (`Emp_ID` + `Project`).
 
 #### 2. Second Normal Form (==2NF==)
-**The Rule:** ==Must be in 1NF, and all non-key columns must depend on the entire Primary Key.== Look at Jane's rows.
+**The Rule:** Must be in 1NF, and all non-key columns must depend on the entire [[Keys#1. Primary Key (PK)| Primary Key]].
+Look at Jane's rows.
+
 Does her `Name` depend on the `Project` she is working on?
 No.
 Does her `Department` depend on the `Project`?
 No.
-They only depend on her `Emp_ID`.
-Because these columns only depend on _part_ of our composite key, we must split them into two tables to reach 2NF.
 
-**Employees (Primary Key: Emp_ID):**
+They only depend on her `Emp_ID`.
+Because these columns only depend on _part_ of our [[Keys#4. Composite Key| Composite Key]], we must split them into two tables to reach 2NF.
+
+**Employees** (Primary Key: Emp_ID):
 
 | **Emp_ID** | **Name** | **Department** | **Dept_Manager** |
 | ---------- | -------- | -------------- | ---------------- |
 | 1          | Jane Doe | IT             | Bob Smith        |
 | 2          | John Lee | Sales          | Alice Jones      |
 
-**Employee_Projects (Composite Key: Emp_ID + Project):**
+**Employee_Projects** (Composite Key: Emp_ID + Project):
 
 |**Emp_ID**|**Project**|
 |---|---|
 |1|Proj_A|
 |1|Proj_B|
 |2|Proj_A|
-We just organically created the **Junction Table** used for Many-to-Many relationships!
+We just organically created the **Junction Table** used for [[Relationships#3. Many-to-Many|Many-To-Many]] relationships!
 
 #### 3. Third Normal Form (==3NF==)
-**The Rule:** *Must be in 2NF, and no column can depend on another non-key column.* There is a famous phrase in database design for 3NF: _"Every non-key attribute must depend on the key, the whole key, and nothing but the key, so help me Codd"_ (Edgar F. Codd is the inventor of the relational model).
-Look at our `Employees` table. Does `Dept_Manager` depend on the `Emp_ID`? Not really. The manager depends entirely on the `Department`. If Jane transfers to Sales, her manager changes automatically.
+**The Rule:** *Must be in 2NF, and no column can depend on another non-key column.* There is a famous phrase in database design for 3NF:
+_"Every non-key attribute must depend on the key, the whole key, and nothing but the key, so help me Codd"_
+Edgar F. Codd is the inventor of the relational model.
+
+Look at our `Employees` table.
+Does `Dept_Manager` depend on the `Emp_ID`?
+Not really.
+The manager depends entirely on the `Department`. If Jane transfers to Sales, her manager changes automatically.
 Because `Dept_Manager` relies on `Department` (which is not the Primary Key), we must split it out again.
 
 **Employees:**
@@ -76,14 +85,14 @@ By following the rules of 1NF, 2NF, and 3NF, we took one chaotic spreadsheet and
 - **Easy updates:** If Bob Smith retires, you update his name in exactly _one_ row in the `Departments` table, and it instantly applies to every employee in the IT department.
 
 While there are higher normal forms (BCNF, 4NF, 5NF), they handle extreme edge cases. For 99% of web applications and software development, reaching 3NF is the finish line.
-If getting your database to 3NF is like organizing your house so everything has exactly one logical place, moving on to BCNF, 4NF, and 5NF is like calling in a structural engineer to look for microscopic stress fractures.
-For the vast majority of software development, 3NF is the finish line. However, as you dive deeper into computer science theory and complex system design, you will encounter edge cases where 3NF still allows tiny bits of data duplication.
+
+However, as you dive deeper into computer science theory and complex system design, you will encounter edge cases where 3NF still allows tiny bits of data duplication. Moving on to BCNF, 4NF, and 5NF is like calling in a structural engineer to look for microscopic stress fractures.
 
 #### 4. Boyce-Codd Normal Form (==BCNF==)
 Sometimes called "3.5NF," BCNF was created by the original inventors of the relational model (Raymond Boyce and Edgar F. Codd) because they realized 3NF had a slight loophole.
 **The Loophole:** 3NF says no non-key column can depend on another non-key column. But what if a part of your Primary Key depends on a non-key column?
 
-**The Rule:** In BCNF, _every determinant must be a candidate key_. In plain English: If Column A dictates the value of Column B, then Column A must be uniquely capable of identifying the entire row.
+**The Rule:** In BCNF, every determinant must be a [[Keys#5. Candidate Key|Candidate Key]]. In plain English: If Column A dictates the value of Column B, then Column A must be uniquely capable of identifying the entire row.
 
 **The Scenario:** Imagine a table tracking university advising.
 

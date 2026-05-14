@@ -1,5 +1,6 @@
 # What are Constraints?
 Constraints are **rules enforced on data columns** in a table.
+
 They are used to:
 - **Limit** the type of data that can go into a table
 - **Ensure accuracy** and reliability of the data
@@ -54,7 +55,7 @@ MODIFY phone VARCHAR(20) NULL;
 - Cannot use NOT NULL with `DEFAULT NULL`
 
 ### 2. UNIQUE
-Ensures all values in a column are **distinct** (no duplicates).
+Ensures all values in a column are **distinct** (no duplicates). It can also work as a [[Keys#3. Unique Key|Key]].
 
 **Column-Level Syntax:**
 ```
@@ -116,7 +117,7 @@ DROP INDEX uc_email ON users;
 - UNIQUE constraint = UNIQUE INDEX internally
 
 ### 3. PRIMARY KEY
-**Uniquely identifies each row** in a table. It's a combination of `NOT NULL` + `UNIQUE`.
+**Uniquely identifies each row** in a table. It's a combination of `NOT NULL` + `UNIQUE`. It is also a [[Keys#1. Primary Key (PK)|Key]].
 
 **Column-level Syntax:**
 ```
@@ -189,7 +190,7 @@ DROP PRIMARY KEY;
 - Primary key determines the **physical storage order** of rows in InnoDB
 
 ### 4. FOREIGN KEY
-Establishes a **link between two tables**. It refers to the PRIMARY KEY (or UNIQUE key) of another table.
+Establishes a **link between two tables**. It refers to the [[#3. PRIMARY KEY|Primary Key]] or [[#2. UNIQUE|Unique Key]] of another table. It is also a [[Keys#2. Foreign Key (FK)|Key]].
 
 **Terminology:**
 - Parent Table (Referenced Table) ← has the PRIMARY KEY

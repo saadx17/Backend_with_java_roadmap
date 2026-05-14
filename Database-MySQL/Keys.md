@@ -1,17 +1,16 @@
 In MySQL, **keys** are attributes or sets of attributes used to identify records uniquely and establish relationships between tables. They serve as constraints to maintain data integrity and as indexes to improve search performance.
 MySQL features several key types to ensure data integrity and define relationships, with the most common being,
-
-1. Primary Key
-2. Foreign Key
-3. Unique Key
-4. Candidate Key
-5. Composite Key
-6. Alternate Key
-7. Super Key
+1. [[#1. Primary Key (PK)|Primary Key]]
+2. [[#2. Foreign Key (FK)|Foreign Key]]
+3. [[#3. Unique Key|Unique Key]]
+4. [[#4. Composite Key|Composite Key]]
+5. [[#5. Candidate Key|Candidate Key]]
+6. [[#6. Alternate Key|Alternate Key]]
+7. [[#7. Super Key|Super Key]]
 
 # The Keys
 ### 1. Primary Key (PK)
-This is the ultimate identifier. It guarantees that every single row in your table is 100% unique.
+This is the ultimate identifier. It guarantees that every single row in your table is 100% unique. It is a [[Constraints#3. PRIMARY KEY|Constraint]].
 
 - **The Rules:** It cannot contain `NULL` (empty) values, and the value must never change. Every table should have one, and only one, Primary Key.
 
@@ -26,19 +25,19 @@ CREATE TABLE Members (
 );
 ```
 
-**Syntax after a table already exists:**
+**Syntax if table already exists:**
 ```
 ALTER TABLE Members 
 ADD PRIMARY KEY (member_id);
 ```
 
-**Syntax for droping a primary key:**
+**Syntax for dropping a primary key:**
 ```
 ALTER TABLE table_name DROP PRIMARY KEY;
 ```
 
 ### 2. Foreign Key (FK)
-This is the glue that builds the "Relational" part of the database. It is a column in one table that points directly to the Primary Key of another table, creating a strict link between the two.
+This is the glue that builds the "Relational" part of the database. It is a column in one table that points directly to the Primary Key of another table, creating a strict link between the two. It is also a [[Constraints#4. FOREIGN KEY|Constraint]].
 
 - **The Rules:** It prevents you from inserting a record that points to a non-existent ID (e.g., you cannot assign an order to a `User_ID` that doesn't exist).
 
@@ -58,7 +57,7 @@ CREATE TABLE Class_Schedule (
 );
 ```
 
-**Syntax after a table already exists:**
+**Syntax if table already exists:**
 ```
 ALTER TABLE Class_Schedule 
 ADD CONSTRAINT fk_instructor 
@@ -73,7 +72,7 @@ DROP FOREIGN KEY constraint_name;
 ```
 
 ### 3. Unique Key
-This key ensures that all values in a specific column are different from one another. It is very similar to a Primary Key, but with a few distinct differences.
+This key ensures that all values in a specific column are different from one another. It is very similar to a Primary Key, but with a few distinct differences. Unique Key is also referenced by [[Constraints#2. UNIQUE|Unique Constraint]].
 
 - **The Rules:** Unlike a Primary Key, a table can have _multiple_ Unique Keys, and Unique Keys _can_ accept a `NULL` value (though usually only one, depending on the specific SQL [[Engines]]).
 
@@ -129,6 +128,7 @@ This is the broadest category. A Super Key is _any_ combination of columns that 
 - **Example:** If `Employee_ID` is unique, then the combination of `Employee_ID` + `First_Name` + `Last_Name` is also unique. That entire group is a Super Key. (A Candidate Key is simply a Super Key stripped down to its absolute minimum number of columns).
 
 # SQL Implementation of all Keys
+
 ```
 CREATE TABLE employees (
       emp_id INT PRIMARY KEY,                       -- Primary Key
@@ -138,8 +138,9 @@ CREATE TABLE employees (
       name VARCHAR(100) NOT NULL,
       FOREIGN KEY (dept_id) REFERENCES departments(dept_id) -- Foreign Key
 );
+```
 
-
+```
 -- Composite Primary Key
 CREATE TABLE enrollment (
        student_id VARCHAR(10),
