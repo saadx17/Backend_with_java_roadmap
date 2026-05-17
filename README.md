@@ -15,7 +15,7 @@ Have fun.
 
 ## Contents from Structures
 1. [[Structure - Java|Java]]
-2. [[Structure - Database| Databases]]
+2. [[Structure - Database|Databases]]
 
 *(More content will be added as the roadmap progresses)*
 

@@ -3,20 +3,22 @@ DML manipulates **data** inside tables, Changes CAN be rolled back (within a t
 ### The `INSERT`
 **Definition:** In MySQL, "insert" typically refers to the **`INSERT` statement**, which is a Data Manipulation Language (DML) command used to add new rows of data into a database table.
 
-**Basic:**
+##### Basic Syntax
 ```
 -- Method 1: Specify column names (RECOMMENDED)
 INSERT INTO employees (first_name, last_name, email, salary, hire_date, dept_id)
 VALUES ('Alice', 'Johnson', 'alice@company.com', 75000.00, '2022-01-15', 1);
+```
 
-
+```
 -- Method 2: Without column names (must match ALL columns in order)
 INSERT INTO employees
 VALUES (NULL, 'Bob', 'Smith', 'bob@company.com', '9876543210',
         65000.00, '2021-06-20', 1, 'active', 28, NULL);
+```
 
-
--- Method 3: SET syntax
+```
+-- Method 3: SET syntax (Slow & Takes Time)
 INSERT INTO employees
 SET first_name = 'Carol',
     last_name  = 'Williams',
@@ -26,7 +28,7 @@ SET first_name = 'Carol',
     dept_id    = 2;
 ```
 
-**`INSERT` multiple rows (Batch Insert):**
+##### `INSERT` multiple rows (Batch Insert)
 ```
 INSERT INTO employees (first_name, last_name, email, salary, hire_date, dept_id)
 VALUES
@@ -39,19 +41,21 @@ VALUES
     ('Jack',   'Anderson','jack@company.com',   68000, '2021-12-01', 3);
 ```
 
-**`INSERT` with `SELECT` (Copy Data):**
+##### `INSERT` with `SELECT` (Copy Data) - Advanced
 ```
 -- Copy all data
 INSERT INTO employees_backup
 SELECT * FROM employees;
+```
 
-
+```
 -- Copy filtered data
 INSERT INTO employees_2024
 SELECT * FROM employees
 WHERE hire_date >= '2024-01-01';
+```
 
-
+```
 -- Copy with transformation
 INSERT INTO employees (first_name, last_name, email, salary, hire_date, dept_id)
 SELECT first_name, last_name,
@@ -63,21 +67,23 @@ FROM employees_backup
 WHERE dept_id = 1;
 ```
 
-**`INSERT` or `IGNORE` / `ON DUPLICATE KEY`:**
+##### `INSERT` or `IGNORE` / `ON DUPLICATE KEY` - Advanced
 ```
 -- Ignore error if duplicate key
 INSERT IGNORE INTO employees (emp_id, first_name, email)
 VALUES (1, 'Alice', 'alice@company.com');       -- won't error if emp_id=1 exists
+```
 
-
+```
 -- Update if duplicate key exists (UPSERT)
 INSERT INTO employees (emp_id, first_name, email, salary)
 VALUES (1, 'Alice', 'alice@company.com', 80000)
 ON DUPLICATE KEY UPDATE
     salary     = VALUES(salary),                 -- update salary
     first_name = VALUES(first_name);             -- update name
+```
 
-
+```
 -- Modern syntax (MySQL 8.0.19+)
 INSERT INTO employees (emp_id, first_name, salary)
 VALUES (1, 'Alice', 80000)
@@ -86,7 +92,7 @@ ON DUPLICATE KEY UPDATE
     salary = new_vals.salary;
 ```
 
-**Check inserted data:**
+##### Check inserted data
 ```
 SELECT LAST_INSERT_ID();        -- ID of last inserted row SELECT
 ROW_COUNT();                    -- Rows affected by last query
@@ -95,7 +101,7 @@ ROW_COUNT();                    -- Rows affected by last query
 ### The `UPDATE`
 **Definition:** In MySQL, **`UPDATE`** is a Data Manipulation Language (DML) statement used to modify existing records in a table. Unlike the `ALTER` command, which changes the structure of a table (like adding a column), `UPDATE` only changes the data values within those columns.
 
-**Syntax:**
+##### Basic Syntax
 ```
 -- Update single row
 UPDATE employees
@@ -110,13 +116,15 @@ SET salary     = 85000,
 WHERE emp_id = 1;
 ```
 
-`UPDATE` **with Expressions:**
+##### `UPDATE` with Expressions
 ```
 -- Give 10% raise to all IT employees
 UPDATE employees
 SET salary = salary * 1.10
 WHERE dept_id = 1;
+```
 
+```
 -- Give 5% raise to employees hired before 2022
 UPDATE employees
 SET salary = salary * 1.05
@@ -130,17 +138,22 @@ SET salary = CASE
     WHEN dept_id = 3 THEN salary * 1.08   -- Finance gets 8%
     ELSE salary * 1.05                     -- Others get 5%
 END;
+```
 
+```
 -- Update string values
 UPDATE employees
 SET email = LOWER(email);             -- make all emails lowercase
+```
 
+```
 UPDATE employees
 SET first_name = CONCAT(UPPER(LEFT(first_name,1)),
                         LOWER(SUBSTRING(first_name,2)));  -- Capitalize
 ```
+**Note:** `CONCAT`, `LOWER` etc. will be discussed in [[Functions]].
 
-`UPDATE` **multiple rows:**
+##### `UPDATE` multiple rows
 ```
 UPDATE products
 SET price = price * 1.05;             -- 5% price increase for ALL products
@@ -156,7 +169,7 @@ SET status = 'inactive'
 WHERE hire_date BETWEEN '2018-01-01' AND '2019-12-31';
 ```
 
-`UPDATE` **with** `Join` **(Update from another table):**
+##### `UPDATE` with `Join` (Update from another table)
 ```
 -- Update employees salary based on department budget
 UPDATE employees e
@@ -173,7 +186,7 @@ WHERE dept_id = (
 );
 ```
 
-`UPDATE` **with** `LIMIT` **(Update only N rows):**
+##### `UPDATE` with `LIMIT` (Update only N rows)
 ```
 UPDATE employees
 SET status = 'inactive'
@@ -181,7 +194,7 @@ WHERE status = 'active'
 LIMIT 3;                          -- Only update first 3 matching rows
 ```
 
-**Safe** `UPDATE` **mode:**
+##### Safe `UPDATE` mode
 ```
 -- MySQL safe mode prevents UPDATE without WHERE
 SET SQL_SAFE_UPDATES = 0;                    -- Disable safe mode
@@ -192,7 +205,7 @@ SET SQL_SAFE_UPDATES = 1;                    -- Re-enable safe mode
 ### The `DELETE`
 **Definition:** In MySQL, **`DELETE`** is a Data Manipulation Language (DML) statement used to remove existing records (rows) from a table. It allows you to target specific rows using a condition or remove all rows while keeping the table's structure, constraints, and indexes intact.
 
-**Syntax:**
+##### Basic Syntax
 ```
 -- Delete single row
 DELETE FROM employees
@@ -204,7 +217,7 @@ WHERE dept_id = 5
 AND   status  = 'inactive';
 ```
 
-`DELETE` **with various** `WHERE` **condition:**
+##### `DELETE` with various `WHERE` condition
 ```
 -- Delete using IN
 DELETE FROM employees
@@ -226,7 +239,7 @@ DELETE FROM employees
 WHERE salary < 30000;          -- Delete low salary records
 ```
 
-`DELETE` **with** `JOIN`:
+##### `DELETE` with `JOIN`
 ```
 -- Delete employees from specific department
 DELETE e
@@ -242,7 +255,7 @@ WHERE d.location = 'Phoenix'
 AND   e.status   = 'inactive';
 ```
 
-`DELETE` **with Subquery:**
+##### `DELETE` with Subquery
 ```
 -- Delete employees from a specific department (using subquery)
 DELETE FROM employees
@@ -258,7 +271,7 @@ WHERE emp_id NOT IN (
 );
 ```
 
-`DELETE` **with** `LIMIT`:
+##### `DELETE` with `LIMIT`
 ```
 -- Delete only first 5 matching rows
 DELETE FROM employees
@@ -267,14 +280,14 @@ ORDER BY hire_date ASC
 LIMIT 5;
 ```
 
-`Delete` **ALL rows (3 ways):**
+##### `Delete` ALL rows (3 ways)
 ```
 DELETE FROM employees;         -- DML: slow, logged, rollback possible
 TRUNCATE TABLE employees;      -- DDL: fast, resets AUTO_INCREMENT
 DROP TABLE employees;          -- Removes table entirely
 ```
 
-**Soft** `DELETE`:
+##### Soft `DELETE`
 ```
 -- Instead of actually deleting, mark as deleted
 ALTER TABLE employees

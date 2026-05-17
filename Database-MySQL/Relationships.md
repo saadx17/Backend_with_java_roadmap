@@ -1,7 +1,7 @@
 [Relationships](https://www.geeksforgeeks.org/sql/relationships-in-sql-one-to-one-one-to-many-many-to-many/) in SQL define how tables in a relational database are connected and interact through foreign keys, ensuring data integrity and enabling efficient data retrieval by allowing data to be linked across multiple tables.
 
 # 1. One-to-Many
-This is the most common relationship in database design. One row in T==able A can be linked to many rows in Table B==, but a row in Table B can only belong to one row in Table A.
+This is the most common relationship in database design. One row in ==Table A can be linked to many rows in Table B==, but a row in Table B can only belong to one row in Table A.
 **How to build it in MySQL:** You simply place a Foreign Key inside the "Many" table that points to the Primary Key of the "One" table.
 
 **Example:** A Customer can have many Orders.

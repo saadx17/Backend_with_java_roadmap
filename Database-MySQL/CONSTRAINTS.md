@@ -564,7 +564,7 @@ SET @@auto_increment_offset = 1;
 - Before 8.0, it was recalculated on restart as `MAX(id) + 1`
 
 ### 8. INDEX (As a Constraint/Optimization)
-While not a traditional "constraint," indexes are closely related and often discussed together.
+While not a traditional "constraint," [[Indexes]] are closely related and often discussed together.
 
 **Types of Indexes:**
 ```
@@ -622,7 +622,7 @@ SHOW KEYS FROM employees
 
 # Managing Constraints
 
-### 1. View All Constraints on a Table
+### View All Constraints on a Table
 ```
 -- Method 1: SHOW CREATE TABLE
 SHOW CREATE TABLE employees\G
@@ -650,7 +650,7 @@ WHERE tc.TABLE_SCHEMA = 'your_database'
 AND tc.TABLE_NAME = 'employees';
 ```
 
-### 2. Summary of Adding Constraints
+### Summary of Adding Constraints
 ```
 -- NOT NULL
 ALTER TABLE t MODIFY col datatype NOT NULL;
@@ -672,7 +672,7 @@ ALTER TABLE t ALTER col SET DEFAULT value;
 ALTER TABLE t MODIFY col datatype DEFAULT value;
 ```
 
-### 3. Summary of Dropping Constraints
+### Summary of Dropping Constraints
 ```
 -- NOT NULL
 ALTER TABLE t MODIFY col datatype NULL;
@@ -693,7 +693,7 @@ ALTER TABLE t DROP CHECK constraint_name;
 ALTER TABLE t ALTER col DROP DEFAULT;
 ```
 
-### 4. Full Schema with All Constraints
+### Full Schema with All Constraints
 ```
 -- ================================================
 -- COMPLETE EXAMPLE DATABASE WITH ALL CONSTRAINTS

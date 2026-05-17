@@ -4,6 +4,7 @@ In MySQL, data types are broadly categorized into,
 3. [[#Date & Time Types]]
 4. [[#Boolean Types]]
 5. [[#Binary Types]]
+6. [[#JSON Types]]
 
 Selecting the correct type is essential for optimizing storage and improving query performance.
 ### Numeric Types
@@ -149,7 +150,7 @@ Selecting the correct type is essential for optimizing storage and improving que
 - **How it works:** This is for massive, heavyweight files.
 - **Best for:** High-definition video files, raw medical imaging data (like MRI scans), entire software applications, or huge database backups.
 
-###### A Crucial Best Practice Note
+###### A Crucial Note
 Just because you _can_ store a 4-Gigabyte 4K movie directly inside your MySQL database doesn't mean you _should_.
 In modern web development, it is generally considered a bad practice to put large files inside a database because it makes the database incredibly bloated, slow to back up, and expensive to host.
 **What developers usually do instead:**
@@ -160,6 +161,39 @@ In modern web development, it is generally considered a bad practice to put larg
 
 3. The developer saves that **URL string** into a standard `VARCHAR` column in the database.
 
+### JSON Types
+|**Category**|**Data Type**|**Description / Usage / Example**|
+|---|---|---|
+|Primitive|STRING|Text enclosed in double quotes ("Hello World")|
+|Primitive|NUMBER|Integer or floating-point value (42, 3.14)|
+|Primitive|BOOLEAN|True or false logical values (true, false)|
+|Primitive|NULL|Intentional absence of any value (null)|
+|Complex|OBJECT|Unordered collection of key/value pairs ({"name": "Alice"})|
+|Complex|ARRAY|Ordered list of values ([1, "apple", true])|
+
+###### 1. ==STRING== (Text Data)
+- **How it works:** This is a sequence of zero or more Unicode characters wrapped in double quotes. JSON strings can contain escape characters (like `\n` for a new line).
+- **Best for:** Storing readable text, such as user names, email addresses, paragraphs of content, or ISO-formatted timestamps.
+
+###### 2. ==NUMBER== (Numeric Data)
+- **How it works:** This represents mathematical values. Unlike many programming languages, JSON does not strictly distinguish between integers (whole numbers) and floating-point numbers (decimals); they are all parsed as numbers.
+- **Best for:** Storing mathematical or quantitative data, such as product prices, user ages, geographical coordinates, or inventory counts.
+
+###### 3. ==BOOLEAN== (Logical Data)
+- **How it works:** This represents a binary state using one of two literal values: `true` or `false`. They are not surrounded by quotes (otherwise, they become strings).
+- **Best for:** Storing on/off states, flags, toggles, or yes/no conditions, such as `is_admin: true` or `has_paid: false`.
+
+###### 4. ==NULL== (Empty Data)
+- **How it works:** This represents the deliberate, intentional absence of any object value. It is represented by the lowercase literal `null`.
+- **Best for:** Explicitly defining that a key exists in your data structure, but currently holds no data, or explicitly clearing a previously set value without removing the key entirely.
+
+###### 5. ==OBJECT== (Key/Value Pairs)
+- **How it works:** This is an unordered collection of name/value pairs enclosed in curly braces `{}`. The keys _must_ be strings enclosed in double quotes, while the values can be any valid JSON data type (including another object).
+- **Best for:** Grouping related attributes together to represent a complex entity, like a complete user profile, a configuration file, or a specific product record.
+
+###### 6. ==ARRAY== (Ordered Lists)
+- **How it works:** This is an ordered collection of values enclosed in square brackets `[]`. The values inside an array do not need to be of the same data type, though it is a common best practice to keep them uniform.
+- **Best for:** Storing lists or sequences of items, such as a list of tags on a blog post, multiple phone numbers for a contact, or a series of data points in a chart.
 
 ### Practical Example
 ```

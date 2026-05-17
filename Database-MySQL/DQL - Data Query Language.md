@@ -25,7 +25,7 @@ SELECT first_name, last_name, salary FROM employees;
 ```
 
 ```
--- Select with alias
+-- Select with alias (AS)
 SELECT
     first_name              AS 'First Name',
     last_name               AS 'Last Name',

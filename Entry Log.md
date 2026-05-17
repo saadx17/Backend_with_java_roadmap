@@ -68,3 +68,6 @@ reworked the entire Database-MySQL part. There's still work left to do, but I wi
 
 ##### 15th May, 2026 | 03:02 AM
 Continued reworking, added links between chapters for easy understanding. More work is left.
+
+##### 17th May, 2026 | 06:01 PM
+Continued reworking. Updated Data Type.

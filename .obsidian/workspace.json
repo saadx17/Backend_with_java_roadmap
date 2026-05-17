@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "2ed99dd210246ee4",
+        "id": "8b850efe71c12d2d",
         "type": "tabs",
         "children": [
           {
-            "id": "533582da43685373",
+            "id": "ddccb530ea891e80",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Entry Log.md",
+                "file": "Structures/Structure - Java.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Entry Log"
+              "title": "Structure - Java"
             }
           }
         ]
@@ -183,35 +183,35 @@
       "bases:Create new base": false
     }
   },
-  "active": "533582da43685373",
+  "active": "ddccb530ea891e80",
   "lastOpenFiles": [
-    "Entry Log.md",
-    "ReadMe.md",
     "Structures/Structure - Database.md",
-    "Structures/Structure - Java.md",
-    "Database-MySQL/SQL Commands.md",
-    "Database-MySQL/DCL -Data Control Language.md",
-    "Database-MySQL/TCL - Transaction Control Language.md",
+    "ReadMe.md",
+    "Entry Log.md",
+    "Database-MySQL/Data Types.md",
     "Database-MySQL/DQL - Data Query Language.md",
     "Database-MySQL/DML - Data Manipulation Language.md",
-    "Database-MySQL/Data Types.md",
     "Database-MySQL/DDL - Data Definition Language.md",
-    "Java/How JAVA works.md",
-    "Java/Hello World.md",
-    "Java/Data Types, Variables & Memory.md",
-    "Java/Type Casting & Variable Naming.md",
-    "Java/Constants.md",
-    "Java/String.md",
-    "Java/Operators.md",
-    "Java/Control Flow - if-else.md",
-    "Java/Control Flow - Switch & Ternary.md",
-    "Java/Loops.md",
-    "Java/Introduction.md",
+    "Database-MySQL/SQL Commands.md",
+    "Database-MySQL/DCL -Data Control Language.md",
+    "Database-MySQL/Constraints.md",
+    "Database-MySQL/MySQL Architecture.md",
+    "Database-MySQL/MySQL CLI Basics.md",
+    "Database-MySQL/Normalization & Denormalization.md",
+    "Database-MySQL/ACID.md",
+    "Database-MySQL/Replication & High Availability.md",
+    "Database-MySQL/Relationships.md",
+    "Database-MySQL/Keys.md",
+    "Database-MySQL/Database Design & Architecture.md",
+    "Database-MySQL/Grouping & Aggregation.md",
+    "Database-MySQL/Querying Data.md",
+    "Database-MySQL/TCL - Transaction Control Language.md",
+    "Structures/Structure - Java.md",
     "Database-MySQL/Introduction.md",
-    "Database-MySQL.md",
+    "Database-MySQL/Administration & Monitoring.md",
+    "Database-MySQL/MySQL with Programming Languages.md",
+    "Database-MySQL/MySQL 8.0+ Modern Features.md",
     "Structures",
-    "Database-MySQL/Backup & Recovery.md",
-    "Database-MySQL/Performance Optimization.md",
     "Untitled.base",
     "Assets/hierarchical_model.jpg",
     "Assets/relational-model.png",
