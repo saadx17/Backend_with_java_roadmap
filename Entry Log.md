@@ -71,3 +71,6 @@ Continued reworking, added links between chapters for easy understanding. More w
 
 ##### 17th May, 2026 | 06:01 PM
 Continued reworking. Updated Data Type.
+
+##### 18th May, 2026 | 10:37 PM
+Started working on Java.

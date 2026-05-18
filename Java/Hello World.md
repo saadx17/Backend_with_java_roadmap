@@ -36,7 +36,7 @@ System.out.println("Hello, World!");
 - `System` → A built-in Java class that provides system-level utilities.
 - `out` → A static field in System — represents the standard output stream (your console/terminal)
 - `println` → A method that prints text and adds a new line at the end
-- `"Hello, World!"` → A String literal — the text to print.
+- `"Hello, World!"` → A String literal - the text to print.
 - `;` → Every statement in Java ends with a semicolon.
 
 ```

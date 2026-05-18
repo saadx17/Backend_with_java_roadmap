@@ -1,14 +1,128 @@
 # What is a Variable?
-A variable is a **named container that ==stores data== in memory**.
+A variable is a named **container that ==stores data== in memory**.
 
 ```
 int age = 25
 ```
 
 Every variable in Java has:
-- A **type** → what kind of data it holds
-- A **name** → how you refer to it
-- A **value** → the actual data stored
+- A **type** → what kind of data it holds.
+- A **name** → how you refer to it.
+- A **value** → the actual data stored.
+
+### Declaration & Initialization
+You can create and fill a variable in two separate steps, or do it all at once.
+
+###### 1. Declaration (Creating the box)
+This is when you tell the Java compiler the variable's name and what data type it will hold. Once declared, the variable exists in memory, but it is technically empty.
+```
+int playerScore;   // Declaring a variable that will hold an integer
+String playerName; // Declaring a variable that will hold text
+```
+
+###### 2. Initialization (Filling the box)
+This is the very first time you assign a value to a declared variable using the equals sign (`=`), which is called the assignment operator.
+```
+playerScore = 0;       // Initializing the integer variable
+playerName = "Mario";  // Initializing the String variable
+```
+
+##### 3. The All-In-One (Declaration + Initialization)
+In most cases, it is cleaner and safer to do both at the same time on a single line.
+```
+int playerScore = 0;
+String playerName = "Mario";
+```
+
+### Variable Naming Conventions
+Java follows specific naming conventions. These are **not enforced by the compiler** but are **industry standards every Java developer follows**.
+##### ==camelCase==
+Used for variables. *Start with **lowercase**, capitalize each subsequent word.* camelCase (specifically `lowerCamelCase`) is a naming convention where the first word is entirely lowercase and each subsequent, compound word begins with a capital letter, with no spaces or punctuation, used for variables and methods to improve code readability. Examples include `firstName`, `calculateTotal`
+
+```
+// ✅ Correct
+int age = 25;
+String firstName = "Ahmed";
+double monthlyIncome = 5000.0;
+boolean isUserLoggedIn = true;
+int numberOfStudents = 30;
+
+// ❌ Wrong
+int Age = 25; // No - looks like a class name
+
+int first_name = 0; // No - this is snake_case (Python style, not Java)
+
+int FIRSTNAME = 0; // No - this is for constants
+```
+
+##### ==PascalCase== (UpperCamelCase)
+Used for classes. *Start with **uppercase**, capitalize each word.*
+PascalCase a naming convention where every word starts with a capital letter, including the first, with no spaces or separators (e.g. `ClassMemberExample`).
+
+```
+// ✅ Correct
+class HelloWorld {}
+class BankAccount {}
+class UserProfileService {}
+class HttpRequestHandler {}
+
+// ❌ Wrong
+class helloWorld {} // No
+class hello_world {} // No
+```
+
+
+##### ==Constants==
+*All **uppercase** with **underscores** between words.*
+In Java, constants are defined using `SCREAMING_SNAKE_CASE` (all uppercase letters with underscores separating words) to indicate that the value is immutable and `static final`.
+
+```
+// ✅ Correct
+
+final int MAX_SIZE = 100;
+final double PI = 3.14159;
+final String APP_NAME = "MyApp";
+final int MAX_RETRY_ATTEMPTS = 3;
+```
+
+##### ==Packages==
+Package names are *written in all lowercase* to ensure consistency, prevent conflicts with class/interface names, and avoid issues with case-sensitive filesystems.
+
+```
+// ✅ Correct
+package com.company.project.service;
+package org.example.utils;
+```
+
+##### Summary Table:
+
+| What     | Convention           | Example                             |
+| -------- | -------------------- | ----------------------------------- |
+| Variable | camelCase            | `firstName`, `totalScore`           |
+| Method   | camelCase            | `getUserName()`, `calculateTotal()` |
+| Class    | PascalCase           | `BankAccount`, `UserService`        |
+| Constant | SCREAMING_SNAKE_CASE | `MAX_SIZE`, `PI`                    |
+| Package  | lowercase            | `com.example.app`                   |
+
+##### Other naming rules:
+- Must start with a **letter, `$`, or `_`** (never a digit)
+- Cannot use **reserved keywords** (`int`, `class`, `static`, etc.)
+- Case sensitive (`age` ≠ `Age` ≠ `AGE`)
+- Make names **meaningful**, never `x`, `temp`, `data` unless context is obvious.
+
+```
+// ❌ Bad naming
+int x = 25;
+String s = "Ahmed";
+double d = 5000.0;
+
+// ✅ Good naming
+int age = 25;
+String userName = "Ahmed";
+double monthlySalary = 5000.0;
+```
+
+
 # What is Data Types?
 A classification that specifies the type of value a variable can hold, the amount of memory it requires, and the operations that can be performed on it. [Java data types](https://www.w3schools.com/java/java_data_types.asp) are divided into ==two main categories==: **Primitive** and **Non-Primitive (Reference).**
 
@@ -296,26 +410,3 @@ System.out.println(matrix[2][1]); // 8 (row 2, col 1)
 |Default value|0, false, etc.|`null`|
 |Has methods?|No|Yes|
 |Example|`int`, `char`|`String`, `Arrays`|
-
-# Memory Architecture
-==Stack vs. Heap.==
-When a Java program runs, the JVM divides memory into different areas. The two most important are the Stack and the Heap.
-
-|**Feature**|**Stack Memory**|**Heap Memory**|
-|---|---|---|
-|**What it stores**|Method executions, Local primitive variables, and **References** to objects.|The **actual Objects** themselves (anything created with the `new` keyword).|
-|**Structure**|LIFO (Last-In, First-Out). Like a stack of plates.|Unstructured pool of memory.|
-|**Speed**|Very fast.|Slower compared to the Stack.|
-|**Lifecycle**|Automatically grows/shrinks as methods are called and return.|Managed by the **Garbage Collector** (cleans up objects that no longer have a reference).|
-|**Thread Sharing**|Each Thread gets its own separate Stack.|The Heap is shared among all Threads.|
-
-**Stack & Heap in Action:**
-```
-public void myMethod() {
-    int age = 25;                       // 1. Primitive
-    String name = new String("Alex");   // 2. Reference Type
-}
-```
-
-- **Line 1:** `age` is a local primitive variable. The value `25` is stored directly on the **Stack**.
-- **Line 2:** `name` is a reference variable. The variable `name` is stored on the **Stack**, but the actual String object `"Alex"` is created on the **Heap**. The Stack variable simply holds the remote control (memory address) pointing to the Heap object.
