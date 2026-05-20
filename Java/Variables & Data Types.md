@@ -122,6 +122,227 @@ String userName = "Ahmed";
 double monthlySalary = 5000.0;
 ```
 
+# `var` keyword (Java 10+)
+Introduced in Java 10, the `var` keyword brought a highly requested feature to the language: **Local Variable Type Inference**.
+Instead of forcing you to explicitly declare the data type on the left side of the equals sign, `var` tells the Java compiler to look at the value on the right side and figure out the data type for itself.
+
+#### The Core Concept: Less Boilerplate
+Before Java 10, declaring variables with long class names often led to redundant, verbose code.
+
+**The Old Way:**
+```
+// You have to type "HashMap" and its generics twice
+HashMap<String, List<Integer>> userData = new HashMap<String, List<Integer>>();
+```
+
+**The New Way with `var`:**
+```
+// The compiler sees the right side and automatically knows userData is a HashMap
+var userData = new HashMap<String, List<Integer>>();
+```
+
+**Important:** Java is Still Statically Typed!
+Using `var` does **not** turn Java into a dynamically typed language like Python or JavaScript. The type is inferred at _compile-time_, not run-time. Once the compiler assigns a type to a `var`, that variable is locked into that type forever.
+```
+var score = 100; // The compiler locks "score" in as an int
+score = "High Score"; // ERROR: Incompatible types. You cannot put a String into an int.
+```
+
+#### The Strict Rules of `var`
+Because the compiler needs to be 100% certain of the data type, `var` is heavily restricted. You can only use it when the context is perfectly clear.
+
+###### 1. It can ONLY be used for Local Variables
+You can only use `var` for variables declared _inside_ a method, in a `for` loop, or in a `try-with-resources` block.
+```
+public class Player {
+    var maxHealth = 100; // ERROR: Cannot be used for class/instance variables
+    
+    public void heal(var amount) { // ERROR: Cannot be used for method parameters
+        var currentHealth = 50; // VALID: Local variable inside a method
+    }
+}
+```
+
+###### 2. It MUST be initialized immediately
+The compiler cannot guess the type if you don't give it a value right away.
+```
+var playerName; // ERROR: Cannot infer type without an assignment
+playerName = "Mario"; 
+
+var currentName = "Luigi"; // VALID
+```
+
+###### 3. It CANNOT be assigned to `null`
+Because `null` doesn't have a specific type, the compiler doesn't know what kind of reference variable to create.
+
+```
+var activePlayer = null; // ERROR: Variable initializer is 'null'
+```
+
+###### 4. It requires explicit types for Arrays
+You cannot use the array initialization shortcut with `var`.
+```
+var scores = {10, 20, 30}; // ERROR: Array initializer needs an explicit target-type
+var validScores = new int[]{10, 20, 30}; // VALID
+```
+
+#### When should you use it?
+The golden rule for `var` is **Readability**.
+Use it when the right side of the assignment makes it blindingly obvious what the data type is. It is fantastic for shortening long object creations or cleaning up `for` loops:
+```
+// Excellent use case
+for (var entry : map.entrySet()) { ... }
+
+var stream = new FileInputStream("data.txt");
+```
+
+Avoid it when the method you are calling obscures the return type. If another developer has to guess what data type is coming back, go back to using explicit declarations:
+```
+// Bad use case - What is data? A String? A byte array? A custom Object?
+var data = processNetworkRequest();
+```
+
+# Instance vs. Local vs. Static variables
+|**Feature**|**Local Variable**|**Instance Variable**|**Static (Class) Variable**|
+|---|---|---|---|
+|**Where is it declared?**|Inside a method, loop, or block|Inside a class, outside any method|Inside a class, using `static` keyword|
+|**What does it belong to?**|The specific block of code|A specific Object (instance)|The Class itself (shared by all objects)|
+|**Memory Location**|Stack Memory|Heap Memory|Method Area|
+|**Default Value?**|No (Must be initialized manually)|Yes (`0`, `false`, `null`)|Yes (`0`, `false`, `null`)|
+|**Lifetime**|Destroyed when method ends|Destroyed when Object is garbage collected|Destroyed when program ends|
+
+#### 1. Local Variables
+Local variables are short-lived, temporary storage used for immediate calculations.
+
+- **Scope:** They only exist inside the specific `{ }` block, method, or loop where they are declared. The outside world (even other methods in the same class) cannot see them.
+
+- **Initialization:** The compiler enforces strict rules here. A local variable **will not** be given a default value. If you try to use it before assigning a value, the code will not compile.
+
+- **Memory:** Stored in the thread's **Stack** memory.
+
+```
+public class Calculator {
+    public void addNumbers() {
+        int result; // Declared, but not initialized
+        
+        // System.out.println(result); <-- ERROR: variable result might not have been initialized
+        
+        result = 10 + 5; 
+        System.out.println(result); // Works perfectly
+    } // 'result' is instantly destroyed the moment the method ends
+}
+```
+
+#### 2. Instance Variables
+Instance variables represent the "state" or attributes of a specific object.
+
+- **Scope:** They are tied to a specific object. Every time you create a new object using the `new` keyword, that object gets its own unique, independent copy of the instance variables.
+
+- **Initialization:** You do not have to initialize them immediately. If you don't, Java automatically assigns them a default value (`0` for numbers, `false` for booleans, `null` for objects).
+
+- **Memory:** Stored alongside the object in the **Heap** memory.
+
+```
+public class Player {
+    // Instance variables: Every player gets their own name and score
+    String name; 
+    int score; 
+
+    public static void main(String[] args) {
+        Player p1 = new Player();
+        p1.name = "Mario";
+        p1.score = 100;
+
+        Player p2 = new Player();
+        p2.name = "Luigi";
+        // p2.score is automatically 0 because it wasn't explicitly set
+    }
+}
+```
+
+#### 3. Static (Class) Variables
+Static variables belong to the class itself, not to any individual object.
+
+- **Scope:** There is only **one copy** of a static variable in existence, regardless of how many objects you create. All objects of that class share that single variable. If one object changes it, it changes for everyone.
+
+- **Initialization:** Like instance variables, they get default values automatically.
+
+- **Memory:** Stored in the **Method Area** (or Metaspace in modern JVMs) when the class is first loaded by the ClassLoader.
+
+```
+public class Enemy {
+    // Instance variable: Every enemy has its own health
+    int health = 100; 
+    
+    // Static variable: Shared across ALL enemies
+    static int totalEnemiesCreated = 0; 
+
+    public Enemy() {
+        totalEnemiesCreated++; // Increases the shared counter every time a new enemy is spawned
+    }
+
+    public static void main(String[] args) {
+        Enemy e1 = new Enemy();
+        Enemy e2 = new Enemy();
+        Enemy e3 = new Enemy();
+
+        // Access static variables using the Class name, not the object name
+        System.out.println(Enemy.totalEnemiesCreated); // Prints: 3
+    }
+}
+```
+
+# Default Values of Variables
+In Java, whether a variable gets a default value depends entirely on _where_ it is declared.
+
+- **Instance and Static variables:** The JVM automatically assigns them a default value when the object or class is created, even if you don't assign one yourself.
+
+- **Local variables:** The compiler **never** assigns default values to local variables. If you attempt to use a local variable before initializing it, your code will fail to compile.
+
+Here are the exact default values assigned to Instance and Static variables by the JVM.
+
+| **Data Type**                                     | **Default Value**                                              |
+| ------------------------------------------------- | -------------------------------------------------------------- |
+| `byte`                                            | `0`                                                            |
+| `short`                                           | `0`                                                            |
+| `int`                                             | `0`                                                            |
+| `long`                                            | `0L`                                                           |
+| `float`                                           | `0.0f`                                                         |
+| `double`                                          | `0.0d`                                                         |
+| `char`                                            | `'\u0000'` (The null character, which prints as a blank space) |
+| `boolean`                                         | `false`                                                        |
+| **All Reference Types** (String, Objects, Arrays) | `null`                                                         |
+##### Seeing it in Action
+Here is a quick demonstration showing how the JVM handles these defaults in memory compared to a local variable.
+```
+public class DefaultValuesDemo {
+    
+    // Instance variables (Automatically initialized)
+    int playerLevel;
+    boolean isAlive;
+    String playerName;
+    double health;
+
+    public void displayDefaults() {
+        System.out.println("int: " + playerLevel);     // Prints: 0
+        System.out.println("boolean: " + isAlive);     // Prints: false
+        System.out.println("String: " + playerName);   // Prints: null
+        System.out.println("double: " + health);       // Prints: 0.0
+
+        // Local variable (No default value!)
+        int currentScore; 
+        
+        // System.out.println(currentScore); 
+        // ^ UNCOMMENTING THIS CAUSES A COMPILER ERROR: 
+        // "variable currentScore might not have been initialized"
+    }
+
+    public static void main(String[] args) {
+        DefaultValuesDemo demo = new DefaultValuesDemo();
+        demo.displayDefaults();
+    }
+}
+```
 
 # What is Data Types?
 A classification that specifies the type of value a variable can hold, the amount of memory it requires, and the operations that can be performed on it. [Java data types](https://www.w3schools.com/java/java_data_types.asp) are divided into ==two main categories==: **Primitive** and **Non-Primitive (Reference).**
@@ -293,7 +514,7 @@ boolean isEmpty = name.isEmpty(); // method returning boolean
 | `boolean` | 1 bit   | true / false          | false         | `boolean b = true;` |
 
 # What are Non-Primitive Types?
-Non-primitive data types, also known as **reference types**, differ from primitive types because they refer to objects rather than storing actual values directly. While primitive types are predefined by Java, non-primitive types are created by the programmer (except for `String`).
+Non-primitive data types, also known as **reference types**, differ from primitive types because they refer to objects rather than storing actual values directly. While primitive types are predefined by Java, non-primitive types are created by the programmer (except for `String`), they "point" or "refer" to a much larger, more complex object sitting in the JVM's [[JVM Architecture#3. Heap (Shared)|Heap]] memory.
 
 ##### 1. ==String==
 String is a **non-primitive type**, it is a **class** in Java (`java.lang.String`).  
@@ -401,6 +622,39 @@ System.out.println(matrix[1][2]); // 6 (row 1, col 2)
 System.out.println(matrix[2][1]); // 8 (row 2, col 1)
 ```
 
+##### 3. Classes (User-Defined Objects)
+A Class is a blueprint that you create. When you declare a variable using a Class type, you are creating a reference that will point to a specific "instance" (Object) of that blueprint.
+
+###### Declaration & Initialization
+Assuming you have already written a `Player` class somewhere else in your code:
+```
+// 1. Declare the reference variable
+Player playerOne; 
+
+// 2. Initialize it by calling the class constructor with 'new'
+playerOne = new Player(); 
+
+// All-in-one declaration and initialization
+Player playerTwo = new Player("Luigi", 100);
+```
+
+##### 4. Interfaces
+An Interface is a purely abstract "contract" that dictates what methods a class must have, but not how they work. You cannot instantiate an interface directly (you can't say `new MyInterface()`). Instead, you declare a reference variable of the Interface type, and point it to a Class that _implements_ that interface.
+
+###### Declaration & Initialization
+Assume `Playable` is an interface, and `AudioTrack` and `VideoClip` are classes that implement it.
+```
+// Declare a reference of the Interface type
+Playable currentMedia;
+
+// Point it to a specific object that implements the interface
+currentMedia = new AudioTrack("song.mp3");
+
+// Later, you can point that exact same reference to a different object type, 
+// as long as it also implements the interface!
+currentMedia = new VideoClip("movie.mp4");
+```
+
 # Primitives Vs. Non-Primitive:
 
 |Feature|Primitive|Non-Primitive|
@@ -410,3 +664,4 @@ System.out.println(matrix[2][1]); // 8 (row 2, col 1)
 |Default value|0, false, etc.|`null`|
 |Has methods?|No|Yes|
 |Example|`int`, `char`|`String`, `Arrays`|
+

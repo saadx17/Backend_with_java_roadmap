@@ -8,49 +8,20 @@
         "type": "tabs",
         "children": [
           {
-            "id": "5ae1c42f785ce421",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Java/Introduction.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Introduction"
-            }
-          },
-          {
-            "id": "556338dee551126c",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Java/Bytecode & JIT.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Bytecode & JIT"
-            }
-          },
-          {
             "id": "b503e3e93c9606e4",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Java/Variables & Data Types.md",
+                "file": "Structures/Structure - Java.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Variables & Data Types"
+              "title": "Structure - Java"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -214,16 +185,23 @@
   },
   "active": "b503e3e93c9606e4",
   "lastOpenFiles": [
-    "Java/Type Casting & Variable Naming.md",
-    "Java/Variables & Data Types.md",
+    "Java/Loops.md",
     "Structures/Structure - Java.md",
-    "Structures/Structure - Database.md",
+    "Java/Methods & Functions.md",
+    "Java/Arrays.md",
+    "Java/Operators.md",
+    "Operators.md",
+    "Java/String.md",
+    "Java/Constants.md",
+    "Java/Variables & Data Types.md",
+    "Java/Type Casting & Literals.md",
+    "Java/Introduction.md",
     "Java/JVM Architecture.md",
+    "Java/JDK, JRE & JVM.md",
+    "Java/Bytecode & JIT.md",
+    "Structures/Structure - Database.md",
     "Java/Hello World.md",
     "Java/How JAVA works.md",
-    "Java/Bytecode & JIT.md",
-    "Java/Introduction.md",
-    "Java/JDK, JRE & JVM.md",
     "Database-MySQL/DQL - Data Query Language.md",
     "Database-MySQL/DDL - Data Definition Language.md",
     "Entry Log.md",
@@ -233,13 +211,6 @@
     "Database-MySQL/DML - Data Manipulation Language.md",
     "Database-MySQL/SQL Commands.md",
     "Database-MySQL/DCL -Data Control Language.md",
-    "Database-MySQL/Constraints.md",
-    "Database-MySQL/MySQL Architecture.md",
-    "Database-MySQL/MySQL CLI Basics.md",
-    "Database-MySQL/Normalization & Denormalization.md",
-    "Database-MySQL/Replication & High Availability.md",
-    "Database-MySQL/Relationships.md",
-    "Database-MySQL/Keys.md",
     "Structures",
     "Untitled.base",
     "Assets/hierarchical_model.jpg",

@@ -31,7 +31,7 @@ This feature allows a Java program to perform multiple tasks concurrently. Inste
 ##### High Performance
 While interpreted languages are traditionally slower than fully compiled ones, Java bridges the gap using a Just-In-Time ([[JDK, JRE & JVM#What is ==JIT==?|JIT]]) compiler inside the JVM. The JIT compiler translates the bytecode into native machine code on the fly during execution, significantly boosting performance.
 
-# Java vs C vs C++ vs Python
+# `Java` vs C vs C++ vs Python
 
 #### 1. Compilation and Execution Architecture
 The way these languages convert your code into instructions the computer can understand varies drastically, impacting both speed and portability.
