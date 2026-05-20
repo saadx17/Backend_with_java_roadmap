@@ -74,3 +74,6 @@ Continued reworking. Updated Data Type.
 
 ##### 18th May, 2026 | 10:37 PM
 Started working on Java.
+
+##### 20th May, 2026 | 02:16 PM
+continued adding variables & Data types on Java.
