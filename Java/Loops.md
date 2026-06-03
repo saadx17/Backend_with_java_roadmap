@@ -43,11 +43,11 @@ for (int i = 0; i < 5; i++) {
 //            condition
 ```
 
-|Part|Runs|Purpose|
-|---|---|---|
-|Initialization|Once at start|Create/set loop variable|
-|Condition|Before each iteration|If false → loop stops|
-|Update|After each iteration|Change loop variable|
+| Part           | Runs                  | Purpose                  |
+| -------------- | --------------------- | ------------------------ |
+| Initialization | Once at start         | Create/set loop variable |
+| Condition      | Before each iteration | If false → loop stops    |
+| Update         | After each iteration  | Change loop variable     |
 Basic Examples:
 ```
 // Count from 0 to 4

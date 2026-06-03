@@ -29,35 +29,35 @@ Completed Introduction part for MySQL.
 ###### 09:36 PM
 Completed Loops.
 
-##### 1st May, 2026 | 11:55 AM
+##### 01st May, 2026 | 11:55 AM
 Today is Friday. So, I've studied hard.
 Completed Data Models, Keys, Relationships, Normalization & Denormalization. Also, I've realized I have to rework JAVA. There are too much information to study. I'll make those shot and easy to understand.
 I'm Out.
 ###### 12:31 PM
 Made a java project using (1-8) Chapters. Reworked JAVA completely. Added ACID into database.
 
-##### 2nd May, 2026 | 02:27 PM
+##### 02nd May, 2026 | 02:27 PM
 The database roadmap was quite messy and I am trying to fix it. My finals are just at the corner, I might not upload for the next 2 weeks. But I will try my best to stay consistent.
 
-##### 3rd May, 2026 | 12:56 AM
+##### 03rd May, 2026 | 12:56 AM
 Updated Database - MySQL. Reworked entire MySQL roadmap, some works are remaining. Working on it.
 
-##### 4th May, 2026 | 07:16 PM
+##### 04th May, 2026 | 07:16 PM
 Completely reworked Database - MySQL. Added MySQL Data Types and Updated some SQL Commands.
 
-##### 5th May, 2026 | 03:46 PM
+##### 05th May, 2026 | 03:46 PM
 Updated SQL Commands, Constraints and Engines.
 
-##### 7th May, 2026 | 09:23 PM
+##### 07th May, 2026 | 09:23 PM
 Completed DDL, DML, DQL, DCL. Only TCL is remaining.
 
-##### 8th May, 2026 | 02:29 AM
+##### 08th May, 2026 | 02:29 AM
 Completed SQL Commands. Now for the revisit part.
 
-##### 8th May, 2026 | 12:37 PM
+##### 08th May, 2026 | 12:37 PM
 Simplified SQL Commands, added Querying Data.
 
-##### 9th May, 2026 | 05:58 PM
+##### 09th May, 2026 | 05:58 PM
 Updated Querying data. 
 
 ##### 13th May, 2026 | 07:42 AM
@@ -77,3 +77,6 @@ Started working on Java.
 
 ##### 20th May, 2026 | 02:16 PM
 continued adding variables & Data types on Java.
+
+##### 03rd June, 2026 | 12:33 PM
+After a long Eid vacation, I'm back. Let's talk business. I have restructured everything, added some theme and code styler to make things easier to read.

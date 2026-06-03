@@ -19,7 +19,7 @@ if (age >= 18) {
 Condition
     │
     ▼
-  true? ──Yes──→ Execute block
+  true? ── Yes ──→ Execute block
     │
     No
     │

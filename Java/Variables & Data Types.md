@@ -1,7 +1,12 @@
+Here, we are going to discuss:
+
+1. [[#What is a Variable?|Variable]]
+2. [[#What is Data Types?|Datatypes]]
+
 # What is a Variable?
 A variable is a named **container that ==stores data== in memory**.
 
-```
+```java title:age.java
 int age = 25
 ```
 
@@ -15,21 +20,21 @@ You can create and fill a variable in two separate steps, or do it all at once.
 
 ###### 1. Declaration (Creating the box)
 This is when you tell the Java compiler the variable's name and what data type it will hold. Once declared, the variable exists in memory, but it is technically empty.
-```
+```java title:Hello.java
 int playerScore;   // Declaring a variable that will hold an integer
 String playerName; // Declaring a variable that will hold text
 ```
 
 ###### 2. Initialization (Filling the box)
 This is the very first time you assign a value to a declared variable using the equals sign (`=`), which is called the assignment operator.
-```
+```java title:Hello.java
 playerScore = 0;       // Initializing the integer variable
 playerName = "Mario";  // Initializing the String variable
 ```
 
 ##### 3. The All-In-One (Declaration + Initialization)
 In most cases, it is cleaner and safer to do both at the same time on a single line.
-```
+```java title:Hello.java
 int playerScore = 0;
 String playerName = "Mario";
 ```
@@ -39,7 +44,7 @@ Java follows specific naming conventions. These are **not enforced by the compi
 ##### ==camelCase==
 Used for variables. *Start with **lowercase**, capitalize each subsequent word.* camelCase (specifically `lowerCamelCase`) is a naming convention where the first word is entirely lowercase and each subsequent, compound word begins with a capital letter, with no spaces or punctuation, used for variables and methods to improve code readability. Examples include `firstName`, `calculateTotal`
 
-```
+```java title:Hello.java
 // ✅ Correct
 int age = 25;
 String firstName = "Ahmed";
@@ -59,7 +64,7 @@ int FIRSTNAME = 0; // No - this is for constants
 Used for classes. *Start with **uppercase**, capitalize each word.*
 PascalCase a naming convention where every word starts with a capital letter, including the first, with no spaces or separators (e.g. `ClassMemberExample`).
 
-```
+```java title:Hello.java
 // ✅ Correct
 class HelloWorld {}
 class BankAccount {}
@@ -76,7 +81,7 @@ class hello_world {} // No
 *All **uppercase** with **underscores** between words.*
 In Java, constants are defined using `SCREAMING_SNAKE_CASE` (all uppercase letters with underscores separating words) to indicate that the value is immutable and `static final`.
 
-```
+```java title:constants.java
 // ✅ Correct
 
 final int MAX_SIZE = 100;
@@ -88,7 +93,7 @@ final int MAX_RETRY_ATTEMPTS = 3;
 ##### ==Packages==
 Package names are *written in all lowercase* to ensure consistency, prevent conflicts with class/interface names, and avoid issues with case-sensitive filesystems.
 
-```
+```java title:Hello.java
 // ✅ Correct
 package com.company.project.service;
 package org.example.utils;
@@ -110,7 +115,7 @@ package org.example.utils;
 - Case sensitive (`age` ≠ `Age` ≠ `AGE`)
 - Make names **meaningful**, never `x`, `temp`, `data` unless context is obvious.
 
-```
+```cpp title:Nameing_rule.java
 // ❌ Bad naming
 int x = 25;
 String s = "Ahmed";
@@ -122,87 +127,7 @@ String userName = "Ahmed";
 double monthlySalary = 5000.0;
 ```
 
-# `var` keyword (Java 10+)
-Introduced in Java 10, the `var` keyword brought a highly requested feature to the language: **Local Variable Type Inference**.
-Instead of forcing you to explicitly declare the data type on the left side of the equals sign, `var` tells the Java compiler to look at the value on the right side and figure out the data type for itself.
-
-#### The Core Concept: Less Boilerplate
-Before Java 10, declaring variables with long class names often led to redundant, verbose code.
-
-**The Old Way:**
-```
-// You have to type "HashMap" and its generics twice
-HashMap<String, List<Integer>> userData = new HashMap<String, List<Integer>>();
-```
-
-**The New Way with `var`:**
-```
-// The compiler sees the right side and automatically knows userData is a HashMap
-var userData = new HashMap<String, List<Integer>>();
-```
-
-**Important:** Java is Still Statically Typed!
-Using `var` does **not** turn Java into a dynamically typed language like Python or JavaScript. The type is inferred at _compile-time_, not run-time. Once the compiler assigns a type to a `var`, that variable is locked into that type forever.
-```
-var score = 100; // The compiler locks "score" in as an int
-score = "High Score"; // ERROR: Incompatible types. You cannot put a String into an int.
-```
-
-#### The Strict Rules of `var`
-Because the compiler needs to be 100% certain of the data type, `var` is heavily restricted. You can only use it when the context is perfectly clear.
-
-###### 1. It can ONLY be used for Local Variables
-You can only use `var` for variables declared _inside_ a method, in a `for` loop, or in a `try-with-resources` block.
-```
-public class Player {
-    var maxHealth = 100; // ERROR: Cannot be used for class/instance variables
-    
-    public void heal(var amount) { // ERROR: Cannot be used for method parameters
-        var currentHealth = 50; // VALID: Local variable inside a method
-    }
-}
-```
-
-###### 2. It MUST be initialized immediately
-The compiler cannot guess the type if you don't give it a value right away.
-```
-var playerName; // ERROR: Cannot infer type without an assignment
-playerName = "Mario"; 
-
-var currentName = "Luigi"; // VALID
-```
-
-###### 3. It CANNOT be assigned to `null`
-Because `null` doesn't have a specific type, the compiler doesn't know what kind of reference variable to create.
-
-```
-var activePlayer = null; // ERROR: Variable initializer is 'null'
-```
-
-###### 4. It requires explicit types for Arrays
-You cannot use the array initialization shortcut with `var`.
-```
-var scores = {10, 20, 30}; // ERROR: Array initializer needs an explicit target-type
-var validScores = new int[]{10, 20, 30}; // VALID
-```
-
-#### When should you use it?
-The golden rule for `var` is **Readability**.
-Use it when the right side of the assignment makes it blindingly obvious what the data type is. It is fantastic for shortening long object creations or cleaning up `for` loops:
-```
-// Excellent use case
-for (var entry : map.entrySet()) { ... }
-
-var stream = new FileInputStream("data.txt");
-```
-
-Avoid it when the method you are calling obscures the return type. If another developer has to guess what data type is coming back, go back to using explicit declarations:
-```
-// Bad use case - What is data? A String? A byte array? A custom Object?
-var data = processNetworkRequest();
-```
-
-# Instance vs. Local vs. Static variables
+## Instance, Local & Static variables
 |**Feature**|**Local Variable**|**Instance Variable**|**Static (Class) Variable**|
 |---|---|---|---|
 |**Where is it declared?**|Inside a method, loop, or block|Inside a class, outside any method|Inside a class, using `static` keyword|
@@ -220,7 +145,7 @@ Local variables are short-lived, temporary storage used for immediate calculatio
 
 - **Memory:** Stored in the thread's **Stack** memory.
 
-```
+```java title:Calculator.java
 public class Calculator {
     public void addNumbers() {
         int result; // Declared, but not initialized
@@ -269,7 +194,7 @@ Static variables belong to the class itself, not to any individual object.
 
 - **Memory:** Stored in the **Method Area** (or Metaspace in modern JVMs) when the class is first loaded by the ClassLoader.
 
-```
+```java title:enemy.java
 public class Enemy {
     // Instance variable: Every enemy has its own health
     int health = 100; 
@@ -292,7 +217,7 @@ public class Enemy {
 }
 ```
 
-# Default Values of Variables
+## Default Values of Variables
 In Java, whether a variable gets a default value depends entirely on _where_ it is declared.
 
 - **Instance and Static variables:** The JVM automatically assigns them a default value when the object or class is created, even if you don't assign one yourself.
@@ -314,7 +239,8 @@ Here are the exact default values assigned to Instance and Static variables by t
 | **All Reference Types** (String, Objects, Arrays) | `null`                                                         |
 ##### Seeing it in Action
 Here is a quick demonstration showing how the JVM handles these defaults in memory compared to a local variable.
-```
+
+```java title:DefaultValuesDemo.java
 public class DefaultValuesDemo {
     
     // Instance variables (Automatically initialized)
@@ -347,7 +273,7 @@ public class DefaultValuesDemo {
 # What is Data Types?
 A classification that specifies the type of value a variable can hold, the amount of memory it requires, and the operations that can be performed on it. [Java data types](https://www.w3schools.com/java/java_data_types.asp) are divided into ==two main categories==: **Primitive** and **Non-Primitive (Reference).**
 
-# What are Primitive Types?
+## What are Primitive Types?
 Primitive types are the **most basic data types** built into Java.  
 They store **raw values directly in memory** (not objects).  
 There are exactly **8 primitive types** in Java.
@@ -361,7 +287,7 @@ In Java, the **byte** data type is ==an 8-bit signed two's complement integer
 - Range: **-128 to 127**
 - Use when: saving memory with small numbers
 
-```
+```java title:syntax.java
 byte temperature = 36;
 byte minVal = -128;
 byte maxVal = 127;
@@ -374,7 +300,7 @@ In Java, **`short`** refers to both a primitive data type and a corresponding 
 - Range: **-32,768 to 32,767**
 - Use when: working with legacy systems or saving memory
 
-```
+```java title:syntax.java
 short year = 2024;
 short population = 32000;
 ```
@@ -389,7 +315,7 @@ In Java, **`int`** is a primitive data type used to store signed 32-bit whole 
 - **Default choice for whole numbers in Java**
 - Use when: counting, indexing, general purpose integers
 
-```
+```java title:syntax.java
 int age = 25;
 int score = 1000000;
 int negative = -500;
@@ -403,7 +329,7 @@ In Java, [`long`](https://www.javaguides.net/2018/08/long-wrapper-class-in-java
 - Must add **L** at the end of the value
 - Use when: numbers exceed int range (population of earth, timestamps, IDs)
 
-```
+```java title:syntax.java
 long worldPopulation = 8000000000L;  // L is required
 long timestamp = 1712345678901L;
 long bankAccountBalance = 9999999999L;
@@ -421,7 +347,7 @@ In Java, `float` is a primitive data type used to store single-precision 32-b
 - Must add **f** at the end
 - Use when: memory is tight and precision is not critical
 
-```
+```java title:syntax.java
 float price = 9.99f;   // f is required as L
 float temperature = 36.6f;
 float pi = 3.14159f;
@@ -435,7 +361,7 @@ In Java, `double` is a primitive data type used to store fractional (floating-
 - **Default choice for decimal numbers in Java**
 - Use when: scientific calculations, financial calculations (with care)
 
-```
+```java title:syntax.java
 double salary = 75000.50;
 double pi = 3.141592653589793;
 double gpa = 3.85;
@@ -447,7 +373,7 @@ Always prefer `double`, as it is *more precise* and is Java's default decimal t
 
 **Warning about floating point:** Never use `float` or `double` for precise financial calculations. Use `BigDecimal` instead.
 
-```
+```java title:syntax.java
 // This is a problem with floating point precision
 
 System.out.println(0.1 + 0.2);
@@ -466,7 +392,7 @@ In Java, the **`char`** data type is a primitive used to store a single 16-bit
 - Java uses **Unicode**, so it can store any character from any language.
 - Range: 0 to 65,535 (unsigned)
 
-```
+```java title:syntax.java
 char letter = 'A';
 char digit = '5';
 char symbol = '@';
@@ -478,7 +404,7 @@ char unicode = '\u0041'; // Unicode for 'A'
 `'A'` → char (one character)  
 `"A"` → String (object containing one character)
 
-```
+```java title:syntax.java
 // char is actually a number underneath
 char ch = 'A';
 System.out.println(ch); // Output: A
@@ -493,7 +419,7 @@ In Java, a **boolean** is a data type that represents one of two logical value
 - **Never use 0/1 in Java like in C, only true/false**
 - Use when: flags, conditions, switches
 
-```
+```java title:syntax.java
 boolean isLoggedIn = true;
 boolean hasPermission = false;
 boolean isAdult = age >= 18; // result of a condition is boolean
@@ -513,7 +439,7 @@ boolean isEmpty = name.isEmpty(); // method returning boolean
 | `char`    | 16 bits | 0 to 65,535           | '\u0000'      | `char c = 'A';`     |
 | `boolean` | 1 bit   | true / false          | false         | `boolean b = true;` |
 
-# What are Non-Primitive Types?
+## What are Non-Primitive Types?
 Non-primitive data types, also known as **reference types**, differ from primitive types because they refer to objects rather than storing actual values directly. While primitive types are predefined by Java, non-primitive types are created by the programmer (except for `String`), they "point" or "refer" to a much larger, more complex object sitting in the JVM's [[JVM Architecture#3. Heap (Shared)|Heap]] memory.
 
 ##### 1. ==String==
@@ -521,7 +447,7 @@ String is a **non-primitive type**, it is a **class** in Java (`java.lang.Str
 It represents a **sequence of characters**.  
 Uses **double quotes**.
 
-```
+```java title:syntax.java
 String name = "Ahmed";
 String greeting = "Hello, World!";
 String empty = "";
@@ -532,7 +458,7 @@ String nullString = null; // String can be null (primitives cannot)
 Once created, **a String cannot be changed**.  
 Any operation that seems to modify a String actually **creates a new String**.
 
-```
+```java title:syntax.java
 String name = "Ahmed";
 name.toUpperCase(); // Does NOT change name
 System.out.println(name); // Still prints: Ahmed
@@ -543,7 +469,7 @@ System.out.println(upper); // Prints: AHMED
 ###### String Pool
 Java optimizes Strings using a **String Pool** in memory:
 
-```
+```java title:syntax.java
 String a = "Hello"; // Goes into String Pool
 String b = "Hello"; // Reuses same object from pool String
 c = new String("Hello"); // Forces a NEW object in Heap (avoid this)
@@ -558,7 +484,7 @@ System.out.println(a.equals(c)); // true (same content)
 ##### 2. ==Arrays==
 An array is a **fixed-size collection of elements of the same type**.
 ###### Declaring and creating arrays:
-```
+```java title:syntax.java
 // Method 1: Declare then initialize
 int[] numbers = new int[5]; // Array of 5 integers (all default to 0)
 numbers[0] = 10;
@@ -573,7 +499,7 @@ String[] names = new String[]{"Alice", "Bob", "Charlie"};
 ```
 
 ###### Accessing array elements:
-```
+```java title:syntax.java
 int[] scores = {95, 87, 76, 92, 88};
 
 System.out.println(scores[0]); // 95 (first element, index starts at 0)
@@ -582,7 +508,7 @@ System.out.println(scores.length); // 5 (number of elements)
 ```
 
 ###### Array index visualization:
-```
+```java title:syntax.java
 int[] scores = {95, 87, 76, 92, 88};
 
 Index: 0 1 2 3 4
@@ -597,7 +523,7 @@ scores[5] = ❌ ArrayIndexOutOfBoundsException
 ```
 
 ###### Iterating over an array:
-```
+```java title:syntax.java
 int[] scores = {95, 87, 76, 92, 88};
 
 // Regular for loop
@@ -610,7 +536,7 @@ System.out.println(score);
 ```
 
 ###### 2D Arrays:
-```
+```java title:syntax.java
 int[][] matrix = {
 {1, 2, 3},
 {4, 5, 6},
@@ -627,7 +553,7 @@ A Class is a blueprint that you create. When you declare a variable using a Clas
 
 ###### Declaration & Initialization
 Assuming you have already written a `Player` class somewhere else in your code:
-```
+```java title:syntax.java
 // 1. Declare the reference variable
 Player playerOne; 
 
@@ -643,7 +569,7 @@ An Interface is a purely abstract "contract" that dictates what methods a class 
 
 ###### Declaration & Initialization
 Assume `Playable` is an interface, and `AudioTrack` and `VideoClip` are classes that implement it.
-```
+```java title:syntax.java
 // Declare a reference of the Interface type
 Playable currentMedia;
 
@@ -655,7 +581,7 @@ currentMedia = new AudioTrack("song.mp3");
 currentMedia = new VideoClip("movie.mp4");
 ```
 
-# Primitives Vs. Non-Primitive:
+## Primitives Vs. Non-Primitive:
 
 |Feature|Primitive|Non-Primitive|
 |---|---|---|
@@ -664,4 +590,5 @@ currentMedia = new VideoClip("movie.mp4");
 |Default value|0, false, etc.|`null`|
 |Has methods?|No|Yes|
 |Example|`int`, `char`|`String`, `Arrays`|
+
 

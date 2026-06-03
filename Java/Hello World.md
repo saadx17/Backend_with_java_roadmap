@@ -1,6 +1,6 @@
 # Your First Java Program!
 
-```
+```java title:Hello.java
 public class Hello{
 public static void main(String[] args){
 System.out.println("Hello, World!"); }
@@ -9,7 +9,7 @@ System.out.println("Hello, World!"); }
 
 #### **Breaking down EVERY single word:**
 
-```
+```java title:Hello.java
 public class Hello {
 ```
 
@@ -18,7 +18,7 @@ public class Hello {
 - `Hello` → The name of the class (must match the filename: `Hello.java`)
 - `{` → Opens the class body.
 
-```
+```java title:Hello.java
 public static void main(String[] args) {
 ```
 
@@ -29,7 +29,7 @@ public static void main(String[] args) {
 - `String[] args` → An array of Strings passed from command line (can be ignored for now)
 - `{` → Opens the method body.
 
-```
+```java title:HelloWorld.java
 System.out.println("Hello, World!");
 ```
 
@@ -39,7 +39,7 @@ System.out.println("Hello, World!");
 - `"Hello, World!"` → A String literal - the text to print.
 - `;` → Every statement in Java ends with a semicolon.
 
-```
+```java title:Hello.java
   }
 }
 ```

@@ -16,7 +16,8 @@ Once the frequency of a particular method or loop exceeds a conceptual threshold
 
 **Source to Bytecode (Compile Time):**
 `.java` is compiled by `javac` into universal bytecode.
-```
+
+```java title:bytecode.java
 // What you write
 int sum(int a, int b) {
   return a + b;

@@ -18,14 +18,14 @@ Let's trace exactly what happens from typing code to seeing output.
 1. **How to write source code:**
 You create a file called `Hello.java`
 **Code:**
-```
+```java title:Hello.java
 public class Hello { public static void main(String[] args){ System.out.println("Hello World"); }
 }
 ```
 
 2. **Compilation**
 You run the Java compiler:
-```
+```java title:compiler.java
 javac Hello.java
 ```
 
@@ -37,7 +37,7 @@ javac Hello.java
 
 3. **Running:**
 You run the program:
-```
+```java title:compiler.java
 java Hello
 ```
 

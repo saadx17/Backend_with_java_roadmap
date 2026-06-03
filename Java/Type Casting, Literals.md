@@ -1,80 +1,8 @@
 # Type Casting
 Type casting is **converting a value from one type to another**. There are 2 types of type casting.
-1. [[#==Implicit== Casting|Implicit]] Casting (Widening)
-2. [[#==Explicit== Casting|Explicit]] Casting (Narrowing)
+1. [[#1. Type Conversion (Implicit / Widening)|Implicit]] Casting (Widening)
+2. [[Type Casting, Literals#2. Type Casting (Explicit / Narrowing)|Explicit]] Casting (Narrowing)
 
-##### ==Implicit== Casting
-Java **automatically** converts a **smaller type to a larger type**.  
-No data is lost. No special syntax needed.
-
-```
-byte → short → int → long → float → double (widening direction →)
-```
-
-**Syntax:**
-```
-int myInt = 100;
-long myLong = myInt; // int → long (automatic, safe)
-double myDouble = myLong; // long → double (automatic, safe)
-
-System.out.println(myInt); // 100
-System.out.println(myLong); // 100
-System.out.println(myDouble); // 100.0
-```
-
-**Another example:**
-```
-byte b = 42;
-short s = b; // byte → short (implicit)
-int i = s; // short → int (implicit)
-long l = i; // int → long (implicit)
-float f = l; // long → float (implicit)
-double d = f; // float → double (implicit)
-```
-
-##### ==Explicit== Casting
-**Manually** converting a **larger type to a smaller type**.  
-You must tell Java explicitly. **Data loss can occur.**
-```
-double → float → long → int → short → byte (narrowing direction ←)
-```
-
-**Syntax: `(targetType) value`**
-```
-double myDouble = 9.99;
-int myInt = (int) myDouble; // Explicit cast required 
-
-System.out.println(myDouble); // 9.99
-System.out.println(myInt); // 9 ← decimal part is TRUNCATED (not rounded)
-```
-
-**More examples:**
-```
-long bigNumber = 1234567890123L;
-int smallNumber = (int) bigNumber; // Data LOSS occurs System.out.println(smallNumber); // Some garbage value (overflow)
-
-double price = 19.99;
-int truncated = (int) price;
-System.out.println(truncated); // 19 (not 20 — it truncates, not rounds)
-
-// char ↔ int casting
-char ch = 'A';
-int ascii = (int) ch;
-System.out.println(ascii); // 65
-
-int num = 66;
-char letter = (char) num;
-System.out.println(letter); // B
-```
-
-##### Casting Summary:
-
-|Type|Safe?|Syntax|Risk|
-|---|---|---|---|
-|Implicit (widening)|✅ Yes|Automatic|None|
-|Explicit (narrowing)|⚠️ Maybe|`(type) value`|Data loss|
-
-# Type Conversion vs. Type Casting
 In Java, both **Type Conversion** and **Type Casting** involve changing a variable from one data type to another. The difference comes down to who does the work (the compiler or you) and whether there is a risk of losing data.
 
 ##### 1. Type Conversion (Implicit / Widening)
@@ -84,8 +12,7 @@ Because you are putting a small item into a bigger box, there is zero risk of th
 - **Direction:** `byte` → `short` → `int` → `long` → `float` → `double`
 - **Safety:** 100% safe. No data is lost.
 
-**Example:**
-```
+```java title:example.java
 int smallBox = 100;
 // Automatic conversion: putting a 32-bit int into a 64-bit double
 double bigBox = smallBox; 
@@ -100,8 +27,7 @@ Because you are trying to cram a large item into a smaller box, there is a real 
 - **Direction:** `double` → `float` → `long` → `int` → `short` → `byte`
 - **Safety:** Risky. Decimals will be truncated (cut off), and numbers too large for the new type will overflow into completely wrong values.
 
-**Example:**
-```
+```java title:example.java
 double bigBox = 99.99;
 
 // Manual casting: forcing a 64-bit double into a 32-bit int
@@ -111,7 +37,8 @@ int smallBox = (int) bigBox; // <-- This works, but truncates the data
 System.out.println(smallBox); // Prints: 99 (The .99 is permanently lost)
 ```
 
-##### Comparison
+##### Type Conversion vs Casting
+
 |**Feature**|**Type Conversion (Widening)**|**Type Casting (Narrowing)**|
 |---|---|---|
 |**Who does it?**|Automatic (Java Compiler)|Manual (The Programmer)|
