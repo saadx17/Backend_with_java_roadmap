@@ -417,3 +417,317 @@ else {
  }
 ```
 
+# Iteration
+[Iteration](https://www.geeksforgeeks.org/java/iterators-in-java/) in Java refers to the repetitive execution of a block of code or the sequential traversal of data structures. Java provides multiple tools to accomplish this, ranging from standard **control flow loops to dedicated **[[Java Collections Framework|collection framework]] objects**.
+
+| Loop       | Use When                                             |
+| ---------- | ---------------------------------------------------- |
+| `for`      | You know exactly how many times to repeat            |
+| `while`    | You repeat while a condition is true (count unknown) |
+| `do-while` | You need to run at least once, then check condition  |
+| `for-each` | You iterate over a collection or array               
+
+## 1. `for` Loop
+The most commonly used loop when the **number of iterations is known**.
+```java title:syntax.java
+for(initialization; condition; update){
+  //body - runs each iteration
+}
+```
+
+```java title:example.java
+// Without a loop — repetitive and unscalable
+System.out.println("Hello");
+System.out.println("Hello");
+System.out.println("Hello");
+System.out.println("Hello");
+System.out.println("Hello");
+
+// With a loop — clean and scalable
+for (int i = 0; i < 5; i++) {
+  System.out.println("Hello");
+}
+```
+#### Understanding by parts
+| Part           | Runs                  | Purpose                  |
+| -------------- | --------------------- | ------------------------ |
+| Initialization | Once at start         | Create/set loop variable |
+| Condition      | Before each iteration | If false → loop stops    |
+| Update         | After each iteration  | Change loop variable     |
+
+```java title:part_by_syntax.java
+for (int i = 0; i < 5; i++) {
+// └────┬────┘ └──┬──┘ └┬─┘
+// initialization │ update
+//            condition
+```
+
+Basic Examples:
+```java title:examples.java
+// Count from 0 to 4
+for (int i = 0; i < 5; i++) {
+  System.out.println(i);
+}
+// Output: 0 1 2 3 4
+
+// Count from 1 to 10
+for (int i = 1; i <= 10; i++) {
+  System.out.println(i);
+}
+// Output: 1 2 3 4 5 6 7 8 9 10
+
+// Count downwards
+for (int i = 10; i >= 1; i--) {
+  System.out.println(i);
+}
+// Output: 10 9 8 7 6 5 4 3 2 1
+
+// Step by 2
+for (int i = 0; i <= 20; i += 2) {
+  System.out.print(i + " ");
+}
+// Output: 0 2 4 6 8 10 12 14 16 18 20
+```
+
+#### Visualizing Loop Execution
+```java title:visual.java
+for (int i = 0; i < 4; i++) {
+ System.out.println("i = " + i);
+}
+```
+
+```
+Step 1: i = 0 → condition: 0 < 4 → true → run body → print "i = 0" → i++
+Step 2: i = 1 → condition: 1 < 4 → true → run body → print "i = 1" → i++
+Step 3: i = 2 → condition: 2 < 4 → true → run body → print "i = 2" → i++
+Step 4: i = 3 → condition: 3 < 4 → true → run body → print "i = 3" → i++
+Step 5: i = 4 → condition: 4 < 4 → false → STOP
+
+Output:
+i = 0
+i = 1
+i = 2
+i = 3
+```
+
+#### Looping Over Arrays
+```java title:array_loop.java
+int[] scores = {95, 87, 76, 92, 88};
+
+// Using index to access each element
+for (int i = 0; i < scores.length; i++) {
+  System.out.println("scores[" + i + "] = " + scores[i]);
+}
+// Output:
+// scores[0] = 95
+// scores[1] = 87
+// scores[2] = 76
+// scores[3] = 92
+// scores[4] = 88
+```
+
+#### Common `for` Loop Patterns
+```java title:loop_patterns.java
+// Sum of numbers 1 to 100
+int sum = 0;
+for (int i = 1; i <= 100; i++) {
+  sum += i;
+}
+System.out.println("Sum: " + sum); // Sum: 5050
+
+
+// Factorial of n
+int n = 5;
+int factorial = 1;
+for (int i = 1; i <= n; i++) {
+  factorial *= i;
+}
+System.out.println(n + "! = " + factorial); // 5! = 120
+
+
+// Multiplication table
+int num = 7;
+for (int i = 1; i <= 10; i++) {
+  System.out.println(num + " x " + i + " = " + (num * i));
+}
+// 7 x 1 = 7
+// 7 x 2 = 14
+// ...
+
+
+// Print only even numbers in an array
+int[] numbers = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+for (int i = 0; i < numbers.length; i++) {
+  if (numbers[i] % 2 == 0) {
+    System.out.print(numbers[i] + " ");
+    }
+}
+// Output: 2 4 6 8 10
+```
+
+#### Variations of `for` Loop
+```java title:variation.java
+// Multiple variables in initialization and update
+for (int i = 0, j = 10; i < j; i++, j--) {
+  System.out.println("i=" + i + ", j=" + j);
+}
+// i=0, j=10
+// i=1, j=9
+// i=2, j=8
+// i=3, j=7
+// i=4, j=6
+
+
+// Infinite for loop (use with break)
+for (;;) {
+// runs forever until break
+  System.out.println("Running...");
+  break;
+}
+
+// Empty body (rare but valid)
+int i = 0;
+for (; i < 5; i++); // i becomes 5
+System.out.println(i); // 5
+```
+
+#### Nested `for` Loops
+A loop inside of another loop. The "inner loop" will execute all of its iterations for _each single iteration_ of the "outer loop".
+
+- **Use Cases:** Highly common when working with 2D grids, matrices, or generating tables.
+- **Performance Warning:** Be careful! If your outer loop runs 100 times, and your inner loop runs 100 times, your code just executed 10,000 times (this is known as $O(n^2)$ time complexity).
+
+```java title:syntax.java
+for (int i = 1; i <= 3; i++) {                 // outer loop
+    for (int j = 1; j <= 3; j++) {             // inner loop
+        System.out.println("i=" + i + ", j=" + j);
+    }
+}
+```
+
+```java title:example.java
+// A simple 3x3 grid generator
+for (int row = 1; row <= 3; row++) {          // Outer loop
+    for (int col = 1; col <= 3; col++) {      // Inner loop
+        System.out.print("(" + row + "," + col + ") ");
+    }
+    System.out.println(); // Moves to the next line after the inner loop finishes
+}
+/* Output:
+(1,1) (1,2) (1,3) 
+(2,1) (2,2) (2,3) 
+(3,1) (3,2) (3,3) 
+*/
+```
+
+
+## 2.`while` Loop
+Use `while` when you **don't know how many iterations** you need in advance.  
+The condition is checked **before** each iteration.
+```java title:syntax.java
+while (condition) {
+  // body
+  // must update something to eventually make condition false!
+}
+```
+
+#### How it works
+```Check condition
+         │
+         ▼
+       true? ──Yes──→ Execute body → go back to check condition
+         │
+         No
+         │
+         ▼
+     Exit loop
+```
+
+```java title:example.java
+// Count from 1 to 5
+int i = 1;
+while (i <= 5) {
+  System.out.println(i);
+  i++; // ← CRITICAL: without this, infinite loop!
+}
+// Output: 1 2 3 4 5
+
+// Same as for loop but written as while
+int count = 0;
+while (count < 5) {
+  System.out.println("Count: " + count);
+  count++;
+}
+```
+
+## 3.`do-while` Loop
+This is almost identical to the `while` loop, with one massive difference: **it guarantees the code will run at least once**, even if the condition is `false` from the very beginning. It checks the condition at the _end_ of the loop.
+```java title:syntax.java
+do {
+  // body — runs at least once
+}
+while (condition); // ← semicolon required here!
+```
+
+#### How it works
+```
+Execute body (always runs at least once)
+       │
+       ▼
+Check condition
+       │
+     true? ──Yes──→ Execute body again → check condition again
+       │
+       No
+       │
+       ▼
+    Exit loop
+```
+
+```java title:example.java
+int i = 1;
+do {
+  System.out.println(i); i++;
+}
+while (i <= 5); // Output: 1 2 3 4 5
+```
+
+## 4.`for-each` Loop
+Introduced in Java 5, this is the **industry standard** for iterating through Arrays and Collections (like Lists). It is cleaner, easier to read, and prevents "Index Out Of Bounds" errors.
+```java title:syntax.java
+for (type element : collection) {
+  // use element
+}
+
+// Read as: "for each element in collection"
+```
+
+```java title:example.java
+// Array of integers
+int[] scores = {95, 87, 76, 92, 88};
+
+for (int score : scores) {
+  System.out.println(score);
+}
+// Output: 95 87 76 92 88
+
+// Array of Strings
+String[] names = {"Alice", "Bob", "Charlie", "Diana"};
+
+for (String name : names) {
+  System.out.println("Hello, " + name + "!");
+}
+// Hello, Alice!
+// Hello, Bob!
+// Hello, Charlie!
+// Hello, Diana!
+
+
+// Works with char array
+char[] vowels = {'a', 'e', 'i', 'o', 'u'};
+for (char vowel : vowels) {
+  System.out.print(vowel + " ");
+}
+// Output: a e i o u
+```
+

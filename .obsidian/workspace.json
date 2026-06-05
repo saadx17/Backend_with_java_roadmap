@@ -35,8 +35,7 @@
               "title": "Entry Log"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -127,7 +126,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Entry Log.md",
+                "file": "Java/Control Flow.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -137,7 +136,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Entry Log"
+              "title": "Backlinks for Control Flow"
             }
           },
           {
@@ -216,10 +215,10 @@
       "bases:Create new base": false
     }
   },
-  "active": "83007a773d72ef69",
+  "active": "84a0eb4cf4fca7f8",
   "lastOpenFiles": [
-    "Java/Control Flow.md",
     "Entry Log.md",
+    "Java/Control Flow.md",
     "Structures/Structure - Java.md",
     "ReadMe.md",
     "Java/Loops.md",
