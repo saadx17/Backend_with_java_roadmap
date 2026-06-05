@@ -84,5 +84,11 @@ After a long Eid vacation, I'm back. Let's talk business. I have restructured ev
 ##### 05th June,2026 | 06:01 PM
 Rewriting Control Flow - (Conditional Statement)
 
-##### 07:32 PM
+###### 07:32 PM
 Added Iteration.
+
+###### 08:07 PM
+Added Loop Control.
+
+###### 10:09 PM
+Added Exception Handling.
