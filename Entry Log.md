@@ -80,3 +80,7 @@ continued adding variables & Data types on Java.
 
 ##### 03rd June, 2026 | 12:33 PM
 After a long Eid vacation, I'm back. Let's talk business. I have restructured everything, added some theme and code styler to make things easier to read.
+
+##### 05th June,2026 | 06:01 PM
+Rewriting Control Flow - (Conditional Statement)
+

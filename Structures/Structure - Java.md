@@ -16,11 +16,9 @@ This is the total structure of the roadmap for Java. Down below, everything is c
 13. [[var Keyword]]
 14. [[Constants]]
 15. [[Input via scanner]]
-16. [[Control Flow - if-else]]
-17. [[Control Flow - Switch & Ternary]]
-18. [[Loops]] (Check: BracU Grading System in Projects Folder)
-19. [[Arrays]]
-20. [[String]]
-21. [[Methods & Functions]]
+16. [[Control Flow]] (Check: BracU Grading System in Projects Folder)
+17. [[Arrays]]
+18. [[String]]
+19. [[Methods & Functions]]
 
 *(More content will be added as the roadmap progresses)*
