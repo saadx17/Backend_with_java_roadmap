@@ -731,3 +731,200 @@ for (char vowel : vowels) {
 // Output: a e i o u
 ```
 
+# Loop Control
+Sometimes you need to interrupt a loop before it finishes naturally.
+
+- **`break`:** Completely **exits** the loop immediately. The program moves on to the code below the loop.
+- **`continue`:** Skips the rest of the **current iteration** and jumps straight back to the top of the loop to evaluate the condition for the next round.
+- `Yield`: returns a value from a specific branch or case.
+- `return`: terminates the execution of the entire method.
+
+## 1. `break`: Exit the Loop Immediately
+
+`break` **completely stops** the loop and jumps to the code after it.
+```java title:break.java
+// Find first number divisible by 7
+for (int i = 1; i <= 100; i++) {
+  if (i % 7 == 0) {
+    System.out.println("First divisible by 7: " + i);
+    break; // stop immediately, don't continue to 100
+  }
+}
+// Output: First divisible by 7: 7
+
+
+// Search in array
+int[] numbers = {3, 7, 2, 9, 4, 1, 8};
+int target = 9;
+boolean found = false;
+
+for (int i = 0; i < numbers.length; i++) {
+  if (numbers[i] == target) {
+    System.out.println("Found " + target + " at index " + i);
+    found = true;
+    break; // no need to check rest
+  }
+}
+
+if (!found) {
+  System.out.println(target + " not found");
+}
+```
+
+**How it works:**
+```
+Loop: i=0 → 3 == 9? No
+      i=1 → 7 == 9? No
+      i=2 → 2 == 9? No
+      i=3 → 9 == 9? Yes → print → BREAK → exit loop
+      (i=4, 5, 6 never checked)
+```
+
+## 2. `continue`: Skip Current Iteration, Continue Loop
+
+`continue` **skips the rest of the current iteration** and jumps to the next one.
+```java title:continue.java
+// Print only odd numbers
+for (int i = 1; i <= 10; i++) {
+  if (i % 2 == 0) {
+    continue; // skip even numbers
+    }
+    System.out.print(i + " "); // only reached for odd numbers
+}
+// Output: 1 3 5 7 9
+
+// Skip negative numbers
+int[] values = {5, -3, 8, -1, 12, -7, 4};
+int sum = 0;
+
+for (int val : values) {
+  if (val < 0) {
+    continue; // skip negatives
+    }
+    sum += val;
+  }
+System.out.println("Sum of positives: " + sum); // 29
+```
+
+**How it works:**
+```
+Iteration: val=5 → 5 < 0? No → sum += 5 → sum=5
+           val=-3 → -3 < 0? Yes → CONTINUE → jump to next iteration
+           val=8 → 8 < 0? No → sum += 8 → sum=13
+           val=-1 → -1 < 0? Yes → CONTINUE
+           val=12 → 12 < 0? No → sum += 12 → sum=25
+           val=-7 → -7 < 0? Yes → CONTINUE
+           val=4 → 4 < 0? No → sum += 4 → sum=29
+```
+
+#### `break` vs `continue`
+```java title:break_vs_continue.java
+// break
+for (int i = 0; i < 10; i++) {
+  if (i == 5) break;
+  System.out.print(i + " ");
+}
+// Output: 0 1 2 3 4
+// → stops completely at 5
+
+// continue
+for (int i = 0; i < 10; i++) {
+  if (i == 5) continue;
+  System.out.print(i + " ");
+}
+// Output: 0 1 2 3 4 6 7 8 9
+// → skips 5, keeps going
+```
+
+## 3. `yield`: Multi-line code block
+Before enhanced switch expressions were introduced, older `switch` statements were primarily used for control flow (directing which lines of code run), requiring you to manually assign values to variables and use `break` statements to stop the flow.
+
+#### Modern `yield`
+In Java, the **`yield` keyword** is used inside **`switch` expressions** to return a value from a multi-line code block. Finalized in **Java 14**, it acts like a localized `return` statement tailored exclusively for your `switch` logic.
+```java title:switch_with_yield.java
+int score = 85;
+
+String grade = switch (score / 10) {
+  case 10, 9 -> "A";
+  case 8 -> "B";
+  case 7 -> {
+        System.out.println("Just passed with C");
+        yield "C"; // yield returns the value in a block
+  }
+  case 6 -> "D";
+  default -> "F";
+  };
+
+System.out.println(grade); // B
+```
+
+#### Traditional `:` Colon `yield`
+You can use `yield` with the older colon-style `switch` syntax if you want it to behave like an expression. In this scenario, `yield` replaces the traditional `break` statement.
+```java title:colon.java
+int dayNumber = 2;
+String type = switch (dayNumber) {
+    case 1:
+    case 7: 
+        yield "Weekend"; // Terminates block and returns value
+    default: 
+        yield "Weekday";
+};
+```
+
+**Note:** Do not confuse the `yield` keyword with the old `java.lang.Thread.yield()` method.
+
+- **`Thread.yield()`** is a static native method used in multi-threading.
+- It acts as a temporary "hint" to the CPU scheduler, stating that the current thread is willing to pause its execution to let other equal-priority threads run.
+- The scheduler is completely free to ignore this request.
+
+## 4. `Return`: Breaks out of all condition & loops
+In Java, the `return` keyword acts as a **jump statement** that immediately **terminates the execution of the entire method** in which the loop resides.
+
+#### Key Behavior
+- **Exits Everything**: It breaks out of all nested loops and conditionals instantly.
+- **Returns Value (Non-Void Methods)**: Passes a specific data type back to the caller.
+- **Exits Early (Void Methods)**: Can be used completely on its own without a value to break out early.
+- **Compiler Requirements**: If used conditionally inside a loop, the compiler still expects a default `return` statement _outside_ the loop block in case the loop never runs or the condition is never met.
+
+#### In a Value-Returning Method
+This is highly efficient for lookup algorithms. As soon as the match is found, the method stops executing entirely.
+```java title:value_return.java
+public class SearchExample {
+    public static int findIndex(int[] numbers, int target) {
+        for (int i = 0; i < numbers.length; i++) {
+            if (numbers[i] == target) {
+                return i; // Instantly stops the loop and exits the method
+            }
+        }
+        return -1; // Fallback return required by the compiler
+    }
+}
+```
+
+#### In a Void Method
+You can use `return` on its own to cancel operations early without returning a value.
+```java title:void_example.java
+public class VoidExample {
+    public static void printUntilNegative(int[] numbers) {
+        for (int num : numbers) {
+            if (num < 0) {
+                return; // Exits the method immediately, ignoring remaining items
+            }
+            System.out.println(num);
+        }
+        System.out.println("Loop finished naturally."); // Won't execute if return triggered
+    }
+}
+```
+
+#### `yield` vs `return`
+You cannot use the standard `return` keyword inside a switch case. Doing so would instruct the entire parent method to finish executing rather than just returning the result of the switch operation. `yield` lets the switch statement provide its final value while allowing the rest of your code to keep running.
+
+## `return` vs `break` vs `continue`
+
+| Keyword        | What it stops              | Where control goes next                |
+| -------------- | -------------------------- | -------------------------------------- |
+| **`return`**   | The entire method          | Back to the caller of the method       |
+| **`break`**    | The current loop block     | The very next line _after_ the loop    |
+| **`continue`** | The current loop iteration | The loop's next iteration check/update |
+
