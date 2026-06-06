@@ -240,3 +240,377 @@ System.arraycopy(original, 0, copy4, 0, original.length);
 ```
 
 # 2D Arrays
+A **2D array in Java** is essentially an array of arrays that stores data in a grid structure composed of rows and columns. It is widely used to build mathematical matrices, game boards (like chess or tic-tac-toe), and data spreadsheets.
+
+### Declaration & Creation
+You can create a 2D array in Java using two different approaches: **dynamic initialization** (setting the size first) or **static initialization** (setting the values immediately).
+
+2D array = array of arrays. Think of it as a TABLE (rows × columns).
+
+```java title:size.java
+// Create with size
+int[][] matrix = new int[3][4];  // 3 rows, 4 columns
+//  all initialized to 0
+```
+
+```java title:values.java
+// Create with values
+int[][] matrix = {
+    {1, 2, 3},     // row 0
+    {4, 5, 6},     // row 1
+    {7, 8, 9}      // row 2
+};
+
+// Visual representation
+//        col0  col1  col2
+// row0  [  1    2    3  ]
+// row1  [  4    5    6  ]
+// row2  [  7    8    9  ]
+```
+
+```java title:access_elements.java
+// Access elements
+System.out.println(matrix[0][0]);  // 1  (row 0, col 0)
+System.out.println(matrix[1][1]);  // 5  (row 1, col 1)
+System.out.println(matrix[2][2]);  // 9  (row 2, col 2)
+```
+
+```java title:dimensions.java
+// Dimensions
+System.out.println(matrix.length);     // 3 (rows)
+System.out.println(matrix[0].length);  // 3 (columns in row 0)
+```
+
+### 2D Array Iteration
+The most common way to iterate through a 2D array in Java is by using **nested for loops**. Because a 2D array is an "array of arrays" in Java, you use an outer loop to cycle through the rows and an inner loop to cycle through the elements (columns) of each row.
+
+```java title:syntax.java
+int[][] matrix = {
+    {1, 2, 3},
+    {4, 5, 6},
+    {7, 8, 9}
+};
+```
+
+```java title:nested_for.java
+// Nested for loop
+for (int i = 0; i < matrix.length; i++) {          // rows
+    for (int j = 0; j < matrix[i].length; j++) {   // columns
+        System.out.print(matrix[i][j] + "\t");
+    }
+    System.out.println();
+}
+// 1  2  3
+// 4  5  6
+// 7  8  9
+```
+
+```java title:nested_for-each.java
+// Nested for-each
+for (int[] row : matrix) {
+    for (int val : row) {
+        System.out.print(val + "\t");
+    }
+    System.out.println();
+}
+```
+
+```java title:print_as_grid.java
+// Print as grid
+for (int[] row : matrix) {
+    System.out.println(Arrays.toString(row));
+}
+// [1, 2, 3]
+// [4, 5, 6]
+// [7, 8, 9]
+```
+
+### 2D Array Operations
+In Java, a **two-dimensional (2D) array** is an "array of arrays" structured in a grid format with rows and columns.
+
+```java title:syntax.java
+int[][] matrix = {
+    {1, 2, 3},
+    {4, 5, 6},
+    {7, 8, 9}
+};
+```
+
+```java title:sum_of_all.java
+// Sum of all elements
+int total = 0;
+for (int[] row : matrix) {
+    for (int val : row) {
+        total += val;
+    }
+}
+System.out.println("Total: " + total);  // 45
+```
+
+```java title:sum_of_each.java
+// Sum of each row
+for (int i = 0; i < matrix.length; i++) {
+    int rowSum = 0;
+    for (int val : matrix[i]) rowSum += val;
+    System.out.println("Row " + i + " sum: " + rowSum);
+}
+// Row 0 sum: 6
+// Row 1 sum: 15
+// Row 2 sum: 24
+```
+
+```java title:diagonal_sum.java
+// Diagonal sum (only for square matrix)
+int diagSum = 0;
+for (int i = 0; i < matrix.length; i++) {
+    diagSum += matrix[i][i];   // [0][0], [1][1], [2][2]
+}
+System.out.println("Diagonal: " + diagSum);  // 15 (1+5+9)
+```
+
+```java title:transpose.java
+// Transpose (rows become columns)
+int rows = matrix.length;
+int cols = matrix[0].length;
+int[][] transposed = new int[cols][rows];
+
+for (int i = 0; i < rows; i++) {
+    for (int j = 0; j < cols; j++) {
+        transposed[j][i] = matrix[i][j];
+    }
+}
+// original:    transposed:
+// 1 2 3        1 4 7
+// 4 5 6        2 5 8
+// 7 8 9        3 6 9
+```
+
+```java title:matrix_multipic.java
+// Matrix multiplication
+int[][] A = {{1, 2}, {3, 4}};
+int[][] B = {{5, 6}, {7, 8}};
+int[][] C = new int[2][2];
+
+for (int i = 0; i < 2; i++) {
+    for (int j = 0; j < 2; j++) {
+        for (int k = 0; k < 2; k++) {
+            C[i][j] += A[i][k] * B[k][j];
+        }
+    }
+}
+// C = {{19, 22}, {43, 50}}
+```
+
+### Jagged Arrays (Irregular 2D)
+A **jagged array** (or ragged array) in Java is an **array of arrays where each row can have a different length**. Unlike standard 2D arrays that form a rigid, rectangular grid, jagged arrays allow you to allocate only the exact amount of memory needed for each row.
+
+```java title:syntax.java
+// Rows can have DIFFERENT lengths
+
+int[][] jagged = new int[3][];  // 3 rows, columns not set
+jagged[0] = new int[2];         // row 0 has 2 columns
+jagged[1] = new int[4];         // row 1 has 4 columns
+jagged[2] = new int[3];         // row 2 has 3 columns
+```
+
+```java title:values.java
+// With values
+int[][] triangle = {
+    {1},
+    {2, 3},
+    {4, 5, 6},
+    {7, 8, 9, 10}
+};
+
+for (int[] row : triangle) {
+    for (int val : row) {
+        System.out.print(val + " ");
+    }
+    System.out.println();
+}
+// 1
+// 2 3
+// 4 5 6
+// 7 8 9 10
+```
+
+```java title:pascal.java
+// Use case: Pascal's triangle
+int n = 5;
+int[][] pascal = new int[n][];
+
+for (int i = 0; i < n; i++) {
+    pascal[i] = new int[i + 1];
+    pascal[i][0] = 1;
+    pascal[i][i] = 1;
+    for (int j = 1; j < i; j++) {
+        pascal[i][j] = pascal[i-1][j-1] + pascal[i-1][j];
+    }
+}
+
+for (int[] row : pascal) {
+    System.out.println(Arrays.toString(row));
+}
+// [1]
+// [1, 1]
+// [1, 2, 1]
+// [1, 3, 3, 1]
+// [1, 4, 6, 4, 1]
+```
+
+# Arrays Utility Class
+The primary array utility class in Java is **[`java.util.Arrays`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Arrays.html)**. It belongs to the Java Collections Framework and contains exclusively `static` methods to manipulate, format, search, and copy arrays without manual loops.
+
+```java title:import_class.java
+import java.util.Arrays;
+// java.util.Arrays has static methods for common operations
+```
+
+### Sorting
+To sort an array in Java, the easiest and most efficient way is to use the built-in **`Arrays.sort()`** method from the **`java.util.Arrays`** class.
+
+```java title:sorting.java
+int[] arr = {5, 2, 8, 1, 9, 3};
+
+// Sort ascending (default)
+Arrays.sort(arr);
+System.out.println(Arrays.toString(arr));  // [1, 2, 3, 5, 8, 9]
+
+// Sort range only
+int[] arr2 = {5, 2, 8, 1, 9, 3};
+Arrays.sort(arr2, 1, 4);               // sort index 1 to 3 only
+System.out.println(Arrays.toString(arr2)); // [5, 1, 2, 8, 9, 3]
+
+// Sort descending (needs Integer[] not int[])
+Integer[] arr3 = {5, 2, 8, 1, 9, 3};
+Arrays.sort(arr3, (a, b) -> b - a);   // reverse comparator
+System.out.println(Arrays.toString(arr3)); // [9, 8, 5, 3, 2, 1]
+
+// Sort 2D array by first column
+int[][] data = {{3, 1}, {1, 4}, {2, 2}};
+Arrays.sort(data, (a, b) -> a[0] - b[0]);
+// {{1,4}, {2,2}, {3,1}}
+```
+
+### Searching
+In Java, you can search an array using four primary approaches: **`Arrays.binarySearch()`** for sorted arrays, a standard **for loop** for manual linear search, **Java Streams** for a modern functional style, or converting the array into a **`List`** to check for membership.
+
+```java title:searching.java
+// Binary search → array MUST be sorted first!
+int[] arr = {1, 2, 3, 5, 8, 9};
+
+int idx = Arrays.binarySearch(arr, 5);
+System.out.println(idx);   // 3 (found at index 3)
+
+int missing = Arrays.binarySearch(arr, 7);
+System.out.println(missing);  // negative → not found
+// negative value = -(insertion point) - 1
+
+// Search in range
+int idx2 = Arrays.binarySearch(arr, 0, 4, 3); // search index 0-3
+System.out.println(idx2);  // 2
+```
+
+### Filling & Comparing
+In Java, **filling and comparing arrays** is best handled using the built-in utility methods from the **`java.util.Arrays`** class. Avoid using the `==` operator for comparison, as it only checks if two arrays share the exact same memory location rather than checking their actual elements.
+
+```java title:fill.java
+// Fill
+int[] arr = new int[5];
+Arrays.fill(arr, 7);
+System.out.println(Arrays.toString(arr));  // [7, 7, 7, 7, 7]
+
+// Fill range only
+Arrays.fill(arr, 1, 4, 99);               // fill index 1-3 with 99
+System.out.println(Arrays.toString(arr));  // [7, 99, 99, 99, 7]
+```
+
+```java title:compare.java
+// Equals (compare contents)
+int[] a = {1, 2, 3};
+int[] b = {1, 2, 3};
+int[] c = {1, 2, 4};
+
+System.out.println(a == b);              // false (different objects)
+System.out.println(Arrays.equals(a, b)); // true  (same content)
+System.out.println(Arrays.equals(a, c)); // false
+
+// Deep equals (for 2D arrays)
+int[][] m1 = {{1, 2}, {3, 4}};
+int[][] m2 = {{1, 2}, {3, 4}};
+
+System.out.println(Arrays.equals(m1, m2));      // false (shallow)
+System.out.println(Arrays.deepEquals(m1, m2));  // true 
+```
+
+### toString & Printing
+To print a human-readable array in Java, you must use **`Arrays.toString()`** for 1D arrays or **`Arrays.deepToString()`** for multidimensional arrays.
+
+Calling `.toString()` directly on a Java array object (like `myArray.toString()`) or trying to print it directly via `System.out.println(myArray)` will only print its **memory address / class hashcode** (e.g., `[I@15db9742`). This happens because Java arrays inherit the default fallback `toString()` implementation from the base `Object` class instead of overriding it.
+
+```java title:toString.java
+int[]     arr1 = {1, 2, 3, 4, 5};
+int[][]   arr2 = {{1, 2}, {3, 4}};
+int[][][] arr3 = {{{1, 2}, {3, 4}}, {{5, 6}, {7, 8}}};
+
+// 1D array
+System.out.println(arr1);               // [I@1b6d3586 ← useless!
+System.out.println(Arrays.toString(arr1));     // [1, 2, 3, 4, 5]
+
+// 2D array
+System.out.println(Arrays.toString(arr2));     // [[I@...] ← useless!
+System.out.println(Arrays.deepToString(arr2)); // [[1, 2], [3, 4]]
+
+// 3D array
+System.out.println(Arrays.deepToString(arr3)); // [[[1, 2], [3, 4]], [[5, 6], [7, 8]]]
+```
+**NOTE:** A **3D array in Java** is essentially an array of 2D arrays, organized visually like a cube or a data structure with layers, rows, and columns.
+
+### Other Useful Methods
+```java title:useful_methods.java
+// copyOf
+int[] original = {1, 2, 3, 4, 5};
+
+int[] shorter = Arrays.copyOf(original, 3);       // [1, 2, 3]
+int[] longer  = Arrays.copyOf(original, 8);       // [1, 2, 3, 4, 5, 0, 0, 0]
+int[] range   = Arrays.copyOfRange(original, 1, 4); // [2, 3, 4]
+
+// Stream from array (modern Java)
+int[] arr = {1, 2, 3, 4, 5};
+
+int sum = Arrays.stream(arr).sum();
+System.out.println(sum);  // 15
+
+int max = Arrays.stream(arr).max().getAsInt();
+System.out.println(max);  // 5
+
+int min = Arrays.stream(arr).min().getAsInt();
+System.out.println(min);  // 1
+
+double avg = Arrays.stream(arr).average().getAsDouble();
+System.out.println(avg);  // 3.0
+
+long count = Arrays.stream(arr).filter(n -> n > 2).count();
+System.out.println(count);  // 3
+```
+
+
+# Arrays Class Cheatsheet
+```
+┌──────────────────────────────┬─────────────────────────┐
+│ Method                       │ What it does            │
+├──────────────────────────────┼─────────────────────────┤
+│ Arrays.sort(arr)             │ sort ascending          │
+│ Arrays.sort(arr, from, to)   │ sort range              │
+│ Arrays.binarySearch(arr, k)  │ find index of k         │
+│ Arrays.fill(arr, val)        │ fill with value         │
+│ Arrays.fill(arr, f, t, val)  │ fill range              │
+│ Arrays.equals(a, b)          │ compare 1D arrays       │
+│ Arrays.deepEquals(a, b)      │ compare 2D arrays       │
+│ Arrays.toString(arr)         │ print 1D array          │
+│ Arrays.deepToString(arr)     │ print 2D array          │
+│ Arrays.copyOf(arr, len)      │ copy with new length    │
+│ Arrays.copyOfRange(a, f, t)  │ copy range              │
+│ Arrays.stream(arr)           │ convert to stream       │
+└──────────────────────────────┴─────────────────────────┘
+```
