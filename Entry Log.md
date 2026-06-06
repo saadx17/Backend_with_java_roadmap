@@ -92,3 +92,8 @@ Added Loop Control.
 
 ###### 10:09 PM
 Added Exception Handling.
+
+##### 06th June,2026 | 10:45 AM
+Added array, re-organized Java.
+Worked on 1D array.
+

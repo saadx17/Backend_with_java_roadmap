@@ -472,7 +472,7 @@ System.out.println(grade);  // B
 # Operator `Precedence`
 When multiple operators appear in one expression, Java follows **precedence rules** (like BODMAS/PEMDAS in math).
 
-```java title:prec.java
+```
 Higher precedence (evaluated first) ───────────────────────────────────
 1. () Parentheses
 2. ++ -- Post/Pre increment
@@ -483,12 +483,12 @@ Higher precedence (evaluated first) ──────────────�
 7. == != Equality
 8. && Logical AND
 9. || Logical OR
-10. = += -= *= /= %= Assignment ───────────────────────────────────
+10. = += -= *= /= %= Assignment
+───────────────────────────────────
 Lower precedence (evaluated last)
 ```
 
-**Example:**
-```java title:prec2.java
+```java title:example.java
 int result = 2 + 3 * 4; // 14, not 20 (* before +)
 int result2 = (2 + 3) * 4; // 20 (parentheses first)
 

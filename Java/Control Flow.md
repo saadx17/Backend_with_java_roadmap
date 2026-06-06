@@ -300,6 +300,149 @@ else if (temperature > 15) {
 else { System.out.println("Cold"); }
 ```
 
+## Pattern Matching for Switch (Java 17+)
+**Pattern Matching for Switch** simplifies code by allowing you to check the **class type of an object** directly inside `case` labels, eliminating verbose `instanceof` checks and manual casting. Introduced as a preview in **Java 17 (JEP 406)**, it became a standard feature in **Java 21 (JEP 441**)
+
+#### The Problem it Solves
+Pattern Matching for Switch solves the problems of verbose `instanceof` chains, unsafe manual type-casting, and rigid restriction on data types in traditional Java `switch` statements. It transforms the `switch` construct from a simple primitive value-wrapper into a powerful tool for complex, data-driven control flow.
+
+```java title:ugly_syntax.java
+// Before Java 17 → ugly instanceof chain
+Object obj = "Hello";
+
+if (obj instanceof Integer) {
+    Integer i = (Integer) obj;    // manual cast
+    System.out.println(i * 2);
+} else if (obj instanceof String) {
+    String s = (String) obj;      // manual cast
+    System.out.println(s.toUpperCase());
+} else if (obj instanceof Double) {
+    Double d = (Double) obj;      // manual cast
+    System.out.println(d + 1.0);
+}
+```
+
+```java title:clean_syntax.java
+// Java 17+ → type pattern matching in switch
+Object obj = "Hello";
+
+String result = switch (obj) {
+    case Integer i -> "Integer: " + (i * 2);
+    case String  s -> "String: "  + s.toUpperCase();  // ← matches
+    case Double  d -> "Double: "  + (d + 1.0);
+    case null      -> "null value";
+    default        -> "Unknown type";
+};
+
+System.out.println(result);  // String: HELLO
+```
+
+#### Guarded Patterns (when clause)
+```java title:guarded_patterns.java
+// Add conditions to pattern cases with 'when'
+Object obj = 42;
+
+String result = switch (obj) {
+    case Integer i when i < 0  -> "Negative: " + i;
+    case Integer i when i == 0 -> "Zero";
+    case Integer i when i > 0  -> "Positive: " + i;   // ← matches
+    case String  s when s.isEmpty() -> "Empty string";
+    case String  s             -> "String: " + s;
+    default                    -> "Other";
+};
+
+System.out.println(result);  // Positive: 42
+
+
+// Sealed classes + pattern switch (powerful combo)
+sealed interface Shape permits Circle, Rectangle, Triangle {}
+record Circle(double radius) implements Shape {}
+record Rectangle(double w, double h) implements Shape {}
+record Triangle(double base, double height) implements Shape {}
+
+Shape shape = new Circle(5.0);
+
+double area = switch (shape) {
+    case Circle    c             -> Math.PI * c.radius() * c.radius();
+    case Rectangle r             -> r.w() * r.h();
+    case Triangle  t             -> 0.5 * t.base() * t.height();
+};
+// No default needed → compiler knows all cases covered (sealed)
+System.out.println("Area: " + area);  // Area: 78.53...
+```
+
+#### Evolution of Switch in Java
+```
+Java 1   → switch statement (int, char only)
+Java 7   → switch with String support
+Java 14  → switch expressions (arrow syntax, yield) [preview]
+Java 14  → switch expressions STANDARD
+Java 17  → pattern matching for switch [preview]
+Java 21  → pattern matching for switch STANDARD ✅
+
+// Progression:
+Old:     switch (x) { case 1: ...; break; }
+Modern:  switch (x) { case 1 -> ...; }
+Newest:  switch (obj) { case String s when s.length() > 5 -> ...; }
+```
+
+```java title:complete_example.java
+import java.util.Scanner;
+
+public class ATM {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        double balance = 1000.0;
+        int choice;
+
+        System.out.println("=== ATM ===");
+
+        do {
+            System.out.println("\n1. Check Balance");
+            System.out.println("2. Deposit");
+            System.out.println("3. Withdraw");
+            System.out.println("4. Exit");
+            System.out.print("Choice: ");
+            choice = sc.nextInt();
+
+            switch (choice) {
+                case 1 -> System.out.printf("Balance: $%.2f%n", balance);
+
+                case 2 -> {
+                    System.out.print("Deposit amount: $");
+                    double amount = sc.nextDouble();
+                    if (amount <= 0) {
+                        System.out.println("Invalid amount");
+                    } else {
+                        balance += amount;
+                        System.out.printf("Deposited $%.2f%n", amount);
+                    }
+                }
+
+                case 3 -> {
+                    System.out.print("Withdraw amount: $");
+                    double amount = sc.nextDouble();
+                    if (amount <= 0) {
+                        System.out.println("Invalid amount");
+                    } else if (amount > balance) {
+                        System.out.println("Insufficient funds");
+                    } else {
+                        balance -= amount;
+                        System.out.printf("Withdrew $%.2f%n", amount);
+                    }
+                }
+
+                case 4 -> System.out.println("Thank you. Goodbye!");
+
+                default -> System.out.println("Invalid choice");
+            }
+
+        } while (choice != 4);
+
+        sc.close();
+    }
+}
+```
 
 ## 3. Ternary Operator
 The ternary operator is a **compact one-line if-else**.  It is the only operator in Java that takes **three operands**.
@@ -1127,7 +1270,51 @@ public static int parseAndDivide(String numStr, int divisor) {
 }
 ```
 
-## 2. `finally` Block
+## 2. `try` with resources (Java 7+)
+
+The **`try-with-resources` statement** in Java is a feature introduced in Java 7 that **automatically closes resources** (like files, database connections, or network streams) at the end of the statement block. This eliminates the need for manual cleanup in a `finally` block and safely prevents memory or resource leaks.
+
+**Note:** Automatically closes resources (no need for finally!), works with anything that implements [AutoCloseable](https://docs.oracle.com/javase/8/docs/api/java/lang/AutoCloseable.html).
+
+```java title:old-way.java
+// Old way (verbose)
+Scanner sc = null;
+try {
+    sc = new Scanner(new File("data.txt"));
+    System.out.println(sc.nextLine());
+} catch (FileNotFoundException e) {
+    e.printStackTrace();
+} finally {
+    if (sc != null) sc.close();   // manual close
+}
+```
+
+```java title:new-way.java
+// New way (try-with-resources)
+try (Scanner sc = new Scanner(new File("data.txt"))) {
+    System.out.println(sc.nextLine());
+} catch (FileNotFoundException e) {
+    e.printStackTrace();
+}
+// sc automatically closed after try block
+```
+
+```java title:multi-resource.java
+// Multiple resources
+try (
+    Scanner input  = new Scanner(new File("input.txt"));
+    PrintWriter output = new PrintWriter("output.txt")
+) {
+    while (input.hasNextLine()) {
+        output.println(input.nextLine());
+    }
+} catch (FileNotFoundException e) {
+    e.printStackTrace();
+}
+// Both closed automatically
+```
+
+## 3. `finally` Block
 
 The **`finally` block** in Java is a code block that **always executes after the `try` and `catch` blocks finish**, regardless of whether an exception is thrown, caught, or completely unhandled.
 
@@ -1223,7 +1410,7 @@ try {
 }
 ```
 
-## 3. `throw` Block
+## 4. `throw` Block
 
 In Java, the `throw` keyword is used to explicitly clear and manually trigger a single exception from a method or any block of code. It breaks the normal application flow and transfers control directly to the nearest enclosing `try-catch` block.
 
@@ -1267,7 +1454,7 @@ public static void greet(String name) {
 }
 ```
 
-## 4. `throws` (Declaring Exceptions)
+## 5. `throws` (Declaring Exceptions)
 
 The **`throws` keyword in Java** is used in a **method signature** to declare that the method might throw one or more specific exceptions during its execution. It delegates the responsibility of handling the exception to the **calling method** (the caller) rather than dealing with it internally via a `try-catch` block.
 
@@ -1325,7 +1512,7 @@ throw  → action  (happens now)
 throws → warning (might happen)
 ```
 
-## 5. Custom Exceptions
+## 6. Custom Exceptions
 To create a custom exception in Java, you must **create a new class that extends either `Exception` (for checked exceptions) or `RuntimeException` (for unchecked exceptions)**. Custom exceptions allow you to capture business-logic or domain-specific errors with clear, meaningful names.
 
 ```java title:custom-except.java
@@ -1380,50 +1567,6 @@ try {
     System.out.println(e.getMessage());       // Insufficient funds. Short by: $50.0
     System.out.println("Short by: $" + e.getAmount());  // Short by: $50.0
 }
-```
-
-## 6. `try` with resources (Java 7+)
-
-The **`try-with-resources` statement** in Java is a feature introduced in Java 7 that **automatically closes resources** (like files, database connections, or network streams) at the end of the statement block. This eliminates the need for manual cleanup in a `finally` block and safely prevents memory or resource leaks.
-
-**Note:** Automatically closes resources (no need for finally!), works with anything that implements [AutoCloseable](https://docs.oracle.com/javase/8/docs/api/java/lang/AutoCloseable.html).
-
-```java title:old-way.java
-// Old way (verbose)
-Scanner sc = null;
-try {
-    sc = new Scanner(new File("data.txt"));
-    System.out.println(sc.nextLine());
-} catch (FileNotFoundException e) {
-    e.printStackTrace();
-} finally {
-    if (sc != null) sc.close();   // manual close
-}
-```
-
-```java title:new-way.java
-// New way (try-with-resources)
-try (Scanner sc = new Scanner(new File("data.txt"))) {
-    System.out.println(sc.nextLine());
-} catch (FileNotFoundException e) {
-    e.printStackTrace();
-}
-// sc automatically closed after try block
-```
-
-```java title:multi-resource.java
-// Multiple resources
-try (
-    Scanner input  = new Scanner(new File("input.txt"));
-    PrintWriter output = new PrintWriter("output.txt")
-) {
-    while (input.hasNextLine()) {
-        output.println(input.nextLine());
-    }
-} catch (FileNotFoundException e) {
-    e.printStackTrace();
-}
-// Both closed automatically
 ```
 
 ## 7.Exception Chaining

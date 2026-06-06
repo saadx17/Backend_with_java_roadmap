@@ -47,7 +47,7 @@ System.out.println("Hello, World!");
 - First `}` → Closes the `main` method.
 - Second `}` → Closes the `Hello` class.
 
-##### Key rules to remember:
+#### Key rules to remember:
 
 | Rule                             | Explanation                                    |
 | -------------------------------- | ---------------------------------------------- |

@@ -443,7 +443,7 @@ boolean isEmpty = name.isEmpty(); // method returning boolean
 Non-primitive data types, also known as **reference types**, differ from primitive types because they refer to objects rather than storing actual values directly. While primitive types are predefined by Java, non-primitive types are created by the programmer (except for `String`), they "point" or "refer" to a much larger, more complex object sitting in the JVM's [[JVM Architecture#3. Heap (Shared)|Heap]] memory.
 
 ##### 1. ==String==
-String is a **non-primitive type**, it is a **class** in Java (`java.lang.String`).  
+[[String]] is a **non-primitive type**, it is a **class** in Java (`java.lang.String`).  
 It represents a **sequence of characters**.  
 Uses **double quotes**.
 
@@ -482,7 +482,7 @@ System.out.println(a.equals(c)); // true (same content)
 **NOTE:** *Always use `.equals()` to compare Strings, never `==`*
 
 ##### 2. ==Arrays==
-An array is a **fixed-size collection of elements of the same type**.
+An [[Arrays|array]] is a **fixed-size collection of elements of the same type**.
 ###### Declaring and creating arrays:
 ```java title:syntax.java
 // Method 1: Declare then initialize
