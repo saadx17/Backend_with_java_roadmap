@@ -97,3 +97,5 @@ Added Exception Handling.
 Added array, re-organized Java.
 Worked on 1D array.
 
+###### 11:38 AM
+Added 2D array. Completed Arrays.
