@@ -91,4 +91,138 @@ for (int i = 0; i < 5; i++) {
 String result = sb.toString();  // "01234"
 ```
 
+# String Pool
+The **Java String Pool** (also known as the **String Constant Pool**) is a dedicated memory region inside the Java Heap memory that stores unique string literals. Its primary purpose is to **optimize memory usage and enhance performance** by reusing existing string objects instead of creating duplicate instances.
+
+## How It Works?
+The **Java String Pool** (also known as the String Constant Pool or SCP) is a specialized memory region located within the **Java Heap** that caches string literals to optimize memory allocation and performance. Because `String` objects are immutable in Java, multiple references can safely point to a single instance in the pool without risking unintended data modifications.
+
+```
+String Pool (also called String Intern Pool):
+├── Special memory area inside HEAP (Java 8+)
+├── Stores unique String literals
+├── JVM reuses existing strings instead of creating new
+└── Saves memory when same string used multiple times
+```
+
+```java title:string-pool_works.java
+// String literals → use pool
+String a = "Hello";   // JVM checks pool → not found → adds "Hello"
+String b = "Hello";   // JVM checks pool → found! → reuses same object
+String c = "Hello";   // same object again
+
+System.out.println(a == b);  // true  ← same object in pool!
+System.out.println(b == c);  // true  ← same object in pool!
+
+// new String() → bypasses pool
+String x = new String("Hello");  // forces new object in heap
+String y = new String("Hello");  // another new object in heap
+
+System.out.println(x == y);      // false ← different objects
+System.out.println(x.equals(y)); // true  ← same content
+```
+
+```java title:visuals.java
+// Visual
+//
+//  String Pool         Heap
+//  ┌──────────┐       ┌──────────┐
+//  │ "Hello"  │◄──a   │ "Hello"  │◄──x
+//  │          │◄──b   │ "Hello"  │◄──y
+//  │          │◄──c   └──────────┘
+//  └──────────┘
+//   same object         different objects
+```
+
+## intern() Method
+The **`public String intern()`** method in Java returns a **canonical representation** of a string object by ensuring it is stored in the **String Constant Pool (SCP)**. It is a memory optimization tool used to eliminate duplicate strings and allow safe `==` reference comparisons.
+
+```java title:intern.java
+// intern() → forces string into pool
+// if pool has it → return pool reference
+// if not → add to pool and return reference
+
+String x = new String("Hello");  // heap object, not in pool
+String y = x.intern();           // puts in pool (or gets existing)
+String z = "Hello";              // gets from pool
+
+System.out.println(x == y);  // false (x is heap, y is pool)
+System.out.println(y == z);  // true  (both from pool)
+
+// Rarely used in practice
+// String literals are auto-interned by JVM
+```
+
+# String Comparison
+To compare strings in Java, **always use the `.equals()` method** instead of the `==` operator if you want to compare their actual text content.
+
+## `==` vs `.equals()` vs `.equalsIgnoreCase()`
+In Java, the core difference is that **`==` compares memory references (identity)**, **`.equals()` compares exact text content (case-sensitive)**, and **`.equalsIgnoreCase()` compares text content while ignoring uppercase/lowercase differences**.
+
+| Features             | `==` Operator                   | `.equals()` Method                                | `.equalsIgnoreCase()` Method                      |
+| -------------------- | ------------------------------- | ------------------------------------------------- | ------------------------------------------------- |
+| **Comparison Type**  | Reference / Memory address      | Content / Values                                  | Content / Values                                  |
+| **Case Sensitivity** | Not applicable                  | Strict case-sensitive                             | Case-insensitive                                  |
+| **Best Used For**    | Primitive types (`int`, `char`) | Exact matching (Passwords)                        | Flexible matching (Usernames, Emails)             |
+| **Null Safety**      | Safe (returns false or true)    | Throws `NullPointerException` if called on `null` | Throws `NullPointerException` if called on `null` |
+
+```java title:dec.java
+String a = "hello";
+String b = "hello";
+String c = new String("hello");
+String d = "HELLO";
+```
+
+```java title:compare_ref.java
+// == compares REFERENCES
+System.out.println(a == b);    // true  (both from pool)
+System.out.println(a == c);    // false (c is heap object)
+```
+
+```java title:equals.java
+// .equals() compares CONTENT
+System.out.println(a.equals(b));    // true
+System.out.println(a.equals(c));    // true
+System.out.println(a.equals(d));    // false (case sensitive)
+System.out.println(a.equals(null)); // false (no NPE)
+```
+
+```java title:equalsIgnoreCase.java
+// .equalsIgnoreCase() → ignores case
+System.out.println(a.equalsIgnoreCase(d));  // true
+System.out.println(a.equalsIgnoreCase("HeLLo")); // true
+```
+
+```java title:compareTo.java
+// .compareTo() → lexicographic comparison
+System.out.println("apple".compareTo("banana")); // negative (a < b)
+System.out.println("banana".compareTo("apple")); // positive (b > a)
+System.out.println("apple".compareTo("apple"));  // 0 (equal)
+```
+
+```java title:sorting.java
+// Used for sorting strings alphabetically
+String[] fruits = {"Banana", "Apple", "Cherry"};
+Arrays.sort(fruits);  // uses compareTo internally
+System.out.println(Arrays.toString(fruits)); // [Apple, Banana, Cherry]
+```
+
+## Safe Comparison Patterns
+```java title:safe_comparison.java
+String input = getUserInput();  // might be null
+
+// Dangerous
+if (input.equals("admin")) { }     // NPE if input is null!
+if (input == "admin") { }          // wrong! reference comparison
+
+// Null safe: literal first (Yoda condition)
+if ("admin".equals(input)) { }     // no NPE even if input is null
+
+// Null safe: explicit null check
+if (input != null && input.equals("admin")) { }
+
+// Java 7+: Objects.equals()
+import java.util.Objects;
+if (Objects.equals(input, "admin")) { }  // handles null on both sides
+```
 
