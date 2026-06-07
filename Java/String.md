@@ -14,6 +14,16 @@ Special treatment:
 ├── Most used class in Java
 └── Overloads + operator for concatenation
 ```
+
+```
+RULES:                                                 
+✅ Always .equals() never == for Strings               
+✅ StringBuilder in loops, not +=                      
+✅ Use text blocks for multiline content               
+✅ strip() over trim() in Java 11+                     
+⚠️ String methods return new string, reassign!         
+⚠️ charAt() can throw StringIndexOutOfBounds  
+```
 # Methods of Creation
 You can instantiate strings using two distinct mechanisms:
 
@@ -471,3 +481,386 @@ String result = "Hello %s!".formatted("World");
 System.out.println(result);  // Hello World!
 ```
 
+# `StringBuilder` vs. `StringBuffer`
+`StringBuilder` and `StringBuffer` are companion classes in Java used to **create and manipulate** mutable sequences of characters.
+
+**The main difference between both:**
+
+| Feature             | `StringBuffer`                           | `StringBuilder`                               |
+| ------------------- | ---------------------------------------- | --------------------------------------------- |
+| **Thread Safety**   | **Thread-safe** (Synchronized methods)   | **Not thread-safe** (Not synchronized)        |
+| **Performance**     | Slower (overhead from explicit locking)  | Faster (no synchronization overhead)          |
+| **Introduced In**   | Java 1.0                                 | Java 5                                        |
+| **Storage Area**    | Heap memory                              | Heap memory                                   |
+| **Mutability**      | Mutable (modifies text in-place)         | Mutable (modifies text in-place)              |
+| **Synchronization** | No (Not synchronized)                    | Yes (Synchronized methods)                    |
+| **Best Use Case**   | Single-threaded applications, fast loops | Multi-threaded environments, shared resources |
+
+Unlike standard Java `String` objects, which are **immutable** and create a brand-new object in memory every time you modify them, `StringBuilder` and `StringBuffer` allow you to append, insert, delete, or reverse text **in-place** without the heavy memory overhead. They share the exact same API and methods, but they differ completely in how they handle thread operations.
+
+#### What is `StringBuilder`?
+`StringBuilder` was introduced in Java 5 to solve performance bottlenecks. Its methods are **not synchronized**, meaning it is **not thread-safe**. Because it doesn't spend computing power checking for thread safety, it is incredibly fast and is the industry-standard choice for single-threaded tasks like loops, formatting, or local string manipulations.
+
+#### What is `StringBuffer`?
+`StringBuffer` has been part of Java since version 1.0. All of its public methods are **synchronized**, making it **thread-safe**. If multiple threads access and modify the same string object at the same time, `StringBuffer` guarantees that data will not be corrupted. This added layer of security creates synchronization overhead, making it slightly slower than `StringBuilder`.
+
+### `StringBuilder()`
+
+```java title:String_builder.java
+StringBuilder sb = new StringBuilder();
+
+// append
+sb.append("Hello");
+sb.append(", ");
+sb.append("World");
+sb.append("!");
+System.out.println(sb.toString());  // Hello, World!
+
+// Method chaining
+StringBuilder sb2 = new StringBuilder()
+    .append("Hello")
+    .append(", ")
+    .append("World")
+    .append("!");
+System.out.println(sb2);  // Hello, World!
+
+// insert
+StringBuilder sb3 = new StringBuilder("Hello World");
+sb3.insert(5, ",");
+System.out.println(sb3);  // Hello, World
+
+// delete
+StringBuilder sb4 = new StringBuilder("Hello, World!");
+sb4.delete(5, 7);               // delete index 5 to 6
+System.out.println(sb4);        // HelloWorld!
+
+sb4.deleteCharAt(0);            // delete index 0
+System.out.println(sb4);        // elloWorld!
+
+// replace
+StringBuilder sb5 = new StringBuilder("Hello World");
+sb5.replace(6, 11, "Java");     // replace index 6-10
+System.out.println(sb5);        // Hello Java
+
+// reverse
+StringBuilder sb6 = new StringBuilder("Hello");
+sb6.reverse();
+System.out.println(sb6);        // olleH
+
+// Other methods
+StringBuilder sb7 = new StringBuilder("Hello World");
+System.out.println(sb7.length());      // 11
+System.out.println(sb7.charAt(0));     // H
+System.out.println(sb7.indexOf("World")); // 6
+sb7.setCharAt(0, 'h');
+System.out.println(sb7);              // hello World
+System.out.println(sb7.capacity());   // internal buffer size
+```
+
+### Performance Comparison
+
+```java title:performance.java
+int iterations = 100_000;
+
+// String concatenation (SLOW)
+long start1 = System.currentTimeMillis();
+String result1 = "";
+for (int i = 0; i < iterations; i++) {
+    result1 += i;   // creates new object every time!
+}
+long end1 = System.currentTimeMillis();
+System.out.println("String:        " + (end1 - start1) + "ms");
+
+// StringBuilder (FAST)
+long start2 = System.currentTimeMillis();
+StringBuilder sb = new StringBuilder();
+for (int i = 0; i < iterations; i++) {
+    sb.append(i);  // modifies same object
+}
+String result2 = sb.toString();
+long end2 = System.currentTimeMillis();
+System.out.println("StringBuilder: " + (end2 - start2) + "ms");
+
+// Typical output:
+// String:        2500ms  ← much slower
+// StringBuilder: 5ms     ← much faster
+```
+
+### `StringBuilder` vs `StringBuffer`
+```java title:builder_buffer.java
+┌────────────────┬───────────────────┬──────────────────┐
+│                │ StringBuilder     │ StringBuffer     │
+├────────────────┼───────────────────┼──────────────────┤
+│ Mutable        │ ✅ Yes            │ ✅ Yes           │
+│ Thread Safe    │ ❌ No             │ ✅ Yes           │
+│ Performance    │ ✅ Faster         │ ⚠️ Slower        │
+│ Synchronized   │ ❌ No             │ ✅ Yes           │
+│ Use when       │ Single thread     │ Multi thread     │
+│ Java version   │ Java 5+           │ Java 1.0+        │
+└────────────────┴───────────────────┴──────────────────┘
+
+// Same API, just different thread safety
+StringBuffer sbf = new StringBuffer();
+sbf.append("Hello");
+sbf.reverse();
+// All StringBuilder methods work on StringBuffer too
+```
+
+# Text Blocks (Java 15+)
+**Java Text Blocks**, finalized in **Java 15** via [JEP 378](https://openjdk.org/jeps/378), are a standard language feature designed to declare **multi-line string literals** cleanly and efficiently. They eliminate the tedious need for manual string concatenation (`+`) and the manual escaping of double quotes (`\"`) or newline characters (`\n`).
+
+This feature drastically improves code readability when embedding structured formats like JSON, XML, HTML, or SQL queries directly into your Java source code.
+
+### The Problem They Solve
+```java title:problem_solver.java
+// Before Java 15 → HTML/JSON/SQL in strings was ugly
+String html = "<html>\n" +
+              "    <body>\n" +
+              "        <p>Hello World</p>\n" +
+              "    </body>\n" +
+              "</html>";
+
+String json = "{\n" +
+              "    \"name\": \"Alice\",\n" +
+              "    \"age\": 25\n" +
+              "}";
+// Hard to read, escape characters everywhere
+```
+
+### Text Block Syntax
+```java title:syntax.java
+// Java 15+ Text Blocks → """ ... """
+// Opening """ must be on its own line
+// Preserves formatting
+
+String html = """
+        <html>
+            <body>
+                <p>Hello World</p>
+            </body>
+        </html>
+        """;
+
+System.out.println(html);
+// <html>
+//     <body>
+//         <p>Hello World</p>
+//     </body>
+// </html>
+
+// JSON
+String json = """
+        {
+            "name": "Alice",
+            "age": 25,
+            "active": true
+        }
+        """;
+
+// SQL
+String sql = """
+        SELECT u.name, u.email, o.total
+        FROM users u
+        JOIN orders o ON u.id = o.user_id
+        WHERE u.active = true
+        ORDER BY o.total DESC
+        """;
+
+// Regular String methods work on Text Blocks
+String upper = """
+        hello world
+        """.toUpperCase();
+System.out.println(upper);  // HELLO WORLD
+```
+
+### Text Block Indentation Rules
+```java title:indentation_rules.java
+// Closing """ position controls indentation
+
+
+// Closing """ at start → no indent removed
+String s1 = """
+    Hello
+    World
+""";   // ← closing here = 0 spaces removed
+// "    Hello\n    World\n"  (spaces preserved)
+
+
+
+// Closing """ aligned → indent removed
+String s2 = """
+    Hello
+    World
+    """;  // ← closing here = 4 spaces removed
+// "Hello\nWorld\n"  (4 spaces stripped from each line)
+
+
+
+// Inline expressions
+String name = "Alice";
+int age = 25;
+
+String profile = """
+        Name: %s
+        Age:  %d
+        """.formatted(name, age);
+
+System.out.println(profile);
+// Name: Alice
+// Age:  25
+```
+
+### Text Block Special Characters
+```java title:special_char.java
+// \s → preserve trailing whitespace
+String s = """
+        Hello   \s
+        World   \s
+        """;
+// Trailing spaces preserved on each line
+
+// \ → line continuation (no newline)
+String s2 = """
+        Hello \
+        World
+        """;
+System.out.println(s2);  // Hello World (single line)
+
+// Quotes inside text blocks
+String s3 = """
+        He said "Hello" and left
+        """;
+// No need to escape quotes inside text blocks 
+System.out.println(s3);  // He said "Hello" and left
+```
+
+# Common String Patterns
+# Examples
+
+### Frequently Used in Real Work
+```java title:freq.java
+// ─── Check if string is a number ──────────────────────────
+public static boolean isNumeric(String s) {
+    if (s == null || s.isBlank()) return false;
+    try {
+        Double.parseDouble(s);
+        return true;
+    } catch (NumberFormatException e) {
+        return false;
+    }
+}
+
+// ─── Count occurrences of char ────────────────────────────
+public static int countChar(String s, char c) {
+    int count = 0;
+    for (char ch : s.toCharArray()) {
+        if (ch == c) count++;
+    }
+    return count;
+}
+// OR
+long count = "hello".chars().filter(c -> c == 'l').count(); // 2
+
+// ─── Reverse a String ─────────────────────────────────────
+String reversed = new StringBuilder("Hello").reverse().toString();
+System.out.println(reversed);  // olleH
+
+// ─── Check palindrome ─────────────────────────────────────
+public static boolean isPalindrome(String s) {
+    String cleaned = s.toLowerCase().replaceAll("[^a-z0-9]", "");
+    String reversed = new StringBuilder(cleaned).reverse().toString();
+    return cleaned.equals(reversed);
+}
+isPalindrome("racecar");        // true
+isPalindrome("A man a plan a canal Panama"); // true
+
+// ─── Capitalize first letter ──────────────────────────────
+public static String capitalize(String s) {
+    if (s == null || s.isEmpty()) return s;
+    return Character.toUpperCase(s.charAt(0)) + s.substring(1);
+}
+capitalize("hello");  // "Hello"
+
+// ─── Count words ──────────────────────────────────────────
+String sentence = "Hello World Java";
+long wordCount = sentence.trim().isEmpty() ? 0
+               : sentence.trim().split("\\s+").length;
+System.out.println(wordCount);  // 3
+
+// ─── Remove duplicates from string ───────────────────────
+public static String removeDuplicates(String s) {
+    StringBuilder sb = new StringBuilder();
+    for (char c : s.toCharArray()) {
+        if (sb.indexOf(String.valueOf(c)) == -1) {
+            sb.append(c);
+        }
+    }
+    return sb.toString();
+}
+removeDuplicates("programming");  // "progamin"
+```
+
+### Real-World Example
+
+```java title:real_example.java
+import java.util.*;
+
+public class TextAnalyzer {
+
+    public static void main(String[] args) {
+        String text = """
+                Java is a powerful language.
+                Java is used for backend development.
+                Strings in Java are immutable.
+                Learning Java is rewarding.
+                """;
+
+        System.out.println("=== Text Analyzer ===\n");
+        System.out.println("Original Text:\n" + text);
+
+        // ─── Basic stats ──────────────────────────────────
+        String[] lines = text.strip().split("\n");
+        String[] words = text.strip().split("\\s+");
+        long charCount = text.chars()
+                             .filter(c -> !Character.isWhitespace(c))
+                             .count();
+
+        System.out.println("Lines      : " + lines.length);
+        System.out.println("Words      : " + words.length);
+        System.out.println("Characters : " + charCount);
+
+        // ─── Word frequency ───────────────────────────────
+        Map<String, Integer> freq = new HashMap<>();
+        for (String word : words) {
+            String clean = word.toLowerCase()
+                               .replaceAll("[^a-z]", "");
+            freq.put(clean, freq.getOrDefault(clean, 0) + 1);
+        }
+
+        System.out.println("\n── Word Frequency ──");
+        freq.entrySet().stream()
+            .filter(e -> e.getValue() > 1)
+            .sorted((a, b) -> b.getValue() - a.getValue())
+            .forEach(e -> System.out.printf("%-15s %d%n",
+                                             e.getKey(), e.getValue()));
+
+        // ─── Most common character ─────────────────────────
+        text.toLowerCase().chars()
+            .filter(Character::isLetter)
+            .boxed()
+            .collect(java.util.stream.Collectors.groupingBy(
+                c -> c, java.util.stream.Collectors.counting()))
+            .entrySet().stream()
+            .max(Map.Entry.comparingByValue())
+            .ifPresent(e -> System.out.println(
+                "\nMost common char: '" + (char)(int)e.getKey()
+                + "' (" + e.getValue() + " times)"));
+
+        // ─── Replace & format ─────────────────────────────
+        String modified = text
+            .replaceAll("Java", "**Java**")
+            .toUpperCase();
+        System.out.println("\nFormatted:\n" + modified);
+    }
+}
+```

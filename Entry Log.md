@@ -108,3 +108,6 @@ added String Pool, String Comparison.
 
 ###### 01:25 PM
 added String Methods. All kinds.
+
+###### 08:30 PM
+completed String.
