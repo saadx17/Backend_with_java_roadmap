@@ -226,3 +226,248 @@ import java.util.Objects;
 if (Objects.equals(input, "admin")) { }  // handles null on both sides
 ```
 
+# String Methods
+In Java, **[String methods](https://www.geeksforgeeks.org/java/java-string-methods/)** are built-in functions provided by the `java.lang.String` class to perform actions on text. Because strings in Java are **immutable** (cannot be changed after creation), every method that modifies a string actually returns a brand-new string object.
+## Inspection Methods
+**Inspection methods of a String in Java** are built-in functions belonging to the `java.lang.String` class that allow you to read, search, or evaluate metadata about text without changing the original string. Unlike modification methods, these operations return primitives, booleans, or specific character components.
+
+#### `length()`
+Number of characters.
+```java title:length.java
+String name = "Ahmed";
+System.out.println(name.length()); // 5
+
+String empty = "";
+System.out.println(empty.length()); // 0
+
+String sentence = "Hello World"; System.out.println(sentence.length()); // 11 (space counts!)
+```
+
+#### `charAt(index)`
+Character at a position. Returns the **char** at the given index (0-based).
+```java title:charAt.java
+String name = "Ahmed";
+//             01234 ← indexes
+
+System.out.println(name.charAt(0)); // A
+System.out.println(name.charAt(2)); // m
+System.out.println(name.charAt(4)); // d
+
+// name.charAt(5) → ❌ StringIndexOutOfBoundsException
+```
+
+#### `indexOf()`
+Find position of a character or String. Returns the **index** of the first occurrence.  Returns **-1** if not found.
+```java title:indexOf.java
+String text = "Hello World";
+System.out.println(text.indexOf('o')); // 4 (first 'o')
+System.out.println(text.indexOf('o', 5)); // 7 (search starting from index 5)
+System.out.println(text.indexOf("World")); // 6
+System.out.println(text.indexOf('z')); // -1 (not found)
+System.out.println(text.indexOf("xyz")); // -1 (not found)
+```
+
+#### `contains()`
+Check if String contains a value. Returns `boolean` true if found, false if not.
+```java title:contains.java
+String email = "ahmed@gmail.com";
+System.out.println(email.contains("@")); // true
+System.out.println(email.contains("gmail")); // true
+System.out.println(email.contains("yahoo")); // false
+```
+
+#### `startsWith()` & `endsWith()`
+checks whether a string begins or ends with a specific sequence of characters. Both methods are **case-sensitive** and return a boolean value (`true` or `false`).
+```java title:startsWith_endsWith.java
+System.out.println(s.startsWith("Hello")); // true
+System.out.println(s.endsWith("!"));       // true
+System.out.println(s.startsWith("World", 7)); // true (from index 7)
+```
+
+#### `isEmpty()` & `isBlank()`
+`isEmpty()` checks if the string length is exactly 0, while `isBlank()` checks if the string is empty or contains only whitespace characters.
+```java title:isEmpty_isBlank.java
+System.out.println("".isEmpty());          // true
+System.out.println("  ".isEmpty());        // false (has spaces)
+System.out.println("  ".isBlank());        // true  (Java 11+)
+System.out.println("hi".isEmpty());        // false
+```
+
+## Transformation Methods
+In Java, string transformation can refer specifically to the modern **`transform()` method** introduced in Java 12, or generally to standard text manipulation methods. Because strings are **immutable**, all of these methods return a new string instance or a completely new object type without modifying the original text.
+
+#### `toUpperCase()` & `toLowerCase()`
+Changes the casing of text. Because strings in Java are immutable, these methods do not change the original string; instead, they return a brand new string with the altered case.
+```java title:up_low_case.java
+String name = "Ahmed Ali";
+System.out.println(name.toUpperCase()); // "AHMED ALI"
+System.out.println(name.toLowerCase()); // "ahmed ali"
+// Useful for case-insensitive comparison
+String input = "YES";
+if (input.toLowerCase().equals("yes")) { System.out.println("User said yes");
+}
+```
+
+#### `trim()` & `strip()`
+Removes leading and trailing whitespace from a string, but they handle different types of whitespace characters based on Unicode standards.
+```java title:Trim_Strip.java
+System.out.println(s.trim());          // "Hello, World!" (removes spaces)
+System.out.println(s.strip());         // "Hello, World!" (Java 11+, Unicode aware)
+System.out.println(s.stripLeading());  // "Hello, World!  "
+System.out.println(s.stripTrailing()); // "  Hello, World!"
+```
+
+#### `replace()`
+Replace characters or substrings.
+```java title:replace.java
+String text = "Hello World";
+System.out.println(text.replace('l', 'x')); // "Hexxo Worxd"
+System.out.println(text.replace("World", "Java")); // "Hello Java"
+System.out.println(text.replace("l", "LL")); // "HeLLLLo WorLLd"
+
+// Original is unchanged!
+System.out.println(text); // "Hello World"
+```
+
+#### `substring()`
+Extract part of a String.
+Two versions:
+- `substring(startIndex)` → from startIndex to end
+
+- `substring(startIndex, endIndex)` → from startIndex up to (not including) endIndex.
+```java title:substring.java
+String text = "Hello World";
+//             01234567890
+
+System.out.println(text.substring(6)); // "World" (from index 6 to end)
+
+System.out.println(text.substring(0, 5)); // "Hello" (0 to 4, not including 5)
+
+System.out.println(text.substring(6, 11)); // "World" (6 to 10, not including 11)
+```
+
+#### `concat()`
+Appends a specified string to the end of an existing string and returns a brand-new string object.
+```java title:concat.java
+String hello = "Hello";
+String world = " World";
+System.out.println(hello.concat(world));  // "Hello World"
+System.out.println(hello + world);        // "Hello World" (easier)
+```
+
+## Splitting & Joining
+In Java, you can split a string into an array using the **`String.split()`** method and merge them back together using the static **`String.join()`** method.
+
+```java title:splitting.java
+// split
+String csv = "Alice,Bob,Charlie,Dave";
+String[] names = csv.split(",");
+System.out.println(Arrays.toString(names)); // [Alice, Bob, Charlie, Dave]
+System.out.println(names[0]);               // Alice
+System.out.println(names.length);           // 4
+
+// Split with limit
+String[] limited = csv.split(",", 2);  // max 2 parts
+System.out.println(Arrays.toString(limited)); // [Alice, Bob,Charlie,Dave]
+
+// Split on whitespace
+String sentence = "Hello World Java";
+String[] words = sentence.split("\\s+");  // one or more spaces
+System.out.println(Arrays.toString(words)); // [Hello, World, Java]
+
+// Split on multiple delimiters
+String data = "one,two;three|four";
+String[] parts = data.split("[,;|]");
+System.out.println(Arrays.toString(parts)); // [one, two, three, four]
+```
+
+```java title:joining.java
+// join
+String joined = String.join(", ", "Alice", "Bob", "Charlie");
+System.out.println(joined);  // Alice, Bob, Charlie
+
+String[] arr = {"one", "two", "three"};
+String result = String.join(" - ", arr);
+System.out.println(result);  // one - two - three
+
+// join with List
+List<String> list = List.of("a", "b", "c");
+System.out.println(String.join("|", list));  // a|b|c
+```
+
+## Conversion Methods
+In Java, conversion methods involving strings broadly fall into three categories: **converting other data types to a `String`**, **converting a `String` to other data types**, and **modifying case within a `String`**.
+
+```java title:conversion.java
+// String → other types
+int    num  = Integer.parseInt("42");
+double d    = Double.parseDouble("3.14");
+long   l    = Long.parseLong("123456789");
+boolean b   = Boolean.parseBoolean("true");
+
+// Other types → String
+String s1 = String.valueOf(42);          // "42"
+String s2 = String.valueOf(3.14);        // "3.14"
+String s3 = String.valueOf(true);        // "true"
+String s4 = String.valueOf('A');         // "A"
+String s5 = Integer.toString(42);        // "42"
+String s6 = "" + 42;                     // "42" (implicit)
+
+// char array ↔ String
+char[] chars = {'H', 'e', 'l', 'l', 'o'};
+String str   = new String(chars);        // "Hello"
+char[] back  = str.toCharArray();        // back to char[]
+
+// String → char array iteration
+String word = "Hello";
+for (char c : word.toCharArray()) {
+    System.out.print(c + " ");  // H e l l o
+}
+```
+
+## String.format & printf
+In Java, `String.format()` and `System.out.printf()` use identical formatting rules, but **`String.format()` creates and returns a new string** without printing it, while **`System.out.printf()` prints the formatted text directly to the console output**.
+
+#### `String.format()`
+The method in Java is a static utility used to create a formatted string by substituting placeholders (format specifiers) with variable values. It returns a new string rather than modifying the original one or printing it directly.
+```java title:string_format.java
+// String.format
+String name  = "Alice";
+int    age   = 25;
+double score = 95.678;
+
+String formatted = String.format("Name: %s, Age: %d, Score: %.2f",
+                                  name, age, score);
+System.out.println(formatted);
+// Name: Alice, Age: 25, Score: 95.68
+
+
+// Format specifiers
+// %s  → String
+// %d  → integer
+// %f  → float/double
+// %.2f→ float with 2 decimal places
+// %n  → newline
+// %b  → boolean
+// %c  → char
+// %10s→ right-align in 10 chars
+// %-10s → left-align in 10 chars
+
+
+// Formatted table 
+System.out.printf("%-15s %5s %8s%n", "Name", "Age", "Score");
+System.out.printf("%-15s %5d %8.2f%n", "Alice",   25, 95.67);
+System.out.printf("%-15s %5d %8.2f%n", "Bob",     30, 87.33);
+System.out.printf("%-15s %5d %8.2f%n", "Charlie", 22, 91.50);
+
+// Name              Age    Score
+// Alice              25    95.67
+// Bob                30    87.33
+// Charlie            22    91.50
+
+
+// Java 15+ formatted() instance method
+String result = "Hello %s!".formatted("World");
+System.out.println(result);  // Hello World!
+```
+

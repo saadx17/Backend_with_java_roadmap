@@ -105,3 +105,6 @@ started working on string. The basics of String.
 
 ###### 12:33 PM
 added String Pool, String Comparison.
+
+###### 01:25 PM
+added String Methods. All kinds.
