@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Structures/Structure - Java.md",
+                "file": "Entry Log.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Structure - Java"
+              "title": "Entry Log"
             }
           }
         ]
@@ -204,9 +204,12 @@
   },
   "active": "21b6d197b73038fa",
   "lastOpenFiles": [
+    "Java/Methods & Recursion.md",
+    "Structures/Structure - Java.md",
+    "Java/JDK, JRE & JVM.md",
+    "Java/Methods & Functions.md",
     "Java/Input & Output.md",
     "Java/Input via scanner.md",
-    "Structures/Structure - Java.md",
     "Java/Control Flow.md",
     "Java/Exception Handling.md",
     "Structures/Structure - Database.md",
@@ -219,17 +222,14 @@
     "Java/Variables & Data Types.md",
     "Java/Hello World.md",
     "Java/Bytecode & JIT.md",
-    "Java/JDK, JRE & JVM.md",
     "Java/Introduction.md",
     "Java/Type Casting, Literals.md",
     "Java/Java Collections Framework.md",
     "Java/Operators.md",
     "Java/JVM Architecture.md",
-    "Java/Methods & Functions.md",
     "Java/Loops.md",
     "Java/Control Flow - Switch & Ternary.md",
     "Java/var Keyword.md",
-    "Java/Constants.md",
     "Screenshot 2026-05-29 at 11.58.53 AM.png",
     "Assets/collection-framework.png",
     "Assets/Screenshot 2026-05-29 at 11.58.53 AM.png",

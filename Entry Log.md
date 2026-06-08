@@ -111,3 +111,9 @@ added String Methods. All kinds.
 
 ###### 08:30 PM
 completed String.
+
+##### 08th June,2026 | 11:25 AM
+Added Input/Output.
+
+######  08:38 PM
+Added methods & recursion. working with methods.
