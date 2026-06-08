@@ -13,12 +13,13 @@ This is the total structure of the roadmap for Java. Down below, everything is c
 10. [[Control Flow]]
 11. [[Arrays]]
 12. [[String]]
-13. [[Input via scanner]]
+13. [[Input & Output]]
 14. [[Java Collections Framework]]
 15. [[Generics]]
 16. [[var Keyword]]
-17. [[Constants]]
-18. [[Methods & Functions]]
-19. [[JVM Architecture]]
+17. [[Exception Handling]]
+18. [[Constants]]
+19. [[Methods & Functions]]
+20. [[JVM Architecture]]
 
 *(More content will be added as the roadmap progresses)*
