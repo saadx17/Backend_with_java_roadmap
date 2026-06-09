@@ -41,6 +41,15 @@ String playerName = "Mario";
 
 ### Variable Naming Conventions
 Java follows specific naming conventions. These are **not enforced by the compiler** but are **industry standards every Java developer follows**.
+
+| What     | Convention           | Example                             |
+| -------- | -------------------- | ----------------------------------- |
+| Variable | camelCase            | `firstName`, `totalScore`           |
+| Method   | camelCase            | `getUserName()`, `calculateTotal()` |
+| Class    | PascalCase           | `BankAccount`, `UserService`        |
+| Constant | SCREAMING_SNAKE_CASE | `MAX_SIZE`, `PI`                    |
+| Package  | lowercase            | `com.example.app`                   |
+
 ##### ==camelCase==
 Used for variables. *Start with **lowercase**, capitalize each subsequent word.* camelCase (specifically `lowerCamelCase`) is a naming convention where the first word is entirely lowercase and each subsequent, compound word begins with a capital letter, with no spaces or punctuation, used for variables and methods to improve code readability. Examples include `firstName`, `calculateTotal`
 
@@ -99,17 +108,9 @@ package com.company.project.service;
 package org.example.utils;
 ```
 
-##### Summary Table:
 
-| What     | Convention           | Example                             |
-| -------- | -------------------- | ----------------------------------- |
-| Variable | camelCase            | `firstName`, `totalScore`           |
-| Method   | camelCase            | `getUserName()`, `calculateTotal()` |
-| Class    | PascalCase           | `BankAccount`, `UserService`        |
-| Constant | SCREAMING_SNAKE_CASE | `MAX_SIZE`, `PI`                    |
-| Package  | lowercase            | `com.example.app`                   |
 
-##### Other naming rules:
+##### Other naming rules
 - Must start with a **letter, `$`, or `_`** (never a digit)
 - Cannot use **reserved keywords** (`int`, `class`, `static`, etc.)
 - Case sensitive (`age` ≠ `Age` ≠ `AGE`)
@@ -145,7 +146,7 @@ Local variables are short-lived, temporary storage used for immediate calculatio
 
 - **Memory:** Stored in the thread's **Stack** memory.
 
-```java title:Calculator.java
+```java title:local_variable.java
 public class Calculator {
     public void addNumbers() {
         int result; // Declared, but not initialized
@@ -167,7 +168,7 @@ Instance variables represent the "state" or attributes of a specific object.
 
 - **Memory:** Stored alongside the object in the **Heap** memory.
 
-```
+```java title:instance_variable.java
 public class Player {
     // Instance variables: Every player gets their own name and score
     String name; 
@@ -194,7 +195,7 @@ Static variables belong to the class itself, not to any individual object.
 
 - **Memory:** Stored in the **Method Area** (or Metaspace in modern JVMs) when the class is first loaded by the ClassLoader.
 
-```java title:enemy.java
+```java title:static_variable.java
 public class Enemy {
     // Instance variable: Every enemy has its own health
     int health = 100; 
@@ -272,6 +273,14 @@ public class DefaultValuesDemo {
 
 # What is Data Types?
 A classification that specifies the type of value a variable can hold, the amount of memory it requires, and the operations that can be performed on it. [Java data types](https://www.w3schools.com/java/java_data_types.asp) are divided into ==two main categories==: **Primitive** and **Non-Primitive (Reference).**
+
+| Feature       | Primitive      | Non-Primitive              |
+| ------------- | -------------- | -------------------------- |
+| Stores        | Actual value   | Reference (memory address) |
+| Memory        | Stack          | Heap                       |
+| Default value | 0, false, etc. | `null`                     |
+| Has methods?  | No             | Yes                        |
+| Example       | `int`, `char`  | `String`, `Arrays`         |
 
 ## What are Primitive Types?
 Primitive types are the **most basic data types** built into Java.  
@@ -580,15 +589,5 @@ currentMedia = new AudioTrack("song.mp3");
 // as long as it also implements the interface!
 currentMedia = new VideoClip("movie.mp4");
 ```
-
-## Primitives Vs. Non-Primitive:
-
-|Feature|Primitive|Non-Primitive|
-|---|---|---|
-|Stores|Actual value|Reference (memory address)|
-|Memory|Stack|Heap|
-|Default value|0, false, etc.|`null`|
-|Has methods?|No|Yes|
-|Example|`int`, `char`|`String`, `Arrays`|
 
 

@@ -37,9 +37,7 @@ Your Machine (OS)
 - But **bytecode is universal**, same .class file runs on all of them.
 
 # JDK vs. JRE vs. JVM
-
 The differences between the JDK, JRE, and JVM are best understood by how they nest within one another to serve different roles in the Java ecosystem. The **JVM** is the core execution engine that reads compiled Java bytecode and translates it into machine-specific instructions on the fly, enabling Java's "Write Once, Run Anywhere" capability. Surrounding the JVM is the **JRE**, which packages the JVM together with the essential core libraries and classes required for everyday users to actually _run_ existing Java applications. Finally, encompassing both of these is the **JDK**, the complete toolkit for programmers that adds development tools, like the compiler (`javac`) and debuggers, needed to write and _create_ brand new Java programs from scratch.
-##### Quick Rule:
 
 | Who are you?                | What you need |
 | --------------------------- | ------------- |

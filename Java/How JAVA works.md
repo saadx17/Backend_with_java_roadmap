@@ -15,14 +15,14 @@ Here is how JAVA works from start to finish:
 # What happens in the code?
 Let's trace exactly what happens from typing code to seeing output.
 
-1. **How to write source code:**
+#### 1. How to write source code
 You create a file called `Hello.java`.
 ```java title:Hello.java
 public class Hello { public static void main(String[] args){ System.out.println("Hello World"); }
 }
 ```
 
-2. **Compilation**
+#### 2. Compilation
 You run the Java compiler.
 ```java title:compiler.java
 javac Hello.java
@@ -34,13 +34,13 @@ javac Hello.java
 - If no errors → it produces `Hello.class`
 - `Hello.class` contains **bytecode**
 
-3. **Running:**
+#### 3. Running
 You run the program.
 ```java title:compiler.java
 java Hello
 ```
 
-4. **Full Flow Diagram:**
+#### Full Flow Diagram
 ```
 Hello.java
 │

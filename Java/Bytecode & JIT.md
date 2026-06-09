@@ -16,6 +16,7 @@ This is where JIT comes in. As your program runs, the JVM doesn't just keep tran
 
 Once the frequency of a particular method or loop exceeds a conceptual threshold (meaning the code is "hot"), the JVM decides the time spent optimizing this section will be well worth the significant speed boost it will deliver. It activates the **JIT Compiler**.
 
+### How JIT Works in the Execution Lifecycle
 ##### Source to Bytecode (Compile Time)
 `.java` is compiled by `javac` into universal bytecode.
 
@@ -26,7 +27,7 @@ int sum(int a, int b) {
 }
 ```
 
-##### The Slow Path: Interpreter (Runtime)
+##### Interpreter (Runtime)
 The program starts. The Interpreter reads the bytecode, translating it instruction by instruction for execution. It's safe and portable, but slow.
 ```
 // Internal conceptual view
@@ -36,10 +37,10 @@ interpreter -> translates 'iload_1' instruction
 ... (slow line-by-line execution) ...
 ```
 
-##### Spotting the Shortcuts: Hotspot Detection (Runtime)
+##### Hotspot Detection (Runtime)
 The dynamic profiler notices the `sum` method has been called millions of times. It marks the method as "hot" and passes it to the JIT compiler.
 
-##### The Supercharger: JIT Compiler & Optimizations (Runtime)
+##### JIT Compiler & Optimizations (Runtime)
 Instead of translating instruction by instruction, the JIT compiler analyzes the _entire method at once_ and translates it into highly optimized, platform-specific **Native Machine Code** (`1`s and `0`s). It can perform sophisticated optimizations that the initial Interpreter could never do because it only saw one line at a time:
 
 - **Method In lining:** Instead of an expensive call to another method, the JIT may replace the call with the actual method body, saving time.
@@ -47,11 +48,11 @@ Instead of translating instruction by instruction, the JIT compiler analyzes the
 - **Loop Unrolling:** It unrolls loops to process multiple iterations in a single step.
 The optimized native machine code is then stored in a special memory area called the code cache.
 
-##### The Fast Path: Native Execution (Runtime)
+##### Native Execution (Runtime)
 The next time the `sum` method is called, the JVM completely **bypasses the Interpreter**. It directly runs the pre-compiled, heavily optimized native code from the code cache, rivaling or even exceeding pre-compiled languages in raw speed. This is why you will often notice that a Java program actually gets _faster_ as it continues to run and "warms up."
 This interactive visualization lets you explore this transformation dynamically, watching the Interpreter identify a hotspot and witnessing how JIT compilation and common optimizations lead to a massive leap in execution speed.
 
-##### JIT Summery
+### JIT Summery
 During execution the JVM uses **JIT (Just-In-Time) Compiler**:
 
 - JVM starts by **interpreting** bytecode line by line (slow)

@@ -2,7 +2,7 @@
 The programming language Java was developed by **James Gosling and his team** at **Sun Microsystems** in the early ==1990s==. Initially the goal was to build a platform independent language for embedded devices such as set-top boxes and televisions.
 After exploring C++ (which proved too heavy and too closely tied to platform dependencies), the team embarked on an entirely new project codenamed the *“Green Project”*.
 The project first used the name ==Green== (internally “Greentalk” with extension .gt), then was renamed ==Oak== (inspired by an oak tree outside Gosling’s office). When Sun attempted to trademark “Oak,” they discovered it was already claimed by Oak Technologies, so a further rename was needed.
-In an interesting session guided by a naming consultant, the team generated dozens of candidate names. The name “Java” (after the Indonesian coffee bean) emerged as the one that cleared legal review. Although Gosling’s preferred name was “Lyric” and the team initially favoured “Silk”, “==Java==” became the official name.
+In an interesting session guided by a naming consultant, the team generated dozens of candidate names. The name “Java” (after the Indonesian coffee bean) emerged as the one that cleared legal review. Although Gosling’s preferred name was “Lyric” and the team initially favored “Silk”, “==Java==” became the official name.
 
 # What is Java?
 Java is a high-level, object-oriented programming language known for its ==strict syntax, security, and reliability==. Its defining philosophy is =="Write Once, Run Anywhere"== (WORA). This means that once you write and compile Java code, it can run on any device or operating system that has a Java Virtual Machine ([[JDK, JRE & JVM#What is JVM?|JVM]]), without needing to be rewritten or recompiled for different machines.
@@ -11,7 +11,7 @@ In the industry, Java is a heavyweight. It is the backbone of massive enterprise
 # Features of Java
 
 ##### Platform Independent
-This is Java's famous (WORA) capability. When you write Java code, it gets compiled into intermediate "[[JDK, JRE & JVM#What is ==Bytecode==?|Bytecode]]" rather than machine-specific code. As long as a device has a Java Virtual Machine (JVM) installed, it can read and execute that bytecode, whether it's on Windows, Mac, or Linux.
+This is Java's famous (WORA) capability. When you write Java code, it gets compiled into intermediate "[[Bytecode & JIT#What is ==Bytecode==?|bytecode]]" rather than machine-specific code. As long as a device has a Java Virtual Machine (JVM) installed, it can read and execute that bytecode, whether it's on Windows, Mac, or Linux.
 
 ##### Object-Oriented
 Java models software around real-world "objects" that combine data (attributes) and behavior (methods). This relies on core principles like inheritance, encapsulation, polymorphism, and abstraction, which makes complex code much easier to manage, reuse, and scale.
@@ -31,38 +31,38 @@ This feature allows a Java program to perform multiple tasks concurrently. Inste
 ##### High Performance
 While interpreted languages are traditionally slower than fully compiled ones, Java bridges the gap using a Just-In-Time ([[JDK, JRE & JVM#What is ==JIT==?|JIT]]) compiler inside the JVM. The JIT compiler translates the bytecode into native machine code on the fly during execution, significantly boosting performance.
 
-# `Java` vs C vs C++ vs Python
+# `Java` vs `C` vs `C++` vs `Python`
 
 #### 1. Compilation and Execution Architecture
 The way these languages convert your code into instructions the computer can understand varies drastically, impacting both speed and portability.
 
-- **C & C++ (Compiled):** Code is compiled directly into platform-specific machine code (binary). This makes it incredibly fast, but a binary compiled on Windows will not run on a Mac or Linux machine without re-compiling the source code there.
+- **`C & C++` (Compiled):** Code is compiled directly into platform-specific machine code (binary). This makes it incredibly fast, but a binary compiled on Windows will not run on a Mac or Linux machine without re-compiling the source code there.
 
-- **Java (Hybrid):** Code is compiled into an intermediate form called **Bytecode** (`.class` files). The Java Virtual Machine (JVM) then translates this bytecode into machine code at runtime. This allows it to run on any device with a JVM.
+- **`Java` (Hybrid):** Code is compiled into an intermediate form called **Bytecode** (`.class` files). The Java Virtual Machine (JVM) then translates this bytecode into machine code at runtime. This allows it to run on any device with a JVM.
 
-- **Python (Interpreted):** Python code is translated into bytecode and executed line-by-line at runtime by the Python interpreter. Because it doesn't compile everything ahead of time, it is significantly slower but highly flexible for rapid development.
+- **`Python` (Interpreted):** Python code is translated into bytecode and executed line-by-line at runtime by the Python interpreter. Because it doesn't compile everything ahead of time, it is significantly slower but highly flexible for rapid development.
 
 #### 2. Memory Management & Safety
 
-- **C & C++:** You are the pilot and the mechanic. You must manually allocate and free up memory. Forgetting to do so causes memory leaks; doing it incorrectly causes program crashes (segmentation faults). This makes them dangerous but gives ultimate control for hardware-level programming.
+- **`C & C++`:** You are the pilot and the mechanic. You must manually allocate and free up memory. Forgetting to do so causes memory leaks; doing it incorrectly causes program crashes (segmentation faults). This makes them dangerous but gives ultimate control for hardware-level programming.
 
-- **Java & Python:** Both have a built-in safety net called a **Garbage Collector (GC)**. The system automatically detects when variables/objects are no longer in use and reclaims that memory for you, preventing the vast majority of memory-related bugs.
+- **`Java` & `Python`:** Both have a built-in safety net called a **Garbage Collector (GC)**. The system automatically detects when variables/objects are no longer in use and reclaims that memory for you, preventing the vast majority of memory-related bugs.
 
 #### 3. Syntax and Type System
 
-- **Static Typing (C, C++, Java):** You must explicitly declare variable types (e.g., `int x = 5;`). The compiler checks for type errors _before_ the code runs, catching bugs early.
+- **Static Typing (`C`, `C++`, `Java`):** You must explicitly declare variable types (e.g., `int x = 5;`). The compiler checks for type errors _before_ the code runs, catching bugs early.
 
-- **Dynamic Typing (Python):** You just write `x = 5`. Python figures out the type at runtime. This makes writing code incredibly fast and clean, but can hide type-related bugs until that specific line of code is executed.
+- **Dynamic Typing (`Python`):** You just write `x = 5`. Python figures out the type at runtime. This makes writing code incredibly fast and clean, but can hide type-related bugs until that specific line of code is executed.
 
 #### When to Use Which?
 
-- **Choose C for:** Operating systems (Linux kernel), embedded systems (microcontrollers), IoT devices, and database engines where every byte of memory and microsecond of CPU time matters.
+- **Choose `C` for:** Operating systems (Linux kernel), embedded systems (microcontrollers), IoT devices, and database engines where every byte of memory and microsecond of CPU time matters.
 
-- **Choose C++ for:** High-performance software, triple-A video games (Unreal Engine), graphics engines, financial trading systems, and web browsers.
+- **Choose `C++` for:** High-performance software, triple-A video games (Unreal Engine), graphics engines, financial trading systems, and web browsers.
 
-- **Choose Java for:** Enterprise-level backend applications, Android app development, large-scale banking software, and big data processing systems (Hadoop/Spark).
+- **Choose `Java` for:** Enterprise-level backend applications, Android app development, large-scale banking software, and big data processing systems (Hadoop/Spark).
 
-- **Choose Python for:** Data science, machine learning/AI, web scraping, automation scripting, rapid prototyping, and backend web development (Django/Flask).
+- **Choose `Python` for:** Data science, machine learning/AI, web scraping, automation scripting, rapid prototyping, and backend web development (Django/Flask).
 
 # Java Editions
 To cater to different development environments, ranging from tiny smart cards to massive corporate servers, Oracle divides Java into distinct, specialized platforms. Each edition provides a different set of libraries and APIs tailored to specific use cases.

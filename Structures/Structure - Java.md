@@ -1,7 +1,7 @@
 This is the total structure of the roadmap for Java. Down below, everything is connected. Don't forget to explore "Open Graph View". 
 
 ### Java
-1. [[Java/Introduction|Introduction]]
+1. [[Introduction Of Java|Introduction Of Java]]
 2. [[JDK, JRE & JVM]]
 3. [[Bytecode & JIT]]
 4. [[How Java works]]

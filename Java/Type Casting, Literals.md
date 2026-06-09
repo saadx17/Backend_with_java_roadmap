@@ -5,6 +5,13 @@ Type casting is **converting a value from one type to another**. There are 2 ty
 
 In Java, both **Type Conversion** and **Type Casting** involve changing a variable from one data type to another. The difference comes down to who does the work (the compiler or you) and whether there is a risk of losing data.
 
+| **Feature**         | **Type Conversion (Widening)** | **Type Casting (Narrowing)**            |
+| ------------------- | ------------------------------ | --------------------------------------- |
+| **Who does it?**    | Automatic (Java Compiler)      | Manual (The Programmer)                 |
+| **Size change**     | Smaller type to Larger type    | Larger type to Smaller type             |
+| **Data Loss Risk**  | None                           | High (Decimals lost, overflow possible) |
+| **Syntax Required** | None                           | `(targetType) variable`                 
+
 ##### 1. Type Conversion (Implicit / Widening)
 Type conversion happens **automatically** by the Java compiler. It occurs when you assign a value from a smaller data type to a larger data type.
 Because you are putting a small item into a bigger box, there is zero risk of the data overflowing or getting lost. The compiler handles it silently behind the scenes.
@@ -36,15 +43,6 @@ int smallBox = (int) bigBox; // <-- This works, but truncates the data
 
 System.out.println(smallBox); // Prints: 99 (The .99 is permanently lost)
 ```
-
-##### Type Conversion vs Casting
-
-|**Feature**|**Type Conversion (Widening)**|**Type Casting (Narrowing)**|
-|---|---|---|
-|**Who does it?**|Automatic (Java Compiler)|Manual (The Programmer)|
-|**Size change**|Smaller type to Larger type|Larger type to Smaller type|
-|**Data Loss Risk**|None|High (Decimals lost, overflow possible)|
-|**Syntax Required**|None|`(targetType) variable`|
 
 # Literals
 In Java, a **literal** is the actual, raw data or fixed value that you type directly into your source code to assign to a variable. You aren't calculating it or pulling it from a database; you are hardcoding the exact value.
