@@ -117,3 +117,6 @@ Added Input/Output.
 
 ######  08:38 PM
 Added methods & recursion. working with methods.
+
+##### 09th June,2026 | 09:35 PM
+Added classes & objects.

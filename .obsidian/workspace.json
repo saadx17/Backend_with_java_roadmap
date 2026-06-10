@@ -13,22 +13,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Java/Methods & Recursion.md",
+                "file": "Entry Log.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Methods & Recursion"
+              "title": "Entry Log"
             }
           },
           {
-            "id": "5221966933cd7ac7",
+            "id": "4998178e17875e2d",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Structures/Structure - Java.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Structure - Java"
             }
           }
         ]
@@ -215,8 +219,14 @@
   "active": "87092f42ab1bae09",
   "lastOpenFiles": [
     "Structures/Structure - Java.md",
-    "Java/Methods & Functions.md",
+    "Java/Keywords.md",
+    "Entry Log.md",
+    "Java/Methods & Recursion.md",
+    "Java/Classes & Objects.md",
     "Java/Wrapper Classes.md",
+    "Methods & Functions.md",
+    "Java/Control Flow.md",
+    "Java/Methods & Functions.md",
     "Java/Type Casting, Literals.md",
     "Java/Variables & Data Types.md",
     "Java/JVM Architecture.md",
@@ -226,20 +236,14 @@
     "Java/Introduction Of Java.md",
     "Bytecode.md",
     "Java/JDK, JRE & JVM.md",
-    "Entry Log.md",
-    "Java/Methods & Recursion.md",
     "Java/Input & Output.md",
     "Java/Input via scanner.md",
-    "Java/Control Flow.md",
     "Java/Exception Handling.md",
     "Structures/Structure - Database.md",
     "Java/String.md",
     "Java/Arrays.md",
     "ReadMe.md",
     "Java/Java Collections Framework.md",
-    "Java/Operators.md",
-    "Java/Loops.md",
-    "Java/Control Flow - Switch & Ternary.md",
     "Screenshot 2026-05-29 at 11.58.53 AM.png",
     "Assets/collection-framework.png",
     "Assets/Screenshot 2026-05-29 at 11.58.53 AM.png",
