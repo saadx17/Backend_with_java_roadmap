@@ -15,8 +15,9 @@ Welcome to the Backend Engineering with Java Roadmap! This repository contains n
 Have fun.
 
 ## Contents from Structures
-1. [[Structure - Java|Java]]
-2. [[Structure - Database|Databases]]
+1. [[Structure - CS Fundamentals|Computer Science Fundamentals]]
+2. [[Structure - Java|Java]]
+3. [[Structure - Database|Databases]]
 
 *(More content will be added as the roadmap progresses)*
 

@@ -1,5 +1,5 @@
 # Classes
-In Java, a **class** is a user-defined blueprint or template used to create objects. It defines the data structure and operations, known as **fields** (attributes) and **methods** (behaviors)that the resulting objects will possess.
+A **Java class** is a user-defined blueprint or template used to create objects that share common properties and behaviors. It is the core building block of Object-Oriented Programming (OOP) in Java, acting as a logical entity that defines how its individual instances (objects) look and act.
 #### Components of a Java Class
 A standard Java class is defined using the `class` keyword and typically contains five core elements:
 
@@ -91,7 +91,7 @@ A special, concise type of class designed purely to hold immutable data. When yo
 
 - Use case: Creating simple data-carrier objects (like returning coordinates `x` and `y` or a `User` profile with a name and email) without writing dozens of lines of boilerplate code.
 
-# What is an Object?
+# Object?
 In Java, an **object is a self-contained instance of a class** that combines both data and behavior to represent a real-world entity or abstract concept. While a class acts as a blueprint or template, an object is the physical, runtime entity created from that blueprint that occupies actual space in your computer's memory.
 
 #### The Three Characteristics of an Object
@@ -141,3 +141,5 @@ public class Main {
     }
 }
 ```
+
+

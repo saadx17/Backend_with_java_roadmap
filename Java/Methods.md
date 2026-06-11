@@ -190,3 +190,196 @@ test(1, 2);    // ❌ Ambiguous! compiler can't decide
 test(1, 2.0);  // ✅ test(int, double)
 test(1.0, 2);  // ✅ test(double, int)
 ```
+
+# `static` & Instance Methods
+In Java, the core difference is that **static methods belong to the class itself**, while **instance methods belong to an object (instance) of the class**.
+
+| Feature            | Static Method                                       | Instance Method                               |
+| ------------------ | --------------------------------------------------- | --------------------------------------------- |
+| **Keyword**        | Requires the `static` keyword.                      | No specific keyword needed.                   |
+| **How to Call**    | Directly via the class name (`Class.method()`).     | Via an object reference (`object.method()`).  |
+| **Data Access**    | Only static variables and other static methods.     | Both static and instance variables/methods.   |
+| **`this` Keyword** | Cannot use `this` or `super`.                       | Can use `this` and `super`.                   |
+| **Polymorphism**   | Cannot be overridden (supports method hiding only). | Supports overriding and runtime polymorphism. |
+| **Binding**        | Compile-time (static binding).                      | Runtime (dynamic binding).                    |
+
+## `Static` Methods
+A static method is stateless. It performs operations using only its input arguments and does not depend on the unique state of any specific object.
+
+- **Use Case:** Utility functions, mathematical calculations, or factory methods.
+- **Examples:** `Math.sqrt(25)`, `Integer.parseInt("10")`, or the standard `public static void main` entry point.
+
+```java title:static_method.java
+class Calculator {
+    // Static method
+    public static int add(int a, int b) {
+        return a + b;
+    }
+}
+
+// Calling without an object
+int sum = Calculator.add(5, 10);
+```
+
+## Instance Methods
+An instance method requires an object because its behavior depends on the data stored inside that specific object.
+
+- **Use Case:** Modifying object attributes, getting/setting object state, or implementing behavior unique to a specific entity.
+- **Examples:** `myList.add("item")` or `myString.toLowerCase()`
+
+```java title:instance_method.java
+class Car {
+    private String model;
+
+    public Car(String model) {
+        this.model = model;
+    }
+
+    // Instance method
+    public void displayModel() {
+        System.out.println("Car model: " + this.model); // Accesses object-specific data
+    }
+}
+
+// Calling requires object instantiation
+Car myCar = new Car("Tesla");
+myCar.displayModel(); 
+```
+
+## The Difference
+```java title:difference.java
+public class BankAccount {
+
+    // ─── Instance variable ────────────────────────────────
+    private String owner;
+    private double balance;
+
+    // ─── Constructor ──────────────────────────────────────
+    public BankAccount(String owner, double balance) {
+        this.owner   = owner;
+        this.balance = balance;
+    }
+
+    // ─── Instance method → needs object to call ───────────
+    // Works on THIS specific object's data
+    public void deposit(double amount) {
+        this.balance += amount;   // accesses instance variable
+        System.out.printf("%s deposited $%.2f%n", owner, amount);
+    }
+
+    public double getBalance() {
+        return this.balance;
+    }
+
+    public void printInfo() {
+        System.out.printf("Owner: %s | Balance: $%.2f%n",
+                           owner, balance);
+    }
+
+    // ─── Static method → belongs to CLASS not object ──────
+    // Cannot access instance variables or instance methods!
+    public static double calculateInterest(double principal,
+                                           double rate,
+                                           int years) {
+        return principal * rate * years;  // no instance data needed
+    }
+
+    public static BankAccount createSavings(String owner) {
+        return new BankAccount(owner, 100.0);  // factory method
+    }
+
+    public static void main(String[] args) {
+        // ─── Static method → called on CLASS ──────────────
+        double interest = BankAccount.calculateInterest(1000, 0.05, 3);
+        System.out.println("Interest: $" + interest);  // Interest: $150.0
+
+        // ─── Instance method → called on OBJECT ───────────
+        BankAccount alice = new BankAccount("Alice", 500.0);
+        alice.deposit(200.0);           // Alice deposited $200.00
+        alice.printInfo();              // Owner: Alice | Balance: $700.00
+
+        BankAccount bob = new BankAccount("Bob", 300.0);
+        bob.deposit(100.0);             // Bob deposited $100.00
+
+        // Static factory method
+        BankAccount savings = BankAccount.createSavings("Charlie");
+        savings.printInfo();  // Owner: Charlie | Balance: $100.00
+    }
+}
+```
+
+## Rules & Access
+```java title:rules_access.java
+public class MyClass {
+    int instanceVar    = 10;        // belongs to object
+    static int staticVar = 20;      // belongs to class (shared)
+
+    // ─── Instance method → can access BOTH ────────────────
+    void instanceMethod() {
+        System.out.println(instanceVar);   // ✅
+        System.out.println(staticVar);     // ✅
+        staticMethod();                    // ✅
+    }
+
+    // ─── Static method → can ONLY access static stuff ─────
+    static void staticMethod() {
+        System.out.println(staticVar);     // ✅
+        System.out.println(instanceVar);   // ❌ compile error!
+        instanceMethod();                  // ❌ compile error!
+        // no 'this' available in static context
+    }
+}
+
+// ─── Calling them ─────────────────────────────────────────
+MyClass obj = new MyClass();
+
+obj.instanceMethod();    // ✅ via object
+obj.staticMethod();      // ⚠️ works but bad practice
+MyClass.staticMethod();  // ✅ correct way for static
+
+// ─── Static variable → shared across ALL objects ──────────
+public class Counter {
+    static int count = 0;  // shared
+    int id;                // unique per object
+
+    Counter() {
+        count++;           // increments shared counter
+        id = count;        // unique id for this object
+    }
+
+    public static void main(String[] args) {
+        Counter c1 = new Counter();
+        Counter c2 = new Counter();
+        Counter c3 = new Counter();
+
+        System.out.println(Counter.count);  // 3 (shared)
+        System.out.println(c1.id);          // 1
+        System.out.println(c2.id);          // 2
+        System.out.println(c3.id);          // 3
+    }
+}
+```
+
+## Common Gotchas
+
+1. **The Static-to-Instance Error:** You cannot directly call an instance method or use an instance variable inside a static method. If you try, the compiler throws an error: `Non-static field/method cannot be referenced from a static context`. To fix this, you must explicitly create an object inside the static method first.
+2. **Testing Constraints:** Code that relies heavily on static methods can be harder to unit test because static methods cannot be easily swapped out using traditional mocking frameworks.
+
+## When to use what?
+
+```
+USE static when:
+Method doesn't use instance variables
+Utility/helper methods (Math.sqrt, Arrays.sort)
+Factory methods (create objects)
+Constants (static final PI = 3.14)
+main() method (always static)
+```
+
+```
+USE instance when:
+Method uses or modifies object state
+Behavior differs per object
+Most methods in OOP classes
+```
+

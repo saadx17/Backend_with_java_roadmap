@@ -3,14 +3,14 @@
 A **constant** is a variable whose value **cannot be changed** after it is assigned.  
 Use the `final` keyword to declare a constant.
 
-```
+```java title:final_constant.java
 final double PI = 3.14159265358979;
 final int MAX_LOGIN_ATTEMPTS = 3;
 final String DATABASE_URL = "jdbc:postgresql://localhost:5432/mydb";
 ```
 
 If you try to change a `final` variable, the compiler gives an error:
-```
+```java title:error.java
 final int MAX_SIZE = 100;
 MAX_SIZE = 200; // ❌ Compile error: cannot assign a value to final variable
 ```
@@ -20,7 +20,7 @@ MAX_SIZE = 200; // ❌ Compile error: cannot assign a value to final variable
 - Makes code more readable (named values are clearer than magic numbers)
 - Makes code easier to maintain (change the value in one place)
 
-```
+```java title:syntax.java
 // ❌ Magic numbers — what do these mean?
 if (attempts > 3) { ... }
 double area = 3.14159 * radius * radius;
@@ -35,7 +35,7 @@ double area = PI * radius * radius;
 
 # The `static final` Constant.
 In real Java applications, constants are usually declared as `static final`:
-```
+```java title:final_static.java
 public class AppConfig {
 public static final int MAX_CONNECTIONS = 100;
 public static final String APP_VERSION = "1.0.0";

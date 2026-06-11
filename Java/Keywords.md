@@ -1,7 +1,10 @@
-Keywords in Java are **predefined, reserved words that carry a specific meaning to the Java compiler**. Because they form the foundational syntax and structure of the language, you **cannot use them as identifiers** (such as names for variables, methods, classes, or objects).
+[Keywords](https://en.wikipedia.org/wiki/List_of_Java_keywords) in Java are **predefined, reserved words that carry a specific meaning to the Java compiler**. Because they form the foundational syntax and structure of the language, you **cannot use them as identifiers** (such as names for variables, methods, classes, or objects).
 
-## Types of Keywords in Java
-There are over **50 keywords** categorized by their functional purpose in the language syntax.
+Keywords,
+- reserved words with special meaning in Java.
+- cannot be used as variable names, method names, or identifiers.
+- all lowercase.
+- 67 total keywords in Java (including newer additions)
 
 ### 1. Primitive Data Types (8 Keywords)
 These keywords define the basic type of data a variable can hold.
@@ -15,9 +18,32 @@ These keywords define the basic type of data a variable can hold.
 - **`float`**: Represents a 32-bit single-precision floating-point number.
 - **`double`**: Represents a 64-bit double-precision floating-point number.
 
+```
+┌──────────────────┬────────────────────────────────────────┐
+│ Keyword          │ One-line Purpose                       │
+├──────────────────┼────────────────────────────────────────┤
+│ boolean          │ true/false type                        │
+│ byte             │ 8-bit integer                          │
+│ char             │ single character (16-bit Unicode)      │
+│ short            │ 16-bit integer                         │
+│ int              │ 32-bit integer                         │
+│ long             │ 64-bit integer                         │
+│ float            │ 32-bit decimal                         │
+│ double           │ 64-bit decimal                         │
+└──────────────────┴────────────────────────────────────────┘
+```
+
 ### 2. Return Type (1 Keyword)
 
 - **`void`**: Used in method declarations to specify that the method does not return any value.
+
+```
+┌──────────────────┬────────────────────────────────────────┐
+│ Keyword          │ One-line Purpose                       │
+├──────────────────┼────────────────────────────────────────┤
+│ void             │ no return value                        │
+└──────────────────┴────────────────────────────────────────┘
+```
 
 ### 3. Access Modifiers (3 Keywords)
 These define the visibility and accessibility of classes, methods, and variables.
@@ -25,6 +51,16 @@ These define the visibility and accessibility of classes, methods, and variables
 - **`public`**: The entity is accessible from any other class.
 - **`protected`**: The entity is accessible within its own package and by subclasses in other packages.
 - **`private`**: The entity is accessible only within the class it is declared in. **Note:** If no modifier is used, it defaults to "package-private", which does not have a specific keyword.
+
+```
+┌──────────────────┬────────────────────────────────────────┐
+│ Keyword          │ One-line Purpose                       │
+├──────────────────┼────────────────────────────────────────┤
+│ public           │ access from anywhere                   │
+│ private          │ class-only access                      │
+│ protected        │ class + package + subclass access      │
+└──────────────────┴────────────────────────────────────────┘
+```
 
 ### 4. Object, Class, and Interface Management (9 Keywords)
 These are used to structure your object-oriented code.
@@ -39,6 +75,22 @@ These are used to structure your object-oriented code.
 - **`super`**: A reference to the parent (superclass) object.
 - **`instanceof`**: Tests whether an object is an instance of a specific class or interface.
 
+```
+┌──────────────────┬────────────────────────────────────────┐
+│ Keyword          │ One-line Purpose                       │
+├──────────────────┼────────────────────────────────────────┤
+│ class            │ define a class                         │
+│ interface        │ define contract                        │
+│ enum             │ fixed set of constants                 │
+│ extends          │ inherit from class                     │
+│ implements       │ fulfil interface contract              │
+│ new              │ create object                          │
+│ this             │ current object reference               │
+│ super            │ access parent class                    │
+│ instanceof       │ type check at runtime                  │
+└──────────────────┴────────────────────────────────────────┘
+```
+
 ### 5. Control Flow & Decision Making (5 Keywords)
 These dictate the logical path the program takes.
 
@@ -47,6 +99,18 @@ These dictate the logical path the program takes.
 - **`switch`**: Selects one of many code blocks to be executed based on a variable's value.
 - **`case`**: Defines a specific block of code inside a `switch` statement.
 - **`default`**: Defines the default block of code inside a `switch` statement if no cases match.
+
+```
+┌──────────────────┬────────────────────────────────────────┐
+│ Keyword          │ One-line Purpose                       │
+├──────────────────┼────────────────────────────────────────┤
+│ if               │ conditional                            │
+│ else             │ if alternative branch                  │
+│ switch           │ multi-branch condition                 │
+│ case             │ switch branch                          │
+│ default          │ switch fallback / interface default    │
+└──────────────────┴────────────────────────────────────────┘
+```
 
 ### 6. Looping & Loop Control (6 Keywords)
 These handle repetitive execution of code.
@@ -58,6 +122,19 @@ These handle repetitive execution of code.
 - **`continue`**: Skips the current iteration of a loop and moves to the next one.
 - **`return`**: Exits a method and (optionally) hands back a value to the caller.
 
+```
+┌──────────────────┬────────────────────────────────────────┐
+│ Keyword          │ One-line Purpose                       │
+├──────────────────┼────────────────────────────────────────┤
+│ for              │ loop                                   │
+│ while            │ condition-based loop                   │
+│ do               │ do-while loop start                    │
+│ break            │ exit loop or switch                    │
+│ continue         │ skip to next iteration                 │
+│ return           │ exit method + value                    │
+└──────────────────┴────────────────────────────────────────┘
+```
+
 ### 7. Exception Handling (5 Keywords)
 These safely manage errors that occur during runtime.
 
@@ -66,6 +143,18 @@ These safely manage errors that occur during runtime.
 - **`finally`**: Defines a block of code that will execute regardless of whether an exception was caught or not.
 - **`throw`**: Used to explicitly throw a custom or built-in exception.
 - **`throws`**: Placed in a method signature to declare that the method might throw one or more exceptions.
+
+```
+┌──────────────────┬────────────────────────────────────────┐
+│ Keyword          │ One-line Purpose                       │
+├──────────────────┼────────────────────────────────────────┤
+│ try              │ wrap risky code                        │
+│ catch            │ handle exception                       │
+│ finally          │ always runs after try-catch            │
+│ throw            │ trigger exception                      │
+│ throws           │ declare possible exception             │
+└──────────────────┴────────────────────────────────────────┘
+```
 
 ### 8. Non-Access Modifiers (7 Keywords)
 These change the default behavior of classes, variables, or methods.
@@ -78,9 +167,32 @@ These change the default behavior of classes, variables, or methods.
 - **`transient`**: Indicates that a variable should not be serialized (saved) when the object is converted into a byte stream.
 - **`native`**: Indicates that a method is implemented in native code (usually C or C++) using JNI (Java Native Interface).
 
+```
+┌──────────────────┬────────────────────────────────────────┐
+│ Keyword          │ One-line Purpose                       │
+├──────────────────┼────────────────────────────────────────┤
+│ static           │ belongs to class not object            │
+│ final            │ constant / no override / no extend     │
+│ abstract         │ can't instantiate, must subclass       │
+│ synchronized     │ thread-safe block/method               │
+│ volatile         │ always read from main memory           │
+│ transient        │ skip during serialization              │
+│ native           │ method in C/C++                        │
+└──────────────────┴────────────────────────────────────────┘
+```
+
 ### 9. Package Management (2 Keywords)
 - **`package`**: Specifies the namespace/directory for a Java class file.
 - **`import`**: Brings classes or entire packages into your current file so you can use them.
+
+```
+┌──────────────────┬────────────────────────────────────────┐
+│ Keyword          │ One-line Purpose                       │
+├──────────────────┼────────────────────────────────────────┤
+│ package          │ declare namespace                      │
+│ import           │ bring class into scope                 │
+└──────────────────┴────────────────────────────────────────┘
+```
 
 ### 10. Miscellaneous & Reserved (5 Keywords)
 
@@ -90,8 +202,35 @@ These change the default behavior of classes, variables, or methods.
 - **`goto`**: Reserved keyword, but strictly **unused** in Java (retained to prevent C/C++ programmers from using it).
 - **`const`**: Reserved keyword, but strictly **unused** in Java (use `final` instead).
 
+```
+┌──────────────────┬────────────────────────────────────────┐
+│ Keyword          │ One-line Purpose                       │
+├──────────────────┼────────────────────────────────────────┤
+│ assert           │ debug-time condition check             │
+│ strictfp         │ consistent float math (obsolete 17+)   │
+│ underscore (__)  │ Reserved keyword                       │
+│ goto             │ RESERVED, not used                     │
+│ const            │ RESERVED, use final instead            │
+└──────────────────┴────────────────────────────────────────┘
+```
+
 ### Technical Distinctions (Not Keywords, but Reserved)
 There are a few words often mistaken for keywords that are technically **Reserved Literals** or **Restricted Identifiers**:
 
 - **Reserved Literals**: `true`, `false`, and `null`. You cannot use them as variable names, but technically they represent constant values, not keywords. 
 - **Restricted Identifiers (Modern Java)**: In newer versions of Java (10+), words like `var`, `yield`, `record`, `sealed`, `permits`, and `non-sealed` have been introduced. These act like keywords in specific contexts (e.g., when defining a `record`), but they can still be used as variable names elsewhere in your code to ensure backwards compatibility.
+
+```
+┌──────────────────┬────────────────────────────────────────┐
+│ Keyword          │ One-line Purpose                       │
+├──────────────────┼────────────────────────────────────────┤
+│ record           │ immutable data class (Java 16+)        │
+│ sealed           │ restrict who can extend (Java 17+)     │
+│ var              │ type inference (Java 10+)              │
+│ yield            │ return from switch block (Java 14+)    │
+├──────────────────┼────────────────────────────────────────┤
+│ true             │ boolean literal                        │
+│ false            │ boolean literal                        │
+│ null             │ empty reference literal                │
+└──────────────────┴────────────────────────────────────────┘
+```
