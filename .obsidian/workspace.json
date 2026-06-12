@@ -4,39 +4,24 @@
     "type": "split",
     "children": [
       {
-        "id": "2323a20f29506998",
+        "id": "9688970a003f2b7e",
         "type": "tabs",
         "children": [
           {
-            "id": "8123b40030b1d367",
+            "id": "03da74183cb2c0e8",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Structures/Structure - CS Fundamentals.md",
+                "file": "Structures/Structure - Java.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Structure - CS Fundamentals"
-            }
-          },
-          {
-            "id": "b9ad7a23f2df5bf8",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Entry Log.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Entry Log"
+              "title": "Structure - Java"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -69,7 +54,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "virtual",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -203,8 +188,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -217,52 +201,53 @@
       "bases:Create new base": false
     }
   },
-  "active": "b9ad7a23f2df5bf8",
+  "active": "03da74183cb2c0e8",
   "lastOpenFiles": [
-    "ReadMe.md",
-    "Computer Science Fundamentals/CPU Architecture Basics.md",
-    "Structures/Structure - CS Fundamentals.md",
-    "Computer Science Fundamentals/Binary, Bits, Bytes, and Word Size.md",
-    "Structures/Structure - Java.md",
-    "Structures/Structure - Database.md",
-    "Java/Operators.md",
-    "Java/Java Collections Framework.md",
-    "Java/Variables & Data Types.md",
-    "Entry Log.md",
-    "Computer Science Fundamentals",
-    "Java/Classes & Objects.md",
-    "Java/How Java works.md",
-    "Java/Bytecode & JIT.md",
-    "Java/Introduction Of Java.md",
-    "Java/Keywords.md",
-    "Java/Constants.md",
-    "Java/Wrapper Classes.md",
-    "Java/Type Casting, Literals.md",
     "Java/Methods.md",
-    "Methods & Functions.md",
-    "Java/Control Flow.md",
-    "Java/Methods & Functions.md",
+    "Structures/Structure - Java.md",
+    "Java/Arrays.md",
+    "ReadMe.md",
+    "Structures/Structure - Database.md",
+    "Structures/Structure - DSA.md",
+    "Java/Classes & Objects.md",
+    "Computer Science Fundamentals/RAM, ROM & Storage.md",
+    "Structures/Structure - CS Fundamentals.md",
+    "Assets/Memory_Hierarchy.png",
+    "Computer Science Fundamentals/The Instruction Cycle.md",
+    "Computer Science Fundamentals/CPU Architecture Basics.md",
+    "Computer Science Fundamentals/Unconfirmed 578351.crdownload",
+    "Computer Science Fundamentals/Unconfirmed 978948.crdownload",
+    "Computer Science Fundamentals/Unconfirmed 696568.crdownload",
+    "Computer Science Fundamentals/Binary, Bits, Bytes & Word-Size.md",
+    "Computer Science Fundamentals/Binary, Bits, Bytes, and Word Size.md",
+    "Computer Science Fundamentals/I-O operations.md",
+    "Computer Science Fundamentals/How Programs Are Loaded Into Memory.md",
+    "Computer Science Fundamentals/Context Switching.md",
+    "Computer Science Fundamentals/Virtual Memory & Paging.md",
+    "Computer Science Fundamentals/Process & Thread - OS Level.md",
+    "Computer Science Fundamentals/Stack & Heap Memory - Hardware Level.md",
     "Java/JVM Architecture.md",
-    "Java/Hello World.md",
-    "Bytecode.md",
     "Java/JDK, JRE & JVM.md",
+    "Garbage Collector.md",
+    "Assets/new_keyword_memory_pic.png",
+    "Java/How Java works.md",
+    "Java/Exception Handling.md",
+    "Java/var Keyword.md",
+    "Assets/ds.jpg",
+    "DSA",
+    "Assets/ds.png",
+    "Assets/JVM vs. JDK vs. JRE.jpg",
+    "Assets/bytecode.jpg",
+    "Assets/jit.png",
+    "Computer Science Fundamentals",
     "Screenshot 2026-05-29 at 11.58.53 AM.png",
     "Assets/collection-framework.png",
     "Assets/Screenshot 2026-05-29 at 11.58.53 AM.png",
-    "Assets/collection-framework-hierarchy-in-java.webp",
     "Structures",
     "Untitled.base",
-    "Assets/hierarchical_model.jpg",
-    "Assets/relational-model.png",
-    "Assets/SQL_Commands.png",
-    "Assets/hierarchical-model.svg",
-    "hierarchical-model.svg",
-    "Assets/ER_Diagram.png",
     "Database-MySQL",
     "Untitled.canvas",
     "Before_you_start",
-    "Assets/Unconfirmed 564290.crdownload",
-    "Assets",
-    "Java"
+    "Assets/Unconfirmed 564290.crdownload"
   ]
 }

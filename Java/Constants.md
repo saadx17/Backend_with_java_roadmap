@@ -1,8 +1,12 @@
-*The final Keyword*
-# What is a constant?
 A **constant** is a variable whose value **cannot be changed** after it is assigned.  
-Use the `final` keyword to declare a constant.
+#### Breakdown of the Keywords
 
+1. **`final`**: This keyword makes the variable immutable. Any attempt to reassign a value to a `final` variable after initialization results in a compilation error.
+
+2. **`static`**: This ensures that the variable belongs directly to the class rather than instances of the class. This means the JVM allocates memory for it only once, maximizing efficiency.
+
+#### How to Declare Constants?
+To define a standard, class-level constant, you use the following syntax:
 ```java title:final_constant.java
 final double PI = 3.14159265358979;
 final int MAX_LOGIN_ATTEMPTS = 3;
@@ -15,7 +19,7 @@ final int MAX_SIZE = 100;
 MAX_SIZE = 200; // ❌ Compile error: cannot assign a value to final variable
 ```
 
-# Why use constants?
+#### Why use constants?
 - Prevents accidental changes to important values
 - Makes code more readable (named values are clearer than magic numbers)
 - Makes code easier to maintain (change the value in one place)
@@ -33,7 +37,7 @@ if (attempts > MAX_LOGIN_ATTEMPTS) { ... }
 double area = PI * radius * radius;
 ```
 
-# The `static final` Constant.
+#### The `static final` Constant.
 In real Java applications, constants are usually declared as `static final`:
 ```java title:final_static.java
 public class AppConfig {

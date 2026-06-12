@@ -11,7 +11,7 @@ In the industry, Java is a heavyweight. It is the backbone of massive enterprise
 # Features of Java
 
 ##### Platform Independent
-This is Java's famous (WORA) capability. When you write Java code, it gets compiled into intermediate "[[Bytecode & JIT#What is ==Bytecode==?|bytecode]]" rather than machine-specific code. As long as a device has a Java Virtual Machine (JVM) installed, it can read and execute that bytecode, whether it's on Windows, Mac, or Linux.
+This is Java's famous (WORA) capability. When you write Java code, it gets compiled into intermediate "[[Bytecode, JIT, Garbage Collection#What is ==Bytecode==?|bytecode]]" rather than machine-specific code. As long as a device has a Java Virtual Machine (JVM) installed, it can read and execute that bytecode, whether it's on Windows, Mac, or Linux.
 
 ##### Object-Oriented
 Java models software around real-world "objects" that combine data (attributes) and behavior (methods). This relies on core principles like inheritance, encapsulation, polymorphism, and abstraction, which makes complex code much easier to manage, reuse, and scale.
@@ -29,7 +29,7 @@ Java puts a heavy emphasis on early error checking. It features strong type chec
 This feature allows a Java program to perform multiple tasks concurrently. Instead of waiting for one task to finish before starting another, Java can spin up multiple "threads" sharing the same memory area. This is essential for building highly responsive applications, multimedia software, and web servers.
 
 ##### High Performance
-While interpreted languages are traditionally slower than fully compiled ones, Java bridges the gap using a Just-In-Time ([[JDK, JRE & JVM#What is ==JIT==?|JIT]]) compiler inside the JVM. The JIT compiler translates the bytecode into native machine code on the fly during execution, significantly boosting performance.
+While interpreted languages are traditionally slower than fully compiled ones, Java bridges the gap using a Just-In-Time ([[JVM Architecture#2. JIT|JIT]]) compiler inside the JVM. The JIT compiler translates the bytecode into native machine code on the fly during execution, significantly boosting performance.
 
 # `Java` vs `C` vs `C++` vs `Python`
 
@@ -93,3 +93,15 @@ Java ME is a subset of Java SE. It is designed to run on hardware with limited m
 
 - **What it includes:** Highly optimized virtual machines (like the KVM) and minimal APIs specifically designed for small screens, basic networking, and tiny memory capacities.
 - **Common Use Cases:** Smart cards (like SIM cards and credit cards), set-top TV boxes, internet-of-things (IoT) devices, and legacy mobile games (the classic pre-smartphone mobile games).
+
+# Java Versions
+Java releases feature updates every six months, but the core ecosystem primarily focuses on ==**Long-Term Support (LTS)** versions==. Major releases and features span several versions:
+
+1. **Java 25 (LTS):** The latest Long-Term Support release, which debuted in September 2025. It is the recommended standard for modern, production-ready enterprise applications.
+
+2. **Java 21 (LTS):** The previous major LTS release, which remains highly popular and widely used for modern, highly concurrent applications using Virtual Threads.
+
+3. **Java 17 (LTS):** A highly popular LTS release, considered the baseline for many enterprise codebases upgrading from legacy versions.
+
+4. **Java 8 (LTS):** The most famous legacy version. Countless enterprise applications still run on Java 8, despite its age, due to the magnitude of legacy systems.
+

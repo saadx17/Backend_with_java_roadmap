@@ -6,7 +6,7 @@ This is the total structure of the roadmap for Database. Down below, everything 
 4. [[Relationships]]
 5. [[Normalization & Denormalization]]
 6. [[MySQL CLI Basics]]
-7. [[Data Types]]
+7. [[Database-MySQL/Data Types]]
 8. [[Constraints]]
 9. [[SQL Commands]]
 10. [[DDL - Data Definition Language]]

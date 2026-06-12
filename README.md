@@ -3,8 +3,7 @@ Early READMEs were crucial for explaining how to install software or giving inst
 
 
 # Backend with Java Roadmap
-Welcome to the Backend Engineering with Java Roadmap! This repository contains notes, guides, codes and my journey to Backend. You can check [[Entry Log]] to understand what and when I've studied these.
-
+Welcome to the Backend Engineering with Java Roadmap! This repository contains notes, guides, codes and my journey to Backend.
 
 ## What to do?
 1. Download Obsidian for better studying. Link for Obsidian: https://obsidian.md
@@ -17,8 +16,9 @@ Have fun.
 ## Contents from Structures
 1. [[Structure - CS Fundamentals|Computer Science Fundamentals]]
 2. [[Structure - Java|Java]]
-3. [[Structure - Database|Databases]]
+3. [[Structure - DSA|Data Structures & Algorithms]]
+4. [[Structure - Database|Databases]]
 
 *(More content will be added as the roadmap progresses)*
 
-## Studied & Authored by Abdullah Al Sayb Saad.
+ ###### Studied & Authored by Abdullah Al Sayb Saad.

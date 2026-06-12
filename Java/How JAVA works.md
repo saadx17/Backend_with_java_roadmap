@@ -13,32 +13,61 @@ Here is how JAVA works from start to finish:
 5. **Machine Code:** As the program runs, the JVM reads the bytecode and translates it _on the fly_ into the specific ==1s and 0s (machine code)== that your exact computer hardware (whether it's a Windows PC, a Mac, or a Linux server) can execute physically.
 
 # What happens in the code?
-Let's trace exactly what happens from typing code to seeing output.
-
-#### 1. How to write source code
-You create a file called `Hello.java`.
+**Syntax:**
 ```java title:Hello.java
-public class Hello { public static void main(String[] args){ System.out.println("Hello World"); }
+public class Hello{
+public static void main(String[] args){
+System.out.println("Hello, World!"); }
 }
 ```
 
-#### 2. Compilation
-You run the Java compiler.
-```java title:compiler.java
-javac Hello.java
+#### Breaking down EVERY single word
+
+```java title:Hello.java
+public class Hello {
 ```
 
-- `javac` is the **Java Compiler** (part of JDK)
-- It reads `Hello.java`
-- It checks for syntax errors
-- If no errors → it produces `Hello.class`
-- `Hello.class` contains **bytecode**
+- `public` → This class is accessible from anywhere.
+- `class` → We are defining a class (everything in Java lives inside a class)
+- `Hello` → The name of the class (must match the filename: `Hello.java`)
+- `{` → Opens the class body.
 
-#### 3. Running
-You run the program.
-```java title:compiler.java
-java Hello
+```java title:Hello.java
+public static void main(String[] args) {
 ```
+
+- `public` → The method is accessible from anywhere (JVM needs to access it)
+- `static` → This method belongs to the class itself, not an object. JVM can call it without creating an object.
+- `void` → This method returns nothing.
+- `main` → Special name — this is the **entry point** of the program. JVM always looks for `main` to start.
+- `String[] args` → An array of Strings passed from command line (can be ignored for now)
+- `{` → Opens the method body.
+
+```java title:HelloWorld.java
+System.out.println("Hello, World!");
+```
+
+- `System` → A built-in Java class that provides system-level utilities.
+- `out` → A static field in System — represents the standard output stream (your console/terminal)
+- `println` → A method that prints text and adds a new line at the end
+- `"Hello, World!"` → A String literal - the text to print.
+- `;` → Every statement in Java ends with a semicolon.
+
+```java title:Hello.java
+  }
+}
+```
+
+- First `}` → Closes the `main` method.
+- Second `}` → Closes the `Hello` class.
+
+| Rule                             | Explanation                                    |
+| -------------------------------- | ---------------------------------------------- |
+| File name must match class name  | `Hello.java` must contain `public class Hello` |
+| Java is case-sensitive           | `Main` ≠ `main`                                |
+| Every statement ends with `;`    | `System.out.println("Hi");`                    |
+| `main` method is the entry point | JVM always starts from `main`                  |
+| Everything lives inside a class  | You cannot write code outside a class          |
 
 #### Full Flow Diagram
 ```
