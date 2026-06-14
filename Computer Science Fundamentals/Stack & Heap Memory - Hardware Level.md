@@ -1,15 +1,5 @@
 Both live in the same physical **RAM**. "Stack" and "heap" are conventions and data-structure behaviors imposed on regions of a process's memory, not separate pieces of hardware.
 
-#### WHY Does a Java Backend Engineer Need This?
-
-- **Every Java method call uses the stack**: understanding the stack tells you exactly why `StackOverflowError` happens, what it costs to call a method, and why deep recursion is dangerous
-- **Every Java object lives on the heap**: understanding heap layout tells you why GC pauses happen, what causes `OutOfMemoryError`, and how to write memory-efficient code
-- **Debugging**: reading a stack trace is not just reading method names. It's reading the literal contents of the call stack in RAM at the moment of the exception
-- **Performance**: stack allocation is essentially free (one pointer move). Heap allocation requires finding free space, potentially triggering GC. This is why the JIT tries to allocate on the stack when possible (escape analysis)
-- **Thread model**: each thread has its OWN stack. Understanding this explains why thread-local variables work, why stack traces show one thread's call chain, and why creating thousands of threads is expensive (each needs its own RAM for its stack)
-- **Memory leaks**: ALL Java memory leaks are heap leaks. The stack can never leak (it's automatically managed). Understanding the difference is fundamental to fixing leaks
-- **JVM tuning**: `-Xss` (stack size per thread), `-Xms`/`-Xmx` (heap size), `-XX:+UseG1GC` (heap garbage collector) — these flags only make sense if you understand what they're configuring at the hardware level
-
 ## THE BIG PICTURE
 WHEN YOUR JAVA PROGRAM RUNS:
 ```
@@ -256,8 +246,6 @@ Even though this is "hardware level," it directly explains Java behavior you'll 
 - **Thread safety**: stacks are private (no sharing → naturally thread-safe locals); the heap is shared (→ needs synchronization).
 - **Performance tuning** (`-Xss`, `-Xmx`, `-Xms`) directly sizes these regions.
 - **Cache locality** explains why array-based structures often beat pointer-heavy ones in real workloads.
-
----
 
 ## 8. Quick Self-Check Questions
 

@@ -16,13 +16,29 @@ Follow the structure down.
 10. [[I-O operations]]
 
 #### Networking Fundamentals
-1. 
+1. [[01-OSI-and-TCP-IP-Models]]
+2. [[02-IP-Addresses-and-Subnetting]]
+3. [[03-DNS]]
+4. [[04-TCP-vs-UDP]]
+5. [[05-HTTP-Protocol-Deep-Dive]]
+6. [[06-HTTPS-and-TLS]]
+7. [[07-Ports-Sockets-Firewalls-Proxies-LB-CDN]]
+8. [[08-WebSockets-gRPC-CORS]]
 
 #### Operating System Basics
-1. 
+1. [[01-Linux-Fundamentals-and-Filesystem]]
+2. [[02-Essential-Commands]]
+3. [[03-File-Permissions-and-Ownership]]
+4. [[04-Process-Management-and-Signals]]
+5. [[05-Env-Vars-Networking-Tools-Packages-SSH]]
+6. [[06-Shell-Scripting-Cron-systemd]]
 
 #### Version Control - Git
-1. 
+1. [[01-Git-Fundamentals-and-Internals]]
+2. [[02-Branching-Merging-Rebasing]]
+3. [[03-Remotes-and-Collaboration]]
+4. [[04-History-Recovery-and-Inspection]]
+5. [[05-Workflow-Mastery]]
 
 
 *(More content will be added as the roadmap progresses)*
