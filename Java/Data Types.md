@@ -1,169 +1,12 @@
-A classification that specifies the type of value a variable can hold, the amount of memory it requires, and the operations that can be performed on it. [Java data types](https://www.w3schools.com/java/java_data_types.asp) are divided into ==two main categories==: 
-1. Primitive Types
-2. Reference Types (Non-Primitive)
+Java is a **statically typed** language: every variable has a declared type known at compile time. Java has **two categories**:
 
-| Feature       | Primitive      | Non-Primitive              |
-| ------------- | -------------- | -------------------------- |
-| Stores        | Actual value   | Reference (memory address) |
-| Memory        | Stack          | Heap                       |
-| Default value | 0, false, etc. | `null`                     |
-| Has methods?  | No             | Yes                        |
-| Example       | `int`, `char`  | `String`, `Arrays`         |
+| Category            | Examples                            | Stored as                              | Lives where                             |
+| ------------------- | ----------------------------------- | -------------------------------------- | --------------------------------------- |
+| **Primitive types** | `int`, `double`, `boolean`, ...     | The actual value                       | Stack (local vars) or inline in objects |
+| **Reference types** | `String`, arrays, objects, wrappers | A reference (address) to a heap object | Reference on stack, object on heap      |
 
-## What are Primitive Types?
-Primitive types are the **most basic data types** built into Java.  
-They store **raw values directly in memory** (not objects).  
-There are exactly **8 primitive types** in Java.
-
-#### 1. Integer Types (whole numbers)
-
-##### ==byte==
-In Java, the **byte** data type is ==an 8-bit signed two's complement integer==. It is the smallest integer type in the language and is primarily used to save memory in large arrays or when working with raw binary data from files or network streams.
-
-- Size: **8 bits (1 byte)**
-- Range: **-128 to 127**
-- Use when: saving memory with small numbers
-
-```java title:syntax.java
-byte temperature = 36;
-byte minVal = -128;
-byte maxVal = 127;
-```
-
-##### ==short==
-In Java, **`short`** refers to both a primitive data type and a corresponding wrapper class used to store small integer values.
-
-- Size: **16 bits (2 bytes)**
-- Range: **-32,768 to 32,767**
-- Use when: working with legacy systems or saving memory
-
-```java title:syntax.java
-short year = 2024;
-short population = 32000;
-```
-
-###### `short` as wrapper class:
-In Java, the [**`Short`**](https://www.javaguides.net/2018/08/short-wrapper-class-in-java.html) class is the wrapper class for the primitive data type `short [12, 13]`. It encapsulates a single 16-bit signed integer value within an object, allowing you to treat a `short` value as an object `[13, 27]`
-##### ==**int**==
-In Java, **`int`** is a primitive data type used to store signed 32-bit whole numbers. It is the most commonly used numeric type for integers.
-
-- Size: **32 bits (4 bytes)**
-- Range: **-2,147,483,648 to 2,147,483,647** (about ±2 billion)
-- **Default choice for whole numbers in Java**
-- Use when: counting, indexing, general purpose integers
-
-```java title:syntax.java
-int age = 25;
-int score = 1000000;
-int negative = -500;
-```
-
-##### ==**long**==
-In Java, [`long`](https://www.javaguides.net/2018/08/long-wrapper-class-in-java.html) is a primitive data type and `Long`  is its corresponding wrapper class. They are used for storing 64-bit signed integers when the range of a standard 32-bit `int` is insufficient.
-
-- Size: **64 bits (8 bytes)**
-- Range: **-9,223,372,036,854,775,808 to 9,223,372,036,854,775,807**
-- Must add **L** at the end of the value
-- Use when: numbers exceed int range (population of earth, timestamps, IDs)
-
-```java title:syntax.java
-long worldPopulation = 8000000000L;  // L is required
-long timestamp = 1712345678901L;
-long bankAccountBalance = 9999999999L;
-```
-
-**Note:** **Why L?** Without it, Java treats the number as an int literal first, which overflows before being assigned to long.
-
-#### 2. Decimal Types (floating point numbers)
-
-##### ==**float**==
-In Java, `float` is a primitive data type used to store single-precision 32-bit [**IEEE 754**](https://www.geeksforgeeks.org/computer-organization-architecture/ieee-standard-754-floating-point-numbers/) floating-point numbers. It is primarily used when memory conservation is a priority in large arrays of fractional numbers and when 6 to 7 decimal digits of precision are sufficient.
-
-- Size: **32 bits (4 bytes)**
-- Precision: **~6-7 decimal digits**
-- Must add **f** at the end
-- Use when: memory is tight and precision is not critical
-
-```java title:syntax.java
-float price = 9.99f;   // f is required as L
-float temperature = 36.6f;
-float pi = 3.14159f;
-```
-
-##### ==**double**==
-In Java, `double` is a primitive data type used to store fractional (floating-point) numbers with high precision.
-
-- Size: **64 bits (8 bytes)**
-- Precision: **~15-16 decimal digits**
-- **Default choice for decimal numbers in Java**
-- Use when: scientific calculations, financial calculations (with care)
-
-```java title:syntax.java
-double salary = 75000.50;
-double pi = 3.141592653589793;
-double gpa = 3.85;
-```
-
-
-##### **float vs double:**
-Always prefer `double`, as it is *more precise* and is Java's default decimal type. Only use `float` when memory is *critically limited*.
-
-**Warning about floating point:** Never use `float` or `double` for precise financial calculations. Use `BigDecimal` instead.
-
-```java title:syntax.java
-// This is a problem with floating point precision
-
-System.out.println(0.1 + 0.2);
-
-// Output: 0.30000000000000004
-```
-
-###### What is `BigDecimal?`
-`BigDecimal` is a class (primarily in Java's `java.math` package) designed to provide immutable, arbitrary-precision signed decimal numbers, essential for financial calculations. It enables exact accuracy by avoiding the rounding errors inherent in `float` and `double` types, offering precise control over scale and rounding behavior.
-
-#### 3. ==`char`== (Single Character)
-In Java, the **`char`** data type is a primitive used to store a single 16-bit Unicode character.
-
-- Size: **16 bits (2 bytes)**
-- Stores a **single character** using **single quotes**.
-- Java uses **Unicode**, so it can store any character from any language.
-- Range: 0 to 65,535 (unsigned)
-
-```java title:syntax.java
-char letter = 'A';
-char digit = '5';
-char symbol = '@';
-char space = ' ';
-char unicode = '\u0041'; // Unicode for 'A'
-```
-
-**Note:** *Single quotes for char, double quotes for String*
-`'A'` → char (one character)  
-`"A"` → String (object containing one character)
-
-```java title:syntax.java
-// char is actually a number underneath
-char ch = 'A';
-System.out.println(ch); // Output: A
-System.out.println((int) ch); // Output: 65  (ASCII/Unicode value)
-```
-
-#### 4. ==`boolean`== (True or False)
-In Java, a **boolean** is a data type that represents one of two logical values: `true` or `false`. It is primarily used for decision-making in conditional statements and loops.
-
-- Size: **1 bit logically** (JVM may use more internally)
-- Only two possible values: `true` or `false`
-- **Never use 0/1 in Java like in C, only true/false**
-- Use when: flags, conditions, switches
-
-```java title:syntax.java
-boolean isLoggedIn = true;
-boolean hasPermission = false;
-boolean isAdult = age >= 18; // result of a condition is boolean
-boolean isEmpty = name.isEmpty(); // method returning boolean
-```
-
-#### Complete Primitive Types Reference Table:
+## 1. The 8 Primitive Types
+Java has exactly **8 built-in primitive types**. Their sizes are **fixed across all platforms** (part of "write once, run anywhere").
 
 | Type      | Size    | Range                 | Default Value | Example             |
 | --------- | ------- | --------------------- | ------------- | ------------------- |
@@ -176,146 +19,236 @@ boolean isEmpty = name.isEmpty(); // method returning boolean
 | `char`    | 16 bits | 0 to 65,535           | '\u0000'      | `char c = 'A';`     |
 | `boolean` | 1 bit   | true / false          | false         | `boolean b = true;` |
 
-## What are Non-Primitive Types?
-Non-primitive data types, also known as **reference types**, differ from primitive types because they refer to objects rather than storing actual values directly. While primitive types are predefined by Java, non-primitive types are created by the programmer (except for `String`), they "point" or "refer" to a much larger, more complex object sitting in the JVM's [[JVM Architecture#3. Heap (Shared)|Heap]] memory.
+### 1.1 Literals and suffixes
+```java
+int    i = 100;
+long   l = 100L;          // L suffix (or l) — required for values > int range
+float  f = 3.14f;         // f suffix — required (else treated as double)
+double d = 3.14;          // double is the default for decimals
+char   c = 'A';           // single quotes; also 'A' == 65
+boolean b = true;
 
-##### 1. ==String==
-[[String]] is a **non-primitive type**, it is a **class** in Java (`java.lang.String`).  
-It represents a **sequence of characters**.  
-Uses **double quotes**.
-
-```java title:syntax.java
-String name = "Ahmed";
-String greeting = "Hello, World!";
-String empty = "";
-String nullString = null; // String can be null (primitives cannot)
+long big   = 9_000_000_000L;   // underscores for readability (Java 7+)
+int  hex   = 0xFF;             // hexadecimal (255)
+int  binary= 0b1010;          // binary (10)
+int  octal = 010;             // octal (8)  -- careful: leading 0!
 ```
 
-###### String is Immutable
-Once created, **a String cannot be changed**.  
-Any operation that seems to modify a String actually **creates a new String**.
-
-```java title:syntax.java
-String name = "Ahmed";
-name.toUpperCase(); // Does NOT change name
-System.out.println(name); // Still prints: Ahmed
-String upper = name.toUpperCase(); // Creates a NEW String
-System.out.println(upper); // Prints: AHMED
+### 1.2 Default values
+- **Instance/static fields** are auto-initialized to the defaults in the table above.
+- **Local variables are NOT** - they must be explicitly initialized before use, or the compiler errors:
+```java title:default_values.java
+int x;
+// System.out.println(x);   // COMPILE ERROR: variable x might not have been initialized
 ```
 
-###### String Pool
-Java optimizes Strings using a **String Pool** in memory:
+### 1.3 Overflow & floating-point gotchas
+```java
+int max = Integer.MAX_VALUE;     // 2147483647
+System.out.println(max + 1);     // -2147483648  -> silent overflow (wraps around)
 
-```java title:syntax.java
-String a = "Hello"; // Goes into String Pool
-String b = "Hello"; // Reuses same object from pool String
-c = new String("Hello"); // Forces a NEW object in Heap (avoid this)
+System.out.println(0.1 + 0.2);   // 0.30000000000000004  -> float imprecision!
+```
+- **Integer overflow is silent** (wraps via two's complement) — use `long`, or `Math.addExact()` to detect.
+- **`float`/`double` are imprecise** (binary fractions). **Never use them for money** - use `BigDecimal` (Phase 4/5).
 
-System.out.println(a == b); // true (same reference in pool)
-System.out.println(a == c); // false (different objects)
-System.out.println(a.equals(c)); // true (same content)
+## 2. Wrapper Classes
+A [wrapper class](https://www.geeksforgeeks.org/java/wrapper-classes-java/) in Java is a special class that "wraps" or encapsulates a primitive data type into an object.
+While primitive types (like `int` or `char`) are efficient for performance, Java is an object-oriented language where many advanced features, such as collection and generics , only work with objects.
+
+Each primitive has a corresponding **wrapper class** - an object form, living in `java.lang`:
+
+```
+Primitive    →    Wrapper Class
+─────────────────────────────────
+byte         →    Byte
+short        →    Short
+int          →    Integer
+long         →    Long
+float        →    Float
+double       →    Double
+char         →    Character
+boolean      →    Boolean
 ```
 
-**NOTE:** *Always use `.equals()` to compare Strings, never `==`*
+### 2.1 Why wrappers exist
+- **Generics & collections** work only with objects, not primitives: `List<Integer>` is legal, `List<int>` is not.
+- Wrappers can be **`null`** (a primitive can't represent "no value").
+- They provide **utility methods/constants**: `Integer.parseInt("42")`, `Integer.MAX_VALUE`, `Integer.toBinaryString(10)`, `Double.isNaN(x)`.
 
-##### 2. ==Arrays==
-An [[Arrays|array]] is a **fixed-size collection of elements of the same type**.
-###### Declaring and creating arrays:
-```java title:syntax.java
-// Method 1: Declare then initialize
-int[] numbers = new int[5]; // Array of 5 integers (all default to 0)
-numbers[0] = 10;
-numbers[1] = 20;
-numbers[2] = 30;
-
-// Method 2: Declare and initialize together
-int[] scores = {95, 87, 76, 92, 88};
-
-// Method 3: new keyword with values
-String[] names = new String[]{"Alice", "Bob", "Charlie"};
+```java title:wrapper.java
+List<Integer> nums = new ArrayList<>();   // must use wrapper in generics
+int parsed = Integer.parseInt("123");     // String -> int
+Integer maybeNull = null;                 // wrappers can be null
 ```
 
-###### Accessing array elements:
-```java title:syntax.java
-int[] scores = {95, 87, 76, 92, 88};
+### 2.2 Wrappers are immutable
+Like `String`, wrapper objects are **immutable** - `Integer.valueOf(5)` always represents 5.
 
-System.out.println(scores[0]); // 95 (first element, index starts at 0)
-System.out.println(scores[4]); // 88 (last element)
-System.out.println(scores.length); // 5 (number of elements)
+### 2.3 Autoboxing and Unboxing
+Java automatically converts between primitives and wrappers (since Java 5):
+- **Autoboxing:** primitive → wrapper (`int` → `Integer`)
+- **Unboxing:** wrapper → primitive (`Integer` → `int`)
+
+```java title:auto_boxing.java
+// AUTOBOXING → primitive automatically becomes object
+Integer num = 100;       // compiler converts to: Integer.valueOf(100)
+Double  d   = 3.14;      // compiler converts to: Double.valueOf(3.14)
 ```
 
-###### Array index visualization:
-```java title:syntax.java
-int[] scores = {95, 87, 76, 92, 88};
+```java title:unboxing.java
+// UNBOXING → object automatically becomes primitive
+int result = num;        // compiler converts to: num.intValue()
+double val = d;          // compiler converts to: d.doubleValue()
 
-Index: 0 1 2 3 4
-
-       ┌────┬────┬────┬────┬────┐
-Value: │ 95 │ 87 │ 76 │ 92 │ 88 │
-       └────┴────┴────┴────┴────┘
-       
-scores[0] = 95
-scores[4] = 88
-scores[5] = ❌ ArrayIndexOutOfBoundsException
+// Happens automatically in operations too
+Integer x = 10;
+Integer y = 20;
+int sum = x + y;         // both unboxed, then added → 30
 ```
 
-###### Iterating over an array:
-```java title:syntax.java
-int[] scores = {95, 87, 76, 92, 88};
+### 2.4 The `NullPointerException`
+Unboxing a `null` wrapper throws **NPE**:
+```java title:nullpointer.java
+// Wrapper can be null, primitive CANNOT
+Integer num = null;
 
-// Regular for loop
-for (int i = 0; i < scores.length; i++) { System.out.println("Index " + i + ": " + scores[i]); }
+// This will CRASH with NullPointerException!
+int x = num;              // tries to unbox null → 💥 NPE
 
-// Enhanced for loop (for-each) — cleaner, no index needed
-for (int score : scores) {
-System.out.println(score);
+// Always check null before unboxing
+if (num != null) {
+    int x = num;          // safe
+}
+
+// Real world example - dangerous!
+public int add(Integer a, Integer b) {
+    return a + b;    // if a or b is null → NPE at runtime
 }
 ```
+> One of the most common subtle bugs. Be careful unboxing values that might be `null`.
 
-###### 2D Arrays:
-```java title:syntax.java
-int[][] matrix = {
-{1, 2, 3},
-{4, 5, 6},
-{7, 8, 9}
-};
-
-System.out.println(matrix[0][0]); // 1 (row 0, col 0)
-System.out.println(matrix[1][2]); // 6 (row 1, col 2)
-System.out.println(matrix[2][1]); // 8 (row 2, col 1)
+### 2.5 Performance note
+Auto-boxing in tight loops creates many wrapper objects (heap allocation + GC pressure):
+```java title:performance_issue.java
+Long sum = 0L;
+for (long i = 0; i < 1_000_000; i++) sum += i;  // BAD: boxes/unboxes every iteration
+// Fix: use primitive long for sum
 ```
 
-##### 3. Classes (User-Defined Objects)
-A Class is a blueprint that you create. When you declare a variable using a Class type, you are creating a reference that will point to a specific "instance" (Object) of that blueprint.
+### 2.6 Integer Caching (−128 to 127)
+> **A classic interview topic and real bug source.**
 
-###### Declaration & Initialization
-Assuming you have already written a `Player` class somewhere else in your code:
-```java title:syntax.java
-// 1. Declare the reference variable
-Player playerOne; 
+Java **caches** `Integer` objects for values **−128 to 127**. `Integer.valueOf()` (and autoboxing) returns the **same cached object** for values in this range, but **new objects** outside it.
 
-// 2. Initialize it by calling the class constructor with 'new'
-playerOne = new Player(); 
+```java
+Integer a = 100, b = 100;
+System.out.println(a == b);   // true  -> both from the cache (same object)
 
-// All-in-one declaration and initialization
-Player playerTwo = new Player("Luigi", 100);
+Integer c = 200, d = 200;
+System.out.println(c == d);   // false -> outside cache, different objects!
+
+System.out.println(c.equals(d)); // true -> value comparison (always correct)
+```
+**RULE:** Always use `.equals()` to compare Wrapper objects. Never use `==` for value comparison.
+
+### 2.7 Useful Utility Methods
+```java title:Integer_utilities.java
+// ─── Integer Utilities ───────────────────────────────
+
+// String → int conversion
+int a = Integer.parseInt("123");        // 123
+int b = Integer.parseInt("FF", 16);     // 255 (hex to decimal)
+
+// int → String
+String s = Integer.toString(42);        // "42"
+String s2 = String.valueOf(42);         // "42"
+
+// Min / Max values
+System.out.println(Integer.MAX_VALUE);  // 2147483647
+System.out.println(Integer.MIN_VALUE);  // -2147483648
+
+// Compare
+int result = Integer.compare(10, 20);   // -1 (10 < 20)
+
+// Binary, Hex, Octal
+System.out.println(Integer.toBinaryString(10)); // "1010"
+System.out.println(Integer.toHexString(255));   // "ff"
+System.out.println(Integer.toOctalString(8));   // "10"
 ```
 
-##### 4. Interfaces
-An Interface is a purely abstract "contract" that dictates what methods a class must have, but not how they work. You cannot instantiate an interface directly (you can't say `new MyInterface()`). Instead, you declare a reference variable of the Interface type, and point it to a Class that _implements_ that interface.
+```java title:double_utilities.java
+// ─── Double Utilities ────────────────────────────────
 
-###### Declaration & Initialization
-Assume `Playable` is an interface, and `AudioTrack` and `VideoClip` are classes that implement it.
-```java title:syntax.java
-// Declare a reference of the Interface type
-Playable currentMedia;
-
-// Point it to a specific object that implements the interface
-currentMedia = new AudioTrack("song.mp3");
-
-// Later, you can point that exact same reference to a different object type, 
-// as long as it also implements the interface!
-currentMedia = new VideoClip("movie.mp4");
+double d = Double.parseDouble("3.14");  // String → double
+System.out.println(Double.MAX_VALUE);   // 1.7976931348623157E308
+System.out.println(Double.isNaN(0.0 / 0.0));      // true
+System.out.println(Double.isInfinite(1.0 / 0.0)); // true
 ```
 
+```java title:char_utilities.java
+// ─── Character Utilities ─────────────────────────────
 
+char c = 'A';
+System.out.println(Character.isLetter(c));     // true
+System.out.println(Character.isDigit(c));      // false
+System.out.println(Character.isWhitespace(' ')); // true
+System.out.println(Character.toUpperCase('a')); // A
+System.out.println(Character.toLowerCase('A')); // a
+System.out.println(Character.isLetterOrDigit('3')); // true
+```
+
+## 3. Primitives vs Wrappers
+When to Use Which?
+
+| Use **primitives** when... | Use **wrappers** when... |
+|----------------------------|--------------------------|
+| Performance/memory matters (no object overhead) | You need them in generics/collections (`List<Integer>`) |
+| The value always exists | The value can be **absent** (`null`) |
+| Local computation, loops, counters | API/DTO fields where "not set" is meaningful |
+
+> **Default rule:** prefer **primitives** for locals and computations; use wrappers only when you must (collections, nullability). Avoid unnecessary boxing in hot paths.
+
+## 4. Common Pitfalls
+
+| Pitfall | Fix |
+|---------|-----|
+| Comparing wrappers with `==` | Use `.equals()` (Integer cache trap) |
+| Unboxing a possibly-`null` wrapper | Null-check first / avoid wrappers where value always exists |
+| Using `float`/`double` for money | Use `BigDecimal` |
+| Forgetting `L`/`f` suffixes | `long` needs `L`; `float` needs `f` |
+| Silent integer overflow | Use `long` or `Math.*Exact()` |
+| Leading `0` making an octal literal | `010` is 8, not 10 |
+| Using uninitialized local variables | Initialize before use (no auto-default for locals) |
+| Boxing in tight loops | Use primitives for accumulators |
+
+## 5. Connection to Backend / Spring (Why This Matters Later)
+
+- **DTO/entity fields** often use wrappers (`Integer`, `Long`) so "not provided"/"null in DB" is representable — but watch for NPEs on unboxing.
+- **JPA IDs** are typically `Long` (wrapper) so a new, unsaved entity can have a `null` id.
+- **`BigDecimal` for money** is mandatory in financial/e-commerce backends (Projects 5, 7).
+- **Integer cache `==` bug** appears in real code comparing IDs/counts — use `.equals()`.
+- **Boxing performance** matters in high-throughput services and stream pipelines (use `IntStream`/`LongStream` — Phase 1.8).
+
+## 6. Quick Self-Check Questions
+
+1. Name the 8 primitives with their sizes. Which is unsigned?
+2. What are the default values of fields vs local variables?
+3. Why do wrapper classes exist? Give two reasons.
+4. What's the difference between autoboxing and unboxing? What NPE trap does unboxing create?
+5. Why does `Integer a=100,b=100; a==b` print `true` but `200==200` print `false`?
+6. How should you always compare wrapper objects, and why?
+7. Why must you never use `double` for currency?
+8. When should you prefer primitives over wrappers?
+
+## 7. Key Terms
+
+- **Primitive type:** built-in type holding a value directly (8 of them).
+- **Reference type:** type holding a reference to a heap object.
+- **Wrapper class:** object form of a primitive (`Integer`, `Double`, ...).
+- **Autoboxing / unboxing:** automatic primitive↔wrapper conversion.
+- **Integer cache:** pre-created `Integer` objects for −128..127.
+- **Literal:** a fixed value in source code (`100`, `3.14f`, `'A'`).
+- **Overflow:** value exceeding a type's range, wrapping around.
+- **`BigDecimal`:** arbitrary-precision decimal for exact (money) math.
+- **Default value:** auto-assigned value for uninitialized fields.

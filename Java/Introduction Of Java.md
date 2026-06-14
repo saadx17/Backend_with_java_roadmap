@@ -11,7 +11,7 @@ In the industry, Java is a heavyweight. It is the backbone of massive enterprise
 # Features of Java
 
 ##### Platform Independent
-This is Java's famous (WORA) capability. When you write Java code, it gets compiled into intermediate "[[Bytecode, JIT, Garbage Collection#What is ==Bytecode==?|bytecode]]" rather than machine-specific code. As long as a device has a Java Virtual Machine (JVM) installed, it can read and execute that bytecode, whether it's on Windows, Mac, or Linux.
+This is Java's famous (WORA) capability. When you write Java code, it gets compiled into intermediate "bytecode" rather than machine-specific code. As long as a device has a Java Virtual Machine (JVM) installed, it can read and execute that bytecode, whether it's on Windows, Mac, or Linux.
 
 ##### Object-Oriented
 Java models software around real-world "objects" that combine data (attributes) and behavior (methods). This relies on core principles like inheritance, encapsulation, polymorphism, and abstraction, which makes complex code much easier to manage, reuse, and scale.
