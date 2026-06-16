@@ -1,19 +1,10 @@
-# Binary, Bits, Bytes, Word Size
+Computers store and process all information as **bits** (`0` or `1`). Bits group into **bytes** (8 bits), bytes group into **words** (the natural processing unit of a CPU, e.g., 64 bits). Everything, numbers, text, images, code is ultimately just patterns of bits.
 
-> **Phase 0 — Computer Science Fundamentals → 0.1 How Computers Work**
 > Goal: Understand how computers represent *everything* using only two states, and the fundamental units (bit, byte, word) that all higher concepts build on.
 
 ---
-
-## 0. The One-Sentence Summary
-
-Computers store and process all information as **bits** (0 or 1). Bits group into **bytes** (8 bits), bytes group into **words** (the natural processing unit of a CPU, e.g., 64 bits). Everything — numbers, text, images, code — is ultimately just patterns of bits.
-
----
-
 ## 1. Why Binary? (Base-2)
-
-Computers are electronic. The simplest, most reliable way to store/transmit information electronically is with **two distinct states**:
+Computers are electronic. The simplest, most reliable way to **store/transmit** information electronically is with **two distinct states**:
 
 | State | Physical meaning |
 |-------|------------------|
@@ -22,34 +13,32 @@ Computers are electronic. The simplest, most reliable way to store/transmit info
 
 Two states are easy to tell apart reliably even with electrical noise → robust and cheap. This is why computers use **binary (base-2)** rather than decimal (base-10).
 
-> A transistor — the basic building block of a CPU — is essentially a tiny switch that is either ON (1) or OFF (0). Modern chips have **billions** of them.
+> A transistor: The basic building block of a CPU is essentially a tiny switch that is either ON (1) or OFF (0). Modern chips have **billions** of them.
 
 ---
-
 ## 2. The Bit
-
-- **Bit** = **Bi**nary dig**it** — the smallest unit of information.
-- Holds exactly one value: **0** or **1**.
+A **bit** (short for "binary digit") is the smallest unit of digital information.
+- Holds exactly one value: `0` or `1`.
 - *n* bits can represent **2ⁿ** different combinations.
 
 | Bits | Combinations (2ⁿ) | Example range (unsigned) |
-|------|-------------------|--------------------------|
-| 1 | 2 | 0–1 |
-| 2 | 4 | 0–3 |
-| 4 | 16 | 0–15 |
-| 8 | 256 | 0–255 |
-| 16 | 65,536 | 0–65,535 |
-| 32 | ~4.29 billion | 0 – 4,294,967,295 |
-| 64 | ~1.8 × 10¹⁹ | very large |
+| ---- | ----------------- | ------------------------ |
+| 1    | 2                 | 0–1                      |
+| 2    | 4                 | 0–3                      |
+| 4    | 16                | 0–15                     |
+| 8    | 256               | 0–255                    |
+| 16   | 65,536            | 0–65,535                 |
+| 32   | ~4.29 billion     | 0 – 4,294,967,295        |
+| 64   | ~1.8 × 10¹⁹       | very large               |
 
 ---
-
 ## 3. The Byte
-
+A **byte** is the fundamental unit of digital data in a computer.
 - **Byte** = **8 bits**, grouped together.
-- The standard **unit of addressable memory** — memory is measured and addressed in bytes, not bits.
+- The standard **unit of addressable memory**. Memory is measured and addressed in `bytes`, not `bits`.
 - One byte = 2⁸ = **256** possible values (0–255 unsigned).
 
+### 3.1 Mathematical Example
 ```
 A single byte:
   bit position:  7  6  5  4  3  2  1  0
@@ -58,21 +47,48 @@ A single byte:
   128 + 0 + 32 + 16 + 0 + 4 + 0 + 0 = 180
 ```
 
-### 3.1 Nibble
-- **Nibble** = 4 bits = half a byte. Maps neatly to one **hexadecimal** digit (0–F).
+**Identify the positional values:**
+In binary, each position from right to left represents a power of 2:
+```
+Bit 0 = (2^0 = 1)
+Bit 1 = (2^1 = 2)
+Bit 2 = (2^2 = 4)
+Bit 3 = (2^3 = 8)
+Bit 4 = (2^4 = 16)
+Bit 5 = (2^5 = 32)
+Bit 6 = (2^6 = 64)
+Bit 7 = (2^7 = 128)
+```
 
-### 3.2 Larger units (two conventions — important!)
-| Unit | Decimal (SI, base-10) | Binary (IEC, base-2) |
-|------|----------------------|----------------------|
-| Kilobyte | 1 KB = 1,000 bytes | 1 KiB = 1,024 bytes |
-| Megabyte | 1 MB = 1,000,000 | 1 MiB = 1,048,576 |
-| Gigabyte | 1 GB = 10⁹ | 1 GiB = 2³⁰ |
-| Terabyte | 1 TB = 10¹² | 1 TiB = 2⁴⁰ |
+**Multiply your bits by those values:**
+```
+Bit 7: (1 x 128 = 128)
+Bit 6: (0 x 64 = 0)
+Bit 5: (1 x 32 = 32)
+Bit 4: (1 x 16 = 16)
+Bit 3: (0 x 8 = 0)
+Bit 2: (1 x 4 = 4)
+Bit 1: (0 x 2 = 0)
+Bit 0: (0 x 1 = 0)
+```
+
+**Add the active values:**
+`128 + 0 + 32 + 16 + 0 + 4 + 0 + 0 = 180`
+
+### 3.2 Nibble
+**Nibble** = 4 bits = half a byte. Maps neatly to one **hexadecimal** digit (0–F).
+
+### 3.3 Larger units (two conventions)
+| Unit     | Decimal (SI, base-10) | Binary (IEC, base-2) |
+| -------- | --------------------- | -------------------- |
+| Kilobyte | 1 KB = 1,000 bytes    | 1 KiB = 1,024 bytes  |
+| Megabyte | 1 MB = 1,000,000      | 1 MiB = 1,048,576    |
+| Gigabyte | 1 GB = 10⁹            | 1 GiB = 2³⁰          |
+| Terabyte | 1 TB = 10¹²           | 1 TiB = 2⁴⁰          |
 
 > Disk manufacturers use **decimal** (1 TB = 10¹² bytes); operating systems often use **binary** (1 TiB = 2⁴⁰). That's why a "1 TB" drive shows up as ~931 GB in your OS.
 
 ---
-
 ## 4. Number Systems You Must Know
 
 | System | Base | Digits | Prefix | Use |
@@ -98,6 +114,7 @@ You'll see hex constantly in: memory addresses (`0x7FFE...`), color codes (`#FF5
 ```
 1011 = 1×2³ + 0×2² + 1×2¹ + 1×2⁰ = 8 + 0 + 2 + 1 = 11
 ```
+
 **Decimal → Binary:** repeatedly divide by 2, read remainders bottom-up.
 ```
 13 / 2 = 6 r1
@@ -107,10 +124,8 @@ You'll see hex constantly in: memory addresses (`0x7FFE...`), color codes (`#FF5
 ```
 
 ---
-
 ## 5. Representing Different Data
-
-Everything is bits — *interpretation* gives meaning:
+Everything is bits - *interpretation* gives meaning:
 
 | Data type | How it's encoded in bits |
 |-----------|--------------------------|
@@ -124,9 +139,7 @@ Everything is bits — *interpretation* gives meaning:
 > The **same bits** mean different things depending on how they're interpreted. `01000001` is the number 65, the character 'A' (ASCII), or part of a machine instruction — context decides.
 
 ---
-
 ## 6. Signed Numbers: Two's Complement (essential)
-
 How do you store negative numbers with only 0s and 1s? Modern computers use **two's complement**:
 - The **leftmost bit is the sign bit** (0 = positive, 1 = negative).
 - To negate a number: **invert all bits, then add 1.**
@@ -136,7 +149,6 @@ How do you store negative numbers with only 0s and 1s? Modern computers use **tw
 invert:        1111 1010
 add 1:         1111 1011   = -5
 ```
-
 An *n*-bit two's-complement integer ranges from **−2ⁿ⁻¹ to 2ⁿ⁻¹ − 1**.
 
 > This is exactly why Java's `int` (32-bit) ranges from −2,147,483,648 to +2,147,483,647, and why `Integer.MAX_VALUE + 1` **overflows** to `Integer.MIN_VALUE` (the bits wrap around).
@@ -144,8 +156,7 @@ An *n*-bit two's-complement integer ranges from **−2ⁿ⁻¹ to 2ⁿ⁻¹ − 
 ---
 
 ## 7. Word Size
-
-- A **word** is the **natural unit of data a CPU processes in one operation** — typically the size of its registers and the width of its data bus.
+A **word** is the **natural unit of data a CPU processes in one operation**. Typically the size of its registers and the width of its data bus.
 - Common word sizes: **32-bit** and **64-bit** (older systems: 8/16-bit).
 
 ### 7.1 What word size determines
@@ -161,9 +172,7 @@ An *n*-bit two's-complement integer ranges from **−2ⁿ⁻¹ to 2ⁿ⁻¹ − 
 A byte is always 8 bits. A **word** depends on the CPU architecture. People also use **half-word**, **double-word**, etc., relative to the architecture's word.
 
 ---
-
 ## 8. Endianness (awareness)
-
 When a multi-byte value is stored in memory, which byte comes first?
 - **Big-endian:** most significant byte first (network byte order).
 - **Little-endian:** least significant byte first (x86, most PCs).
@@ -176,10 +185,8 @@ The 4-byte value 0x12345678 stored at address A:
 > Matters when reading binary files or network protocols. The JVM abstracts this away for normal code, but it surfaces in `ByteBuffer` and serialization.
 
 ---
-
 ## 9. How This Maps to Java
-
-These fundamentals directly define Java's primitive types (Phase 1.2):
+These fundamentals directly define Java's [[Data Types#1. The 8 Primitive Types|primitive data types]]:
 
 | Java type | Size (bits) | Notes |
 |-----------|-------------|-------|
@@ -197,7 +204,6 @@ These fundamentals directly define Java's primitive types (Phase 1.2):
 - Java's sizes are **fixed across all platforms** (unlike C), which is part of "write once, run anywhere."
 
 ---
-
 ## 10. Why This Matters for a Backend (Java) Engineer
 
 - Explains **integer overflow** bugs (e.g., counters, IDs hitting `int` limits → use `long`).
@@ -208,7 +214,6 @@ These fundamentals directly define Java's primitive types (Phase 1.2):
 - Word size (32 vs 64-bit JVM) affects pointer size and memory footprint (compressed oops in the JVM).
 
 ---
-
 ## 11. Quick Self-Check Questions
 
 1. Why do computers use binary instead of decimal?
@@ -221,7 +226,6 @@ These fundamentals directly define Java's primitive types (Phase 1.2):
 8. What is endianness, and when does it matter?
 
 ---
-
 ## 12. Key Terms Glossary
 
 - **Bit:** smallest unit of data; 0 or 1.
@@ -238,6 +242,3 @@ These fundamentals directly define Java's primitive types (Phase 1.2):
 - **Encoding:** scheme mapping characters to byte patterns (ASCII, UTF-8).
 
 ---
-
-*This is the first note of **Section 0.1 — How Computers Work**.*
-*Next topic in roadmap: **CPU architecture basics (ALU, registers, cache, clock cycles)**.*

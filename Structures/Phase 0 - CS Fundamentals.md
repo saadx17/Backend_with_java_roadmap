@@ -5,7 +5,7 @@ Follow the structure down.
 *Duration: 2-4 weeks*
 
 #### HOW COMPUTERS WORK
-1. [[01-Binary-Bits-Bytes-Word-Size]]
+1. [[Binary, Bits, Bytes & Word Size]]
 2. [[02-CPU-Architecture-Basics]]
 3. [[03-Instruction-Cycle-Fetch-Decode-Execute]]
 4. [[04-RAM-vs-ROM-vs-Storage]]

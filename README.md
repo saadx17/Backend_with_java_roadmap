@@ -10,12 +10,14 @@ Welcome to the Backend Engineering with Java Roadmap! This repository contains n
 2. For Obsidian plugins, go to settings, community plugins and download `code styler`. This is a must.
 3. Go to Structure folder to find [[Phase 0 - CS Fundamentals]], [[Phase 1 - Java]] etc. to understand the layout and to find what is where.
 4. Look at Projects folder to find the related projects.
+5. You can read [[Journal]] to read my thoughts, concepts, fun facts etc. (Totally Optional)
 
 Have fun.
 
 ## Contents from Structures
 1. [[Phase 0 - CS Fundamentals]]
 2. [[Phase 1 - Java]]
+3. 
 
 *(More content will be added as the roadmap progresses)*
 
