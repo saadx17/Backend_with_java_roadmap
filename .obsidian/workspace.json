@@ -8,21 +8,21 @@
         "type": "tabs",
         "children": [
           {
-            "id": "57d5aba2b99661f0",
+            "id": "ddfb46915d793cd8",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Java/Arrays.md",
+                "file": "Java/04-Encapsulation.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Arrays"
+              "title": "04-Encapsulation"
             }
           },
           {
-            "id": "ddfb46915d793cd8",
+            "id": "216edf37fbb07e8d",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -35,8 +35,7 @@
               "title": "Structure - Java"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -127,7 +126,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Structures/Structure - Java.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -137,7 +135,7 @@
                 "unlinkedCollapsed": false
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Structure - Java"
+              "title": "Backlinks"
             }
           },
           {
@@ -146,12 +144,11 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Structures/Structure - Java.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from Structure - Java"
+              "title": "Outgoing links"
             }
           },
           {
@@ -216,43 +213,44 @@
       "bases:Create new base": false
     }
   },
-  "active": "ddfb46915d793cd8",
+  "active": "83007a773d72ef69",
   "lastOpenFiles": [
-    "Java/Arrays.md",
+    "Java/04-Encapsulation.md",
     "Structures/Structure - Java.md",
-    "Java/01-Annotations.md",
-    "Java/Literals.md",
-    "Java/Control Flow (if-else & switch).md",
-    "Java/Control Flow (Loops).md",
-    "Java/Type Casting.md",
-    "Java/Operators.md",
-    "Java/Keywords.md",
-    "Java/Naming Conventions.md",
-    "Java/Variables.md",
-    "Java/var Keyword.md",
-    "Java/02-Variables2.md",
-    "Java/Constants.md",
-    "Java/Data Types.md",
-    "Java/Wrapper Classes.md",
-    "Java/Introduction Of Java.md",
-    "Java/How Java works.md",
-    "Java/Basic Environment Variables.md",
-    "Java/JDK, JRE & JVM.md",
-    "Java/Unconfirmed 545963.crdownload",
-    "Java/Unconfirmed 169451.crdownload",
-    "Java/Unconfirmed 245141.crdownload",
-    "Java/Unconfirmed 897517.crdownload",
+    "Java/Access Modifiers.md",
+    "Java/Methods.md",
     "Structures/Structure - CS Fundamentals.md",
-    "Computer Science Fundamentals/Stack & Heap Memory - Hardware Level.md",
-    "Computer Science Fundamentals/The Instruction Cycle.md",
     "Structures/Structure - DSA.md",
-    "ReadMe.md",
-    "Java/Unconfirmed 149902.crdownload",
-    "Java/Unconfirmed 313832.crdownload",
-    "Java/Unconfirmed 685782.crdownload",
-    "Java/Unconfirmed 273512.crdownload",
-    "Java/Unconfirmed 890824.crdownload",
-    "Java/Unconfirmed 632057.crdownload",
+    "DSA/Mathematical Foundations.md",
+    "DSA/07-Bit-Manipulation-and-String-Algorithms.md",
+    "DSA/Unconfirmed 475421.crdownload",
+    "DSA/06-Greedy-and-Divide-and-Conquer.md",
+    "DSA/Unconfirmed 435764.crdownload",
+    "DSA/05-Dynamic-Programming.md",
+    "DSA/Unconfirmed 11320.crdownload",
+    "DSA/04-Recursion-and-Backtracking.md",
+    "DSA/Unconfirmed 34509.crdownload",
+    "DSA/03-Two-Pointers-and-Sliding-Window.md",
+    "DSA/Unconfirmed 429515.crdownload",
+    "DSA/02-Searching.md",
+    "DSA/Unconfirmed 156317.crdownload",
+    "DSA/01-Sorting.md",
+    "DSA/09-Bloom-Filter-and-LRU-Cache.md",
+    "DSA/Unconfirmed 341765.crdownload",
+    "DSA/08-Graph-Algorithms-and-Union-Find.md",
+    "DSA/Unconfirmed 694421.crdownload",
+    "DSA/07-Graphs-Representation-and-Traversals.md",
+    "DSA/Unconfirmed 22116.crdownload",
+    "DSA/06-Heaps-Tries-Specialized-Trees.md",
+    "DSA/Unconfirmed 53621.crdownload",
+    "DSA/05-Trees-Binary-BST-Balanced.md",
+    "DSA/04-Hash-Tables.md",
+    "DSA/03-Stacks-and-Queues.md",
+    "DSA/02-Linked-Lists.md",
+    "DSA/01-Arrays-and-Dynamic-Arrays.md",
+    "DSA/02-Space-Complexity-and-Analyzing-Code.md",
+    "DSA/01-Big-O-and-Time-Complexity.md",
+    "Structures/Structure - Database.md",
     "Assets/Memory_Hierarchy.png",
     "Assets/new_keyword_memory_pic.png",
     "Assets/ds.jpg",

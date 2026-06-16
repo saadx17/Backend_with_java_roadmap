@@ -3,7 +3,7 @@ This is the total structure of the roadmap for Java. Down below, everything is c
 ### JAVA
 Follow the Structure down.
 *Duration: 8-12 weeks*
-#### Core Java
+#### CORE JAVA
 1. [[Introduction Of Java]]
 2. [[JDK, JRE & JVM]]
 3. [[Basic Environment Variables]]
@@ -19,10 +19,10 @@ Follow the Structure down.
 13. [[Control Flow (Loops)]]
 14. [[Arrays]]
 
-#### Object-Oriented Programming
+#### OBJECT ORIENTED PROGRAMMING
 1. [[Classes & Objects]]
 2. [[Methods]]
-3. [[03-Access-Modifiers]]
+3. [[Access Modifiers]]
 4. [[04-Encapsulation]]
 5. [[05-Inheritance]]
 6. [[06-Polymorphism]]
@@ -34,22 +34,22 @@ Follow the Structure down.
 12. [[12-Inner-Classes]]
 13. [[13-Object-Class-Methods]]
 
-#### Advanced Java
+### ADVANCED JAVA
 
-#### Strings
+#### STRINGS
 1. [[01-String-Fundamentals-Immutability-Pool-Interning]]
 2. [[02-String-vs-StringBuilder-vs-StringBuffer]]
 3. [[03-Common-Methods-Formatting-Text-Blocks]]
 4. [[04-Regular-Expressions]]
 5. [[05-Character-Encoding]]
 
-##### Exception Handling
+#### EXCEPTION HANDLING
 1. [[01-Exception-Hierarchy-Checked-vs-Unchecked]]
 2. [[02-try-catch-finally-and-try-with-resources]]
 3. [[03-throw-throws-and-custom-exceptions]]
 4. [[04-Best-Practices-and-Stack-Traces]]
 
-##### Java Collections Framework
+#### JAVA COLLECTION FRAMEWORK
 1. [[01-Collections-Hierarchy-Overview]]
 2. [[02-List-Implementations]]
 3. [[03-Set-Implementations]]
@@ -57,24 +57,24 @@ Follow the Structure down.
 5. [[05-Map-Implementations-and-HashMap-Internals]]
 6. [[06-Comparable-Comparator-Iterators-Choosing]]
 
-##### Generics
+#### GENERICS
 1. [[01-Generics-Basics-and-Bounded-Types]]
 2. [[02-Wildcards-and-PECS]]
 3. [[03-Type-Erasure-Pitfalls-and-Best-Practices]]
 
-##### Functional Programming
+#### FUNCTIONAL PROGRAMMING
 1. [[01-Lambdas-and-Functional-Interfaces]]
 2. [[02-Method-References]]
 3. [[03-Stream-API-Creation-and-Operations]]
 4. [[04-Collectors-and-Parallel-Streams]]
 5. [[05-Optional]]
 
-##### Java I/O
+#### JAVA I/O
 1. [[01-Byte-Character-and-Buffered-Streams]]
 2. [[02-NIO-New-IO]]
 3. [[03-Serialization]]
 
-##### Java Concurrency
+#### JAVA CONCURRENCY
 1. [[01-Fundamentals-and-Thread-Basics]]
 2. [[02-Synchronization-Volatile-and-JMM]]
 3. [[03-Locks-Atomics-Concurrent-Collections]]
@@ -82,7 +82,7 @@ Follow the Structure down.
 5. [[05-CompletableFuture-Synchronizers-ThreadLocal]]
 6. [[06-Virtual-Threads]]
 
-##### JVM Deep Dive
+#### JVM DEEP DIVE
 1. [[01-JVM-Architecture-Overview]]
 2. [[02-Class-Loader-Subsystem]]
 3. [[03-Runtime-Data-Areas-and-Execution-Engine]]
@@ -90,7 +90,7 @@ Follow the Structure down.
 5. [[05-JVM-Options-and-Troubleshooting-Tools]]
 6. [[06-Common-Issues-and-Bytecode]]
 
-##### Extra
+#### EXTRA
 1. [[01-Java-Modules-JPMS]]
 2. [[01-Annotations]]
 3. [[01-Reflection-API]]

@@ -1,27 +1,15 @@
-# Encapsulation
-
-> **Phase 1 — Java Language Mastery → 1.3 Object-Oriented Programming**
-> Goal: Master encapsulation — getters/setters, why exposing fields directly is dangerous, how to build truly immutable objects, defensive copying, and the Builder pattern for safe construction.
-
----
-
-## 0. The Big Picture
-
 **Encapsulation** is one of the four pillars of OOP. It means:
 1. **Bundling** data (fields) and the methods that operate on it into a single unit (the class), and
 2. **Hiding** the internal state, exposing only a controlled, deliberate interface.
 
 > Think of a class as a **capsule**: the messy internals are sealed inside; the outside world interacts only through the buttons (methods) you choose to expose.
 
-Encapsulation builds directly on **access modifiers** (previous note): you make fields `private` and control all interaction through methods. The payoff is **safety, flexibility, and maintainability** — you can change internals freely as long as the public contract stays stable.
-
----
+Encapsulation builds directly on **access modifiers** (previous note): you make fields `private` and control all interaction through methods. The payoff is **safety, flexibility, and maintainability** - you can change internals freely as long as the public contract stays stable.
 
 ## 1. Getters and Setters
-
 The classic encapsulation mechanism: keep fields `private`, expose them through **accessor methods**.
 
-```java
+```java title:get_set.java
 public class Person {
     private String name;     // hidden state
     private int age;
@@ -45,7 +33,7 @@ public class Person {
 | Normal field `name` | `getName()` | `setName(...)` |
 | `boolean` field `active` | `isActive()` | `setActive(...)` |
 
-Frameworks (Jackson, JPA/Hibernate, Spring, validation) **rely on this convention** to discover and bind properties reflectively — so following it isn't just style, it's interoperability.
+Frameworks (Jackson, JPA/Hibernate, Spring, validation) **rely on this convention** to discover and bind properties reflectively - so following it isn't just style, it's interoperability.
 
 ### 1.2 What getters/setters buy you
 - **Validation** in setters (reject invalid state — see `setAge`).
@@ -58,8 +46,6 @@ Frameworks (Jackson, JPA/Hibernate, Spring, validation) **rely on this conventio
 
 ### 1.3 Getters/setters are NOT automatically "good"
 > ⚠️ Blindly generating a getter **and** setter for every field defeats the purpose — that's just a public field with extra steps. Add a setter **only if mutation is genuinely needed**, and put real logic/validation where it belongs. Prefer immutability (§3) when you can.
-
----
 
 ## 2. Why Direct Field Access Is Bad
 
@@ -86,8 +72,6 @@ Problems with exposing fields publicly:
 | **Framework incompatibility** | JPA/Jackson/validation expect accessor methods |
 
 > **Core idea:** a `private` field + accessor methods gives you a **single point of control**. With public fields, you have *zero* control and the field becomes a permanent, unchangeable contract.
-
----
 
 ## 3. Immutable Objects
 

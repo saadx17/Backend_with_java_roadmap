@@ -1,26 +1,15 @@
-# Access Modifiers
-
-> **Phase 1 — Java Language Mastery → 1.3 Object-Oriented Programming**
-> Goal: Master Java's four access levels, exactly how visibility works across classes and packages, and how to apply the **principle of least privilege** to write safe, maintainable code.
-
----
-
-## 0. The Big Picture
-
-**Access modifiers** control **who can see and use** a class member (field, method, constructor) or a type. They are Java's primary tool for **encapsulation** — hiding internal details and exposing only a deliberate, controlled surface.
+**Access modifiers** control **who can see and use** a class member (field, method, constructor) or a type. They are Java's primary tool for **[[04-Encapsulation]]**, hiding internal details and exposing only a deliberate, controlled surface.
 
 Java has **four** access levels, from most restrictive to most open:
-
 ```
 private  <  default (package-private)  <  protected  <  public
  (most restrictive)                                   (most open)
 ```
 
-> There is no `default` *keyword* — "default" / "package-private" means you write **no modifier at all**.
-
----
+> There is no `default` *keyword* - "default" / "package-private" means you write **no modifier at all**.
 
 ## 1. The Four Access Levels
+Java provides **four types of access modifiers** to control the visibility and scope of classes, constructors, variables, and methods.
 
 | Modifier | Keyword | Visible to... |
 |----------|---------|---------------|
@@ -40,16 +29,14 @@ This single table answers almost every access question:
 | Subclass in **different** package | ❌ | ❌ | ✅* | ✅ |
 | Non-subclass in **different** package | ❌ | ❌ | ❌ | ✅ |
 
-> \* `protected` access from a subclass in another package has a subtle restriction — see §3.2.
-
----
+> \* `protected` access from a subclass in another package has a subtle restriction.
 
 ## 2. Each Modifier in Detail
 
-### 2.1 `private` — class-only
+### 2.1 `private` - class-only
 The most restrictive. Accessible **only inside the declaring class**. The cornerstone of encapsulation.
 
-```java
+```java title:bank_acc.java
 public class BankAccount {
     private double balance;          // hidden from everyone outside
 
@@ -59,7 +46,7 @@ public class BankAccount {
     public double getBalance() { return balance; }
 }
 ```
-- Fields should almost always be `private` — expose them only through methods (getters/setters) so you control validation and invariants.
+- Fields should almost always be `private` - expose them only through methods (getters/setters) so you control validation and invariants.
 - Even other instances *of the same class* can access each other's privates (it's class-level, not object-level):
   ```java
   public boolean richerThan(BankAccount other) {
@@ -67,10 +54,10 @@ public class BankAccount {
   }
   ```
 
-### 2.2 Default (package-private) — no keyword
+### 2.2 Default (package-private) - no keyword
 When you write **no modifier**, the member is visible **within the same package only**.
 
-```java
+```java title:helper.java
 class Helper {           // package-private CLASS
     int value;           // package-private field
     void assist() {}     // package-private method
@@ -79,7 +66,7 @@ class Helper {           // package-private CLASS
 - Useful for classes/members meant to collaborate *within a module/package* but not be part of the public API.
 - A great default for internal implementation classes you don't want leaking out.
 
-### 2.3 `protected` — package + subclasses
+### 2.3 `protected` - package + subclasses
 Visible to:
 1. The same class,
 2. All classes in the **same package**, and
@@ -99,12 +86,12 @@ public class Circle extends Shape {
     }
 }
 ```
-- Designed for **inheritance** — members a subclass legitimately needs, but the general public shouldn't touch.
+- Designed for **[[05-Inheritance]]** - members a subclass legitimately needs, but the general public shouldn't touch.
 
-### 2.4 `public` — everywhere
+### 2.4 `public` - everywhere
 Visible to **all code** that can reference the class. This is your **public API contract**.
 
-```java
+```java title:string_utils.java
 public class StringUtils {
     public static boolean isEmpty(String s) {  // callable from anywhere
         return s == null || s.isEmpty();
@@ -113,10 +100,7 @@ public class StringUtils {
 ```
 - Once public, changing or removing it can **break callers** → treat public members as commitments.
 
----
-
 ## 3. Access Levels Across Packages (the tricky parts)
-
 Packages are Java's namespacing/organization mechanism. Access rules interact with packages in ways that trip people up.
 
 ### 3.1 Why packages matter
@@ -125,13 +109,13 @@ com.app.model      -> User.java, Order.java
 com.app.service    -> UserService.java
 com.app.internal   -> DbHelper.java   (package-private classes hide here)
 ```
-- `default` and `protected` both grant **same-package** access — so package structure is itself an access-control tool.
+- `default` and `protected` both grant **same-package** access - so package structure is itself an access-control tool.
 - Code in a *different* package can only see `public` (and `protected` via inheritance) members.
 
 ### 3.2 The `protected` cross-package subtlety
-A subclass in a **different** package can access a `protected` member **only through references of its own type (or a subtype)** — not through a reference of the parent type.
+A subclass in a **different** package can access a `protected` member **only through references of its own type (or a subtype)** - not through a reference of the parent type.
 
-```java
+```java title:package.java
 // package a;
 public class Parent {
     protected int x;
@@ -150,8 +134,8 @@ public class Child extends Parent {
 
 ### 3.3 Top-level type access
 Only **two** modifiers are legal on **top-level** (non-nested) classes/interfaces:
-- `public` — usable from any package.
-- *(none)* default/package-private — usable only within its package.
+- `public` - usable from any package.
+- *(none)* default/package-private - usable only within its package.
 
 ```java
 public class Api {}     // visible everywhere
@@ -161,9 +145,7 @@ class Internal {}       // visible only in this package
 `private` and `protected` **are** allowed on **nested** (member) classes, though.
 
 ### 3.4 Interaction with the Java Module System (JPMS, awareness)
-Since Java 9, **modules** (`module-info.java`) add another layer *on top of* access modifiers: a `public` type is only accessible to other modules if its package is **`exports`-ed**. So "public" no longer automatically means "visible to the whole world." (Full coverage in Phase 1.12 — Java Modules.)
-
----
+Since Java 9, **modules** (`module-info.java`) add another layer *on top of* access modifiers: a `public` type is only accessible to other modules if its package is **`exports`-ed**. So "public" no longer automatically means "visible to the whole world." (Full coverage in [[01-Java-Modules-JPMS]].)
 
 ## 4. Access Modifiers on Different Elements
 
@@ -199,8 +181,6 @@ class B extends A {
 }
 ```
 > Reason: narrowing would violate the **Liskov Substitution Principle** — a `B` must be usable everywhere an `A` is (Phase 14 SOLID).
-
----
 
 ## 5. Best Practices — Principle of Least Privilege
 
@@ -243,8 +223,6 @@ public class Temperature {
 ```
 Because `celsius` is `private`, you could later change the internal representation (e.g., store Kelvin) **without breaking any caller**.
 
----
-
 ## 6. Common Pitfalls
 
 | Pitfall | Fix |
@@ -256,8 +234,6 @@ Because `celsius` is `private`, you could later change the internal representati
 | Assuming `public` = globally visible under modules | Must also `exports` the package (JPMS) |
 | Overusing `public` and creating a huge API surface | Expose the minimum; everything public is a maintenance commitment |
 
----
-
 ## 7. Connection to Backend / Spring (Why This Matters Later)
 
 - **Encapsulation of entities/DTOs:** keep fields `private`, expose via accessors — JPA, Jackson, and validation all build on this.
@@ -266,8 +242,6 @@ Because `celsius` is `private`, you could later change the internal representati
 - **API design (Phase 7):** your `public` methods are the contract; minimizing them eases versioning and backward compatibility.
 - **Security (Phase 15):** least privilege at the code level mirrors least privilege in auth/permissions — same mindset.
 - **Modular monoliths / modules:** package-private + JPMS `exports` enforce real module boundaries.
-
----
 
 ## 8. Quick Self-Check Questions
 
@@ -280,8 +254,6 @@ Because `celsius` is `private`, you could later change the internal representati
 7. State the principle of least privilege and give two reasons it matters.
 8. Why should fields almost always be `private`? Give a concrete benefit.
 9. How does the Java Module System change the meaning of `public`?
-
----
 
 ## 9. Key Terms Glossary
 
@@ -297,8 +269,3 @@ Because `celsius` is `private`, you could later change the internal representati
 - **Liskov Substitution Principle:** subtypes must be usable wherever the supertype is (hence no narrowing on override).
 - **JPMS / `exports`:** module system; a package must be exported for its `public` types to be visible across modules.
 - **Static factory / singleton:** patterns often enforced via `private` constructors.
-
----
-
-*Previous topic: **Methods**.*
-*Next topic in roadmap: **Encapsulation (getters/setters, immutability, defensive copying, Builder pattern)**.*

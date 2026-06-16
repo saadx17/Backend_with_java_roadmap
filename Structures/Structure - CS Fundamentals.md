@@ -3,7 +3,7 @@ This is the total structure of the roadmap for CS Fundamentals. Down below, ever
 # COMPUTER SCIENCE FUNDAMENTALS
 Follow the structure down.
 *Duration: 2-4 weeks*
-#### How Computers Work
+#### HOW COMPUTERS WORK
 1. [[Binary, Bits, Bytes & Word-Size]]
 2. [[CPU Architecture Basics]]
 3. [[The Instruction Cycle]]
@@ -15,7 +15,7 @@ Follow the structure down.
 9. [[Context Switching]]
 10. [[I-O operations]]
 
-#### Networking Fundamentals
+#### NETWORKING FUNDAMENTALS
 1. [[01-OSI-and-TCP-IP-Models]]
 2. [[02-IP-Addresses-and-Subnetting]]
 3. [[03-DNS]]
@@ -25,7 +25,7 @@ Follow the structure down.
 7. [[07-Ports-Sockets-Firewalls-Proxies-LB-CDN]]
 8. [[08-WebSockets-gRPC-CORS]]
 
-#### Operating System Basics
+#### OPERATING SYSTEM BASICS
 1. [[01-Linux-Fundamentals-and-Filesystem]]
 2. [[02-Essential-Commands]]
 3. [[03-File-Permissions-and-Ownership]]
@@ -33,7 +33,7 @@ Follow the structure down.
 5. [[05-Env-Vars-Networking-Tools-Packages-SSH]]
 6. [[06-Shell-Scripting-Cron-systemd]]
 
-#### Version Control - Git
+#### VERSION CONTROL - Git
 1. [[01-Git-Fundamentals-and-Internals]]
 2. [[02-Branching-Merging-Rebasing]]
 3. [[03-Remotes-and-Collaboration]]
