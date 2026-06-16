@@ -13,26 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Java/04-Encapsulation.md",
+                "file": "Structures/Phase 1 - Java.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "04-Encapsulation"
-            }
-          },
-          {
-            "id": "216edf37fbb07e8d",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Structures/Structure - Java.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Structure - Java"
+              "title": "Phase 1 - Java"
             }
           }
         ]
@@ -126,6 +112,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Structures/Phase 1 - Java.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -135,7 +122,7 @@
                 "unlinkedCollapsed": false
               },
               "icon": "links-coming-in",
-              "title": "Backlinks"
+              "title": "Backlinks for Phase 1 - Java"
             }
           },
           {
@@ -144,11 +131,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "Structures/Phase 1 - Java.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links"
+              "title": "Outgoing links from Phase 1 - Java"
             }
           },
           {
@@ -213,44 +201,44 @@
       "bases:Create new base": false
     }
   },
-  "active": "83007a773d72ef69",
+  "active": "ddfb46915d793cd8",
   "lastOpenFiles": [
-    "Java/04-Encapsulation.md",
-    "Structures/Structure - Java.md",
-    "Java/Access Modifiers.md",
-    "Java/Methods.md",
-    "Structures/Structure - CS Fundamentals.md",
+    "Structures/Phase 0 - CS Fundamentals.md",
+    "Structures/Phase 1 - Java.md",
+    "ReadMe.md",
     "Structures/Structure - DSA.md",
-    "DSA/Mathematical Foundations.md",
-    "DSA/07-Bit-Manipulation-and-String-Algorithms.md",
-    "DSA/Unconfirmed 475421.crdownload",
-    "DSA/06-Greedy-and-Divide-and-Conquer.md",
-    "DSA/Unconfirmed 435764.crdownload",
-    "DSA/05-Dynamic-Programming.md",
-    "DSA/Unconfirmed 11320.crdownload",
-    "DSA/04-Recursion-and-Backtracking.md",
-    "DSA/Unconfirmed 34509.crdownload",
-    "DSA/03-Two-Pointers-and-Sliding-Window.md",
-    "DSA/Unconfirmed 429515.crdownload",
-    "DSA/02-Searching.md",
-    "DSA/Unconfirmed 156317.crdownload",
-    "DSA/01-Sorting.md",
-    "DSA/09-Bloom-Filter-and-LRU-Cache.md",
-    "DSA/Unconfirmed 341765.crdownload",
-    "DSA/08-Graph-Algorithms-and-Union-Find.md",
-    "DSA/Unconfirmed 694421.crdownload",
-    "DSA/07-Graphs-Representation-and-Traversals.md",
-    "DSA/Unconfirmed 22116.crdownload",
-    "DSA/06-Heaps-Tries-Specialized-Trees.md",
-    "DSA/Unconfirmed 53621.crdownload",
-    "DSA/05-Trees-Binary-BST-Balanced.md",
-    "DSA/04-Hash-Tables.md",
-    "DSA/03-Stacks-and-Queues.md",
-    "DSA/02-Linked-Lists.md",
-    "DSA/01-Arrays-and-Dynamic-Arrays.md",
-    "DSA/02-Space-Complexity-and-Analyzing-Code.md",
-    "DSA/01-Big-O-and-Time-Complexity.md",
     "Structures/Structure - Database.md",
+    "Phase 1/Reflection/01-Reflection-API.md",
+    "Phase 1/Reflection",
+    "Phase 1/JVM/06-Common-Issues-and-Bytecode.md",
+    "Phase 1/JVM/05-JVM-Options-and-Troubleshooting-Tools.md",
+    "Phase 1/JVM/04-Garbage-Collection.md",
+    "Phase 1/JVM/03-Runtime-Data-Areas-and-Execution-Engine.md",
+    "Phase 1/JVM/02-Class-Loader-Subsystem.md",
+    "Phase 1/JVM/01-JVM-Architecture-Overview.md",
+    "Phase 1/JVM",
+    "Phase 1/Annotations/01-Annotations.md",
+    "Phase 1/Annotations",
+    "Phase 1/Java Modules/01-Java-Modules-JPMS.md",
+    "Phase 1/Java Modules",
+    "Phase 1/1.11-JVM Deep Dive/06-Common-Issues-and-Bytecode.md",
+    "Phase 1/1.11-JVM Deep Dive/05-JVM-Options-and-Troubleshooting-Tools.md",
+    "Phase 1/1.11-JVM Deep Dive/04-Garbage-Collection.md",
+    "Phase 1/1.11-JVM Deep Dive/03-Runtime-Data-Areas-and-Execution-Engine.md",
+    "Phase 1/1.11-JVM Deep Dive/02-Class-Loader-Subsystem.md",
+    "Phase 1/1.11-JVM Deep Dive/01-JVM-Architecture-Overview.md",
+    "Phase 1/1.11-JVM Deep Dive",
+    "Phase 1/Java Concurrency/06-Virtual-Threads.md",
+    "Phase 1/Java Concurrency/05-CompletableFuture-Synchronizers-ThreadLocal.md",
+    "Phase 1/Java Concurrency/04-Executor-Framework-Future-Callable.md",
+    "Phase 1/Java Concurrency/03-Locks-Atomics-Concurrent-Collections.md",
+    "Phase 1/Java Concurrency/02-Synchronization-Volatile-and-JMM.md",
+    "Phase 1/Java Concurrency/01-Fundamentals-and-Thread-Basics.md",
+    "Phase 1/Java Concurrency",
+    "Phase 1/Java-Concurrency",
+    "Phase 1/Java IO",
+    "Phase 1/Functional Programming",
+    "Phase 1/Generics",
     "Assets/Memory_Hierarchy.png",
     "Assets/new_keyword_memory_pic.png",
     "Assets/ds.jpg",
