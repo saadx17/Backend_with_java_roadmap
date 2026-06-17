@@ -1,6 +1,6 @@
 This is the total structure of the roadmap for Java. Down below, everything is connected. Don't forget to explore "Open Graph View". 
 
-# PHASE 0 / DATA STRUCTURES & ALGORITHMS
+# PHASE 2 / DATA STRUCTURES & ALGORITHMS
 Follow the Structure down.
 *Duration: 6-10 weeks*
 #### COMPLEXITY ANALYSIS

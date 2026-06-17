@@ -1,6 +1,6 @@
 This is the total structure of the roadmap for Java. Down below, everything is connected. Don't forget to explore "Open Graph View". 
 
-# PHASE 0 / JAVA
+# PHASE 1 / JAVA
 Follow the Structure down.
 *Duration: 8-12 weeks*
 #### CORE JAVA
