@@ -19,6 +19,7 @@ Have fun.
 2. [[Phase 1 - Java]]
 3. [[Phase 2 - DSA]]
 4. [[Phase 3 - Build Tools]]
+5. [[Phase 4 - Databases]]
 
 *(More content will be added as the roadmap progresses)*
 
