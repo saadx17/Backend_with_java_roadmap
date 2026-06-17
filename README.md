@@ -17,7 +17,7 @@ Have fun.
 ## Contents from Structures
 1. [[Phase 0 - CS Fundamentals]]
 2. [[Phase 1 - Java]]
-3. 
+3. [[Phase 2 - DSA]]
 
 *(More content will be added as the roadmap progresses)*
 

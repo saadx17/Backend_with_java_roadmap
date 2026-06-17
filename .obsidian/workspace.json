@@ -13,6 +13,20 @@
             "state": {
               "type": "markdown",
               "state": {
+                "file": "Phase 0/How Computers Work/Binary, Bits, Bytes & Word Size.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Binary, Bits, Bytes & Word Size"
+            }
+          },
+          {
+            "id": "1298c8b014b9e7c3",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
                 "file": "ReadME.md",
                 "mode": "source",
                 "source": false
@@ -22,21 +36,21 @@
             }
           },
           {
-            "id": "1298c8b014b9e7c3",
+            "id": "6e3612cc4012b474",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Journal.md",
+                "file": "Phase 2/Data Structures/01-Arrays-and-Dynamic-Arrays.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Journal"
+              "title": "01-Arrays-and-Dynamic-Arrays"
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -127,7 +141,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Journal.md",
+                "file": "Phase 2/Data Structures/01-Arrays-and-Dynamic-Arrays.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -137,7 +151,7 @@
                 "unlinkedCollapsed": false
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Journal"
+              "title": "Backlinks for 01-Arrays-and-Dynamic-Arrays"
             }
           },
           {
@@ -146,12 +160,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Journal.md",
+                "file": "Phase 2/Data Structures/01-Arrays-and-Dynamic-Arrays.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from Journal"
+              "title": "Outgoing links from 01-Arrays-and-Dynamic-Arrays"
             }
           },
           {
@@ -216,44 +230,44 @@
       "bases:Create new base": false
     }
   },
-  "active": "1298c8b014b9e7c3",
+  "active": "6e3612cc4012b474",
   "lastOpenFiles": [
-    "ReadME.md",
-    "Journal.md",
+    "Structures/Phase 2 - DSA.md",
+    "Phase 2/Data Structures/01-Arrays-and-Dynamic-Arrays.md",
     "Structures/Phase 0 - CS Fundamentals.md",
-    "Phase 0/How Computers Work/Binary, Bits, Bytes & Word Size.md",
     "Structures/Phase 1 - Java.md",
-    "Phase 1/OOP/01-Classes-and-Objects.md",
-    "Structures/Structure - DSA.md",
-    "Structures/Structure - Database.md",
-    "Phase 1/Reflection/01-Reflection-API.md",
-    "Phase 1/Reflection",
-    "Phase 1/JVM/06-Common-Issues-and-Bytecode.md",
-    "Phase 1/JVM/05-JVM-Options-and-Troubleshooting-Tools.md",
-    "Phase 1/JVM/04-Garbage-Collection.md",
-    "Phase 1/JVM/03-Runtime-Data-Areas-and-Execution-Engine.md",
-    "Phase 1/JVM/02-Class-Loader-Subsystem.md",
-    "Phase 1/JVM/01-JVM-Architecture-Overview.md",
-    "Phase 1/JVM",
-    "Phase 1/Annotations/01-Annotations.md",
-    "Phase 1/Annotations",
-    "Phase 1/Java Modules/01-Java-Modules-JPMS.md",
-    "Phase 1/Java Modules",
-    "Phase 1/1.11-JVM Deep Dive/06-Common-Issues-and-Bytecode.md",
-    "Phase 1/1.11-JVM Deep Dive/05-JVM-Options-and-Troubleshooting-Tools.md",
-    "Phase 1/1.11-JVM Deep Dive/04-Garbage-Collection.md",
-    "Phase 1/1.11-JVM Deep Dive/03-Runtime-Data-Areas-and-Execution-Engine.md",
-    "Phase 1/1.11-JVM Deep Dive/02-Class-Loader-Subsystem.md",
-    "Phase 1/1.11-JVM Deep Dive/01-JVM-Architecture-Overview.md",
-    "Phase 1/1.11-JVM Deep Dive",
-    "Phase 1/Java Concurrency/06-Virtual-Threads.md",
-    "Phase 1/Java Concurrency/05-CompletableFuture-Synchronizers-ThreadLocal.md",
-    "Phase 1/Java Concurrency/04-Executor-Framework-Future-Callable.md",
-    "Phase 1/Java Concurrency",
-    "Phase 1/Java-Concurrency",
-    "Phase 1/Java IO",
-    "Phase 1/Functional Programming",
-    "Phase 1/Generics",
+    "ReadME.md",
+    "Phase 0/How Computers Work/CPU Architecture Basics.md",
+    "Phase 2/Practice Strategy/01-Practice-Strategy.md",
+    "Phase 2/Practice Strategy",
+    "Phase 2/Algorithms/07-Bit-Manipulation-and-String-Algorithms.md",
+    "Phase 2/Algorithms/06-Greedy-and-Divide-and-Conquer.md",
+    "Phase 2/Algorithms/05-Dynamic-Programming.md",
+    "Phase 2/Algorithms/04-Recursion-and-Backtracking.md",
+    "Phase 2/Algorithms/03-Two-Pointers-and-Sliding-Window.md",
+    "Phase 2/Algorithms/02-Searching.md",
+    "Phase 2/Algorithms/01-Sorting.md",
+    "Phase 2/Algorithms",
+    "Phase 2/Data Structures/09-Bloom-Filter-and-LRU-Cache.md",
+    "Phase 2/Data Structures/07-Graphs-Representation-and-Traversals.md",
+    "Phase 2/Data Structures/08-Graph-Algorithms-and-Union-Find.md",
+    "Phase 2/Data Structures/06-Heaps-Tries-Specialized-Trees.md",
+    "Phase 2/Data Structures/03-Stacks-and-Queues.md",
+    "Phase 2/Data Structures/05-Trees-Binary-BST-Balanced.md",
+    "Phase 2/Data Structures/04-Hash-Tables.md",
+    "Phase 2/Data Structures/02-Linked-Lists.md",
+    "Phase 2/Data Structures",
+    "Phase 2/2.2-Data-Structures.textClipping",
+    "Phase 2/Complexity Analysis/02-Space-Complexity-and-Analyzing-Code.md",
+    "Phase 2/Complexity Analysis/01-Big-O-and-Time-Complexity.md",
+    "Phase 2/Complexity Analysis",
+    "Phase 2/2.4-Practice-Strategy/01-Practice-Strategy.md",
+    "Phase 2/2.3-Algorithms/07-Bit-Manipulation-and-String-Algorithms.md",
+    "Phase 2/2.4-Practice-Strategy",
+    "Phase 2/2.3-Algorithms",
+    "Phase 2/2.2-Data-Structures",
+    "Phase 2/2.1-Complexity-Analysis",
+    "Phase 2",
     "Assets/Memory_Hierarchy.png",
     "Assets/new_keyword_memory_pic.png",
     "Assets/ds.jpg",

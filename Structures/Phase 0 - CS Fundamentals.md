@@ -6,7 +6,7 @@ Follow the structure down.
 
 #### HOW COMPUTERS WORK
 1. [[Binary, Bits, Bytes & Word Size]]
-2. [[02-CPU-Architecture-Basics]]
+2. [[CPU Architecture Basics]]
 3. [[03-Instruction-Cycle-Fetch-Decode-Execute]]
 4. [[04-RAM-vs-ROM-vs-Storage]]
 5. [[05-Stack-vs-Heap-Memory-Hardware-Level]]

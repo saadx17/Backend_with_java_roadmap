@@ -1,15 +1,6 @@
-# CPU Architecture Basics (ALU, Registers, Cache, Clock Cycles)
-
-> **Phase 0 — Computer Science Fundamentals → 0.1 How Computers Work**
-> Goal: Understand the major components inside a CPU and how they cooperate to execute instructions — the engine that runs every program (including the JVM).
-
----
-
-## 0. The One-Sentence Summary
-
 The **CPU (Central Processing Unit)** is the "brain" of the computer. It fetches instructions and data from memory, computes results using its **ALU**, stores intermediate values in ultra-fast **registers**, keeps frequently used data close in **cache**, and times all of this with a **clock** that ticks billions of times per second.
 
----
+> Goal: Understand the major components inside a CPU and how they cooperate to execute instructions, the engine that runs every program (including the JVM).
 
 ## 1. The CPU at a Glance
 
@@ -34,20 +25,16 @@ The **CPU (Central Processing Unit)** is the "brain" of the computer. It fetches
                               +---------------+
 ```
 
-Core components:
-| Component | Role |
-|-----------|------|
-| **Control Unit (CU)** | Directs operations: fetches & decodes instructions, signals other units |
-| **ALU** | Performs arithmetic & logic computations |
-| **Registers** | Tiny, fastest storage for current data/instructions |
-| **Cache** | Small fast memory bridging the speed gap to RAM |
-| **Clock** | Synchronizes all operations via regular pulses |
+**Core components:**
+- **Control Unit (CU)** - Directs operations: fetches & decodes instructions, signals other units.
+- **ALU** - Performs arithmetic & logic computations.
+- **Registers** - Tiny, fastest storage for current data/instructions.
+- **Cache** - Small fast memory bridging the speed gap to RAM.
+- **Clock** - Synchronizes all operations via regular pulses.
 
 ---
-
 ## 2. The ALU (Arithmetic Logic Unit)
-
-The ALU is the CPU's **calculator** — it performs the actual computations:
+The ALU is the CPU's **calculator**, it performs the actual computations:
 
 | Category | Operations |
 |----------|------------|
@@ -62,9 +49,7 @@ The ALU is the CPU's **calculator** — it performs the actual computations:
 > Modern CPUs also have an **FPU** (Floating-Point Unit) for decimal math and **SIMD** units (e.g., AVX) that operate on multiple values at once.
 
 ---
-
 ## 3. Registers
-
 **Registers** are a small number of extremely fast storage locations **inside** the CPU. They are the **fastest memory in the entire system** (faster than even L1 cache) — access takes effectively zero extra cycles.
 
 ### 3.1 Why registers exist
@@ -95,9 +80,7 @@ SLOWEST, largest, cheapest
 ```
 
 ---
-
 ## 4. Cache
-
 **Cache** is small, very fast memory that sits between the CPU registers and main RAM. It exists to bridge the enormous speed gap between the fast CPU and slow RAM.
 
 ### 4.1 Cache levels
