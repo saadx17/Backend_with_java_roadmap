@@ -27,6 +27,7 @@ Have fun.
 10. [[Phase 09 - Logging & Monitoring]]
 11. [[Phase 10 - Containerization & Deployment]]
 12. [[Phase 11 - Messaging & Communication]]
+13. [[Phase 12 - Microservices Architecture]]
 
 *(More content will be added as the roadmap progresses)*
 
