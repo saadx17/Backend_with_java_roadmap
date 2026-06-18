@@ -31,7 +31,7 @@ Have fun.
 14. [[Phase 13 - Performance & Optimization]]
 15. [[Phase 14 - Design Patterns & Architecture]]
 16. [[Phase 15 - Security]]
+17. [[Phase 16 - Advanced Topics]]
 
-*(More content will be added as the roadmap progresses)*
 
  ###### Studied & Authored by Abdullah Al Sayb Saad.
