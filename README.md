@@ -20,10 +20,12 @@ Have fun.
 3. [[Phase 02 - DSA]]
 4. [[Phase 03 - Build Tools]]
 5. [[Phase 04 - Databases]]
-6. [[Phase 06 - Testing]]
-7. [[Phase 07 - API Design & Documentation]]
-8. [[Phase 08 - Database Migration]]
-9. [[Phase 09 - Logging & Monitoring]]
+6. [[Phase 05 - Spring Boot & Framework]]
+7. [[Phase 06 - Testing]]
+8. [[Phase 07 - API Design & Documentation]]
+9. [[Phase 08 - Database Migration]]
+10. [[Phase 09 - Logging & Monitoring]]
+11. [[Phase 10 - Containerization & Deployment]]
 
 *(More content will be added as the roadmap progresses)*
 
