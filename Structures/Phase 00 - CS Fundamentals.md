@@ -1,6 +1,6 @@
 This is the total structure of the roadmap for CS Fundamentals. Down below, everything is connected. Don't forget to explore "Open Graph View".
 
-# PHASE 0 / COMPUTER SCIENCE FUNDAMENTALS
+# PHASE 00 / COMPUTER SCIENCE FUNDAMENTALS
 Follow the structure down.
 *Duration: 2-4 weeks*
 

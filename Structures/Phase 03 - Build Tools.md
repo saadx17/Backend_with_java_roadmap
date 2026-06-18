@@ -1,6 +1,6 @@
 This is the total structure of the roadmap for Java. Down below, everything is connected. Don't forget to explore "Open Graph View". 
 
-# PHASE 3 / BUILD TOOLS
+# PHASE 03 / BUILD TOOLS
 Follow the Structure down.
 *Duration: 1-2 weeks*
 #### MAVEN - PRIMARY
