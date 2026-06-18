@@ -26,6 +26,7 @@ Have fun.
 9. [[Phase 08 - Database Migration]]
 10. [[Phase 09 - Logging & Monitoring]]
 11. [[Phase 10 - Containerization & Deployment]]
+12. [[Phase 11 - Messaging & Communication]]
 
 *(More content will be added as the roadmap progresses)*
 

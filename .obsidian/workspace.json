@@ -8,49 +8,20 @@
         "type": "tabs",
         "children": [
           {
-            "id": "6e3612cc4012b474",
+            "id": "7290fddfd48a63f5",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Structures/Phase 09 - Logging & Monitoring.md",
+                "file": "Structures/Phase 11 - Messaging & Communication.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Phase 09 - Logging & Monitoring"
-            }
-          },
-          {
-            "id": "91afdf22a47ff6ea",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "ReadME.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "ReadME"
-            }
-          },
-          {
-            "id": "3bacdc63dc419d1c",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Structures/Phase 05 - Spring Boot & Framework.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Phase 05 - Spring Boot & Framework"
+              "title": "Phase 11 - Messaging & Communication"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -141,7 +112,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Structures/Phase 05 - Spring Boot & Framework.md",
+                "file": "Structures/Phase 11 - Messaging & Communication.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -151,7 +122,7 @@
                 "unlinkedCollapsed": false
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Phase 05 - Spring Boot & Framework"
+              "title": "Backlinks for Phase 11 - Messaging & Communication"
             }
           },
           {
@@ -160,12 +131,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Structures/Phase 05 - Spring Boot & Framework.md",
+                "file": "Structures/Phase 11 - Messaging & Communication.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from Phase 05 - Spring Boot & Framework"
+              "title": "Outgoing links from Phase 11 - Messaging & Communication"
             }
           },
           {
@@ -230,44 +201,44 @@
       "bases:Create new base": false
     }
   },
-  "active": "3bacdc63dc419d1c",
+  "active": "10f94ae185d79f95",
   "lastOpenFiles": [
+    "Phase 11/Messaging Fundamentals/01-Messaging-Fundamentals.md",
+    "Phase 11/Messaging Fundamentals",
+    "Phase 11/Apache Kafka/01-Apache-Kafka.md",
+    "Phase 11/Apache Kafka",
+    "Phase 11/RabbitMQ/01-RabbitMQ.md",
+    "Phase 11/RabbitMQ",
+    "Phase 11/Async Patterns/01-Async-Patterns.md",
+    "Phase 11/Async Patterns",
+    "Phase 11/11.4-Async-Patterns/01-Async-Patterns.md",
+    "Phase 11/11.3-RabbitMQ/01-RabbitMQ.md",
+    "Phase 11/11.2-Apache-Kafka/01-Apache-Kafka.md",
+    "Phase 11/11.1-Messaging-Fundamentals/01-Messaging-Fundamentals.md",
+    "Phase 11/11.4-Async-Patterns",
+    "Phase 11/11.3-RabbitMQ",
+    "Phase 11/11.2-Apache-Kafka",
+    "Phase 11/11.1-Messaging-Fundamentals",
+    "Phase 11",
+    "Phase-11-Messaging/11.2-Apache-Kafka/01-Apache-Kafka.md",
+    "Phase-11-Messaging/11.4-Async-Patterns/01-Async-Patterns.md",
+    "Phase-11-Messaging/11.3-RabbitMQ/01-RabbitMQ.md",
+    "Phase-11-Messaging/11.1-Messaging-Fundamentals/01-Messaging-Fundamentals.md",
+    "Phase-11-Messaging/11.4-Async-Patterns",
+    "Structures/Phase 10 - Containerization & Deployment.md",
+    "ReadME.md",
+    "Structures/Phase 05 - Spring Boot & Framework.md",
+    "Structures/Phase 11 - Messaging & Communication.md",
     "Phase 5/Spring WebClient/01-Spring-WebClient.md",
-    "Phase 5/Spring WebClient",
     "Phase 5/Spring Scheduling/01-Spring-Scheduling.md",
-    "Phase 5/Spring Scheduling",
     "Phase 5/Spring Cache Abstraction/01-Spring-Cache-Abstraction.md",
-    "Phase 5/Spring Cache Abstraction",
     "Phase 5/Spring Security/01-Authentication-and-Authorization.md",
     "Phase 5/Spring Security/02-JWT-OAuth2-Security-Headers.md",
-    "Phase 5/Spring Security",
     "Phase 5/Spring Transaction Management/01-Spring-Transaction-Management.md",
-    "Phase 5/Spring Transaction Management",
     "Phase 5/Spring Data - JPA/02-Repositories-Queries-Performance.md",
     "Phase 5/Spring Data - JPA/01-Entities-Relationships-Lifecycle.md",
-    "Phase 5/Spring Data - JPA",
     "Phase 5/Spring Web MVC/02-Validation-Exceptions-CORS-Filters-Async.md",
     "Phase 5/Spring Web MVC/01-Controllers-Requests-Responses.md",
-    "Phase 5/Spring Web MVC",
-    "Phase 5/Spring Boot/01-Spring-Boot.md",
-    "Phase 5/Spring Boot",
-    "Phase 5/Spring Core Fundamentals/02-Scopes-Lifecycle-Configuration-Profiles.md",
-    "Phase 5/Spring Core Fundamentals/01-IoC-DI-and-Beans.md",
-    "Phase 5/Spring Core Fundamentals/03-AOP.md",
-    "Phase 5/Spring Core Fundamentals",
-    "Phase 2/Practice Strategy/01-Practice-Strategy.md",
-    "Structures/Phase 05 - Spring Boot & Framework.md",
-    "ReadME.md",
-    "Structures/Phase 08 - Database Migration.md",
-    "Phase 5/5.9-Spring-WebClient/01-Spring-WebClient.md",
-    "Phase 5/5.8-Spring-Scheduling/01-Spring-Scheduling.md",
-    "Phase 5/5.7-Spring-Cache-Abstraction/01-Spring-Cache-Abstraction.md",
-    "Phase 5/5.6-Spring-Security/02-JWT-OAuth2-Security-Headers.md",
-    "Phase 5/5.6-Spring-Security/01-Authentication-and-Authorization.md",
-    "Phase 5/5.5-Spring-Transaction-Management/01-Spring-Transaction-Management.md",
-    "Phase 5/5.4-Spring-Data-JPA/02-Repositories-Queries-Performance.md",
-    "Phase 5/5.4-Spring-Data-JPA/01-Entities-Relationships-Lifecycle.md",
-    "Phase 5/5.9-Spring-WebClient",
     "Assets/Memory_Hierarchy.png",
     "Assets/new_keyword_memory_pic.png",
     "Assets/ds.jpg",
