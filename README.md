@@ -21,6 +21,8 @@ Have fun.
 4. [[Phase 03 - Build Tools]]
 5. [[Phase 04 - Databases]]
 6. [[Phase 06 - Testing]]
+7. [[Phase 07 - API Design & Documentation]]
+8. 
 
 *(More content will be added as the roadmap progresses)*
 
