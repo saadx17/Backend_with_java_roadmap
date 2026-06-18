@@ -34,9 +34,23 @@
               "icon": "lucide-file",
               "title": "ReadME"
             }
+          },
+          {
+            "id": "8fc085401c69ec56",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Structures/Phase 13 - Performance & Optimization.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Phase 13 - Performance & Optimization"
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -127,7 +141,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "ReadME.md",
+                "file": "Structures/Phase 13 - Performance & Optimization.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -137,7 +151,7 @@
                 "unlinkedCollapsed": false
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for ReadME"
+              "title": "Backlinks for Phase 13 - Performance & Optimization"
             }
           },
           {
@@ -146,12 +160,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "ReadME.md",
+                "file": "Structures/Phase 13 - Performance & Optimization.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from ReadME"
+              "title": "Outgoing links from Phase 13 - Performance & Optimization"
             }
           },
           {
@@ -216,44 +230,44 @@
       "bases:Create new base": false
     }
   },
-  "active": "1bbe485ae6fbdf9d",
+  "active": "8fc085401c69ec56",
   "lastOpenFiles": [
+    "Phase 13/Scalability/01-Scalability.md",
+    "Phase 13/Scalability",
+    "Phase 13/Load Testing/01-Load-Testing.md",
+    "Phase 13/Load Testing",
+    "Phase 13/Application Performance/01-Application-Performance.md",
+    "Phase 13/Application Performance",
     "Structures/Phase 12 - Microservices Architecture.md",
+    "Structures/Phase 13 - Performance & Optimization.md",
+    "ReadME.md",
+    "Phase 13/13.3-Scalability/01-Scalability.md",
+    "Phase 13/13.2-Load-Testing/01-Load-Testing.md",
+    "Phase 13/13.1-Application-Performance/01-Application-Performance.md",
+    "Phase 13/13.3-Scalability",
+    "Phase 13/13.2-Load-Testing",
+    "Phase 13/13.1-Application-Performance",
+    "Phase 13",
+    "Phase-13-Performance-and-Optimization/13.3-Scalability/01-Scalability.md",
+    "Phase-13-Performance-and-Optimization/13.2-Load-Testing/01-Load-Testing.md",
+    "Phase-13-Performance-and-Optimization/13.1-Application-Performance/01-Application-Performance.md",
+    "Phase-13-Performance-and-Optimization/13.3-Scalability",
+    "Phase-13-Performance-and-Optimization/13.2-Load-Testing",
+    "Phase-13-Performance-and-Optimization/13.1-Application-Performance",
+    "Phase 12/Phase-13-Performance-and-Optimization/13.2-Load-Testing/01-Load-Testing.md",
+    "Phase 12/Phase-13-Performance-and-Optimization/13.1-Application-Performance/01-Application-Performance.md",
+    "Phase 12/Phase-13-Performance-and-Optimization/13.3-Scalability/01-Scalability.md",
     "Phase 12/Observability in Microservices/01-Observability-in-Microservices.md",
-    "Phase 12/Observability in Microservices",
     "Phase 12/Distributed Patterns/01-Distributed-Patterns.md",
-    "Phase 12/Distributed Patterns",
     "Phase 12/Configuration Management/01-Configuration-Management.md",
-    "Phase 12/Configuration Management",
     "Phase 12/API Gateway/01-API-Gateway.md",
-    "Phase 12/API Gateway",
     "Phase 12/Resilience4j/01-Resilience4j.md",
-    "Phase 12/Resilience4j",
     "Phase 12/Inter Service Communication/01-Inter-Service-Communication.md",
-    "Phase 12/Inter Service Communication",
     "Phase 12/Microservices Fundamentals/01-Microservices-Fundamentals-and-DDD.md",
-    "Phase 12/Microservices Fundamentals",
     "Phase 12/12.7-Observability-in-Microservices/01-Observability-in-Microservices.md",
     "Phase 12/12.6-Distributed-Patterns/01-Distributed-Patterns.md",
     "Phase 12/12.5-Configuration-Management/01-Configuration-Management.md",
     "Phase 12/12.4-API-Gateway/01-API-Gateway.md",
-    "Phase 12/12.3-Resilience4j/01-Resilience4j.md",
-    "Phase 12/12.2-Inter-Service-Communication/01-Inter-Service-Communication.md",
-    "Phase 12/12.1-Microservices-Fundamentals/01-Microservices-Fundamentals-and-DDD.md",
-    "Phase 12/12.7-Observability-in-Microservices",
-    "Phase 12/12.6-Distributed-Patterns",
-    "Phase 12/12.5-Configuration-Management",
-    "Phase-12-Microservices/12.2-Inter-Service-Communication/01-Inter-Service-Communication.md",
-    "Phase-12-Microservices/12.7-Observability-in-Microservices/01-Observability-in-Microservices.md",
-    "Phase-12-Microservices/12.6-Distributed-Patterns/01-Distributed-Patterns.md",
-    "Phase-12-Microservices/12.5-Configuration-Management/01-Configuration-Management.md",
-    "Phase-12-Microservices/12.3-Resilience4j/01-Resilience4j.md",
-    "Phase-12-Microservices/12.4-API-Gateway/01-API-Gateway.md",
-    "Phase-12-Microservices/12.1-Microservices-Fundamentals/01-Microservices-Fundamentals-and-DDD.md",
-    "Structures/Phase 11 - Messaging & Communication.md",
-    "Structures/Phase 10 - Containerization & Deployment.md",
-    "ReadME.md",
-    "Phase 11/Messaging Fundamentals/01-Messaging-Fundamentals.md",
     "Assets/Memory_Hierarchy.png",
     "Assets/new_keyword_memory_pic.png",
     "Assets/ds.jpg",
