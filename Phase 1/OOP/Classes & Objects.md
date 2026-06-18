@@ -303,16 +303,13 @@ Car myCar = new Car("Tesla");
         new returns the heap ADDRESS of the new object. It is stored in
         the reference variable 'myCar' on the STACK.
 
-### 6.1 Memory picture
-![[new_keyword_memory_pic.png]]
-
-### 6.2 Object header (what else lives in an object)
+### 6.1 Object header (what else lives in an object)
 Beyond your fields, every object carries a small **header**:
 - **Mark word**: identity hashcode, GC age, lock state (used by `synchronized`).
 - **Klass pointer**: points to the class metadata (so the object knows its type, enables `getClass()`, virtual dispatch).
 - (Arrays also store a length.)
 
-### 6.3 Order of initialization (precise sequence within one class)
+### 6.2 Order of initialization (precise sequence within one class)
 For a single object construction, members initialize in this order:
 1. **Static** fields & **static initializer blocks**; *once*, when the class is first loaded (not per object).
 2. Then, per `new`: **instance field initializers** and **instance initializer blocks**, in source order.

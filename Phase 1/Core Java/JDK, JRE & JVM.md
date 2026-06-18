@@ -7,8 +7,6 @@ These are ==the three core foundational pillars of the Java platform architectur
 | User running a Java app     | **JRE**       |
 | The engine executing Java   | **JVM**       |
 
-![[JVM vs. JDK vs. JRE.jpg]]
-
 **Understanding these concept helps you:**
 - Know what to install for what purpose
 - Debug "class not found" errors
@@ -91,15 +89,13 @@ Bytecode is an intermediate, compact, binary representation of source code comp
 #### How Bytecode works?
 When you compile Java, it does **NOT** become machine code directly. It becomes **bytecode**. A universal intermediate format. Bytecode is stored in `.class` files (JAVA). Any machine with a JVM can run that `.class` file.
 
-![[bytecode.jpg]]
-
 Modern JVMs use an approach called **Tiered Compilation** to balance quick startup speeds with optimized peak performance:
 
 1. **Initial Phase**: When a Java app starts, the **Interpreter** executes everything to ensure the system is up and running immediately.
 
 2. **Profiling Phase**: While running, the **Profiler** checks internal counters to see which functions are being heavily reused.
 
-3. **Compilation Phase**: Once a specific threshold is hit, that chunk of code is passed to the **[[JVM Architecture#2. JIT|JIT]] Compiler**.
+3. **Compilation Phase**: Once a specific threshold is hit, that chunk of code is passed to the JIT Compiler**.
 
 4. **Optimization Phase**: The JIT compiler optimizes the instructions (using techniques like _method inlining_ or _loop unrolling_) and saves them as native instructions. The JVM uses this pre-compiled machine code for all future invocations.
 

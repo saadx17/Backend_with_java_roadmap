@@ -23,6 +23,7 @@ Have fun.
 6. [[Phase 06 - Testing]]
 7. [[Phase 07 - API Design & Documentation]]
 8. [[Phase 08 - Database Migration]]
+9. [[Phase 09 - Logging & Monitoring]]
 
 *(More content will be added as the roadmap progresses)*
 
